@@ -1,11 +1,12 @@
 package entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
 import javax.print.attribute.standard.DateTimeAtCompleted;
 
-public class Reserva{
+public class Reserva implements Serializable{
 	private int id;
 	private TipoElemento tipo;
 	private String fechaHoraDesde;

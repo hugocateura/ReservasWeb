@@ -1,6 +1,8 @@
 package entidades;
 
-public class TipoElemento {
+import java.io.Serializable;
+
+public class TipoElemento implements Serializable {
 	private int id;
 	private String nombre;
 	private int cant_max_reservas;

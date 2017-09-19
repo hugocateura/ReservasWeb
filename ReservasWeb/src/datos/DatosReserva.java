@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import entidades.*;
 import utilidades.ExcepcionesEscritorio;
 
+import java.io.Serializable;
 import java.nio.channels.SelectableChannel;
 import java.security.KeyStore.ProtectionParameter;
 
-public class DatosReserva 
+public class DatosReserva implements Serializable
 {
 	ArrayList<Reserva>listadoRes = new ArrayList<Reserva>();
 	

@@ -1,9 +1,10 @@
 package utilidades;
 
+import java.io.Serializable;
 import java.lang.Exception;
 import java.lang.Throwable;
 
-public class ExcepcionesEscritorio extends Exception {
+public class ExcepcionesEscritorio extends Exception implements Serializable  {
 	private Throwable originalExepcion;
 	private String mensaje;
 	

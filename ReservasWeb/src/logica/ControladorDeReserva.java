@@ -1,5 +1,6 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,7 +12,7 @@ import entidades.Persona;
 import entidades.Reserva;
 import entidades.TipoElemento;
 
-public class ControladorDeReserva {
+public class ControladorDeReserva implements Serializable{
 private DatosReserva baseReserva = new DatosReserva();
 private DatosTipoElemento baseTipoElemento = new DatosTipoElemento();
 private DatosElemento baseElemento = new DatosElemento();

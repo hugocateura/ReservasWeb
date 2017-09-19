@@ -1,5 +1,6 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import datos.DatosElemento;
@@ -9,7 +10,7 @@ import entidades.Persona;
 import entidades.TipoElemento;
 import utilidades.ExcepcionEspecial;
 
-public class ControladorDeElemento {
+public class ControladorDeElemento implements Serializable{
 			private DatosElemento baseElemento;
 			private DatosTipoElemento baseTipoElemento;
 			

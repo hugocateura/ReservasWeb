@@ -1,11 +1,12 @@
 package datos;
 
+import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
 import entidades.*;
 import utilidades.ExcepcionesEscritorio;
 
-public class DatosPersona 
+public class DatosPersona implements Serializable 
 {
 	
 	public ArrayList<Persona> buscarTodo() throws Exception

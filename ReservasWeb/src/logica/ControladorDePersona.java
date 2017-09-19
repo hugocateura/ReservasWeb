@@ -1,5 +1,6 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import datos.DatosPersona;
@@ -7,7 +8,7 @@ import entidades.Persona;
 import utilidades.ExcepcionEspecial;
 
 
-public class ControladorDePersona {
+public class ControladorDePersona implements Serializable{
 	private DatosPersona basePersona = new DatosPersona();
 	
 	public void crearPersona(Persona pers) throws Exception, ExcepcionEspecial{

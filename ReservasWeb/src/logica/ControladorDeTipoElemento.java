@@ -1,5 +1,6 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import datos.DatosTipoElemento;
@@ -7,7 +8,7 @@ import entidades.Persona;
 import entidades.TipoElemento;
 import utilidades.ExcepcionEspecial;
 
-public class ControladorDeTipoElemento {
+public class ControladorDeTipoElemento implements Serializable{
 private DatosTipoElemento baseTipoElemento = new DatosTipoElemento();
 	
 	public void crearTipoElemento(TipoElemento tipoele) throws Exception, ExcepcionEspecial{

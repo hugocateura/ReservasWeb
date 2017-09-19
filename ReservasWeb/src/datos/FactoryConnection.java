@@ -1,9 +1,10 @@
 package datos;
+import java.io.Serializable;
 import java.sql.*;
 
 import utilidades.ExcepcionesEscritorio;
 
-public class FactoryConnection {
+public class FactoryConnection implements Serializable{
 	private String driver="com.mysql.jdbc.Driver";
 	private String host="localhost";
 	private String port="3306";
