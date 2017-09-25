@@ -1,0 +1,190 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ESTILOS GENERALES */
+
+nav ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li{
+    line-height: 3rem;
+    position: relative;
+}
+
+nav li ul{
+    position: absolute;
+    
+}
+
+nav a {
+    text-decoration: none;
+    display: block;
+    color: #EEEEEE;
+    padding: 0 5em;
+    transition: .5s;
+    
+}
+
+nav a:hover{
+   color:#FFFFFF;
+   background: #303F9F;
+   
+   
+}
+
+
+
+/* PRIMER NIVEL MENU*/
+
+.menu{
+    width: 100%;
+    display: table;
+    background: #1A237E;
+    
+}
+
+.menu > li{
+    float: left;
+}
+
+
+/* SEGUNDO NIVEL MENU*/
+
+ nav li li{
+    background:#303F9F;
+    width: 370px;
+    max-height: 0;
+    transition: all .1s;
+    overflow: hidden;
+}
+
+nav li:hover > ul > li{
+    max-height: 1000px;
+    overflow: visible;
+}
+
+.menu > li > ul{
+    top: :100%;
+}
+
+.menu ul ul{
+    left: 100%;
+    top: 0;
+} 
+
+
+/* ENCABEZADO*/
+.encabezado{
+    position: fixed;
+    width: 100%;
+    padding:0;
+    margin:0;
+    top: 0; 
+    left: 0; 
+} 
+
+
+/* CONTENIDO */
+
+.contenido{
+    background-image: url(/assets/imagenFondo.jpg);
+    width: 100%;
+    margin-top: 50px;
+    padding:0;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* PIE DE PAGINA */
+
+footer {
+    background: #1A237E;
+    text-align: center;
+    color: white;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    line-height: 1px;
+}
+
+/* BIENVENIDA */
+
+.textoBienvenida{
+   text-align: center;
+    font-size: 40px;
+    color: white;
+    padding: 50px;
+   
+}
+
+
+/* FORMULARIO */
+
+.formulario{
+    background:#EEEEEE; 
+    width: 400px;
+    height: auto;
+    text-align: left;
+    margin: 100px auto;
+    padding-left:20px;
+    padding-top: 10px;
+    border-radius: 5px;
+}
+
+.formularioListado{
+    background:#EEEEEE; 
+    width: 700px;
+    height: 500px;
+    text-align: left;
+    margin: 100px auto;
+    padding-left:20px;
+    padding-top: 10px;
+    border-radius: 5px;
+}
+
+.boton{
+    width: 100px;
+    margin: 13px;
+    margin-top: 50px;
+    padding: 10px;
+    background: #2C6CAF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: auto;
+}
+
+.botonListado{
+    width: 100px;
+    margin: 70px;
+    margin-top: 50px;
+    padding: 10px;
+    background: #2C6CAF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: auto;
+}
+
+input{
+    border-radius: 5px;
+}
+
+.text{
+    width: 350px;
+    margin: 10px;
+}
+
+.titulo{
+    font-size: 20px;
+    margin-left: 250px;
+}
