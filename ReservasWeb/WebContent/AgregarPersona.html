@@ -56,25 +56,31 @@
     </header>    
     <body class="contenido">
          <form action="" class="formulario">
-           <label for="">Dni</label> <br>
-            <input type="text" name="personaDni" class="text">
-            <label for="">Categoria</label> <br>
-            <select class="text">
-              <option value="Categoria1">TipoElemento1</option>
-            </select> <br>
-            <label for="">Nombre</label> <br>
-            <input type="text" name="personaNombre" class="text">
-            <label for="">Apellido</label> <br>
-            <input type="text" name="personaApellido" class="text"> <br>
-            <label for="">Usuario</label> <br>
-            <input type="text" name="personaUsuario" class="text">
-            <label for="">Contraseña</label> <br>
-            <input type="text" name="personaPass" class="text"> <br>
-            <label for="">Habilitado</label>
-            <input type="checkbox" name="personaHabilitado" class="text" value="Habilitado"> <br>
-            <input type="reset" name="limpiar" value="Limpiar" class="boton">
-            <input type="submit" name="guardarPersona" value="Aceptar" class="boton">
-            <button class="boton">Cancelar</button>
+            <div class="columnaIzquierda">
+                <label for="">Dni</label>
+                <input type="text" name="personaDni" class="text"><br>
+                <label for="">Nombre</label> 
+                <input type="text" name="personaNombre" class="text"><br>
+                <label for="">Usuario</label> 
+                <input type="text" name="personaUsuario" class="text"><br>
+                <label for="">Habilitado</label>
+                <input type="checkbox" name="personaHabilitado" class="text" value="Habilitado">
+            </div>
+            <div class="columnaDerecha">
+               <label for="">Categoria</label>
+               <select class="text">
+                   <option value="Categoria1">TipoElemento1</option>
+               </select> <br>
+               <label for="">Apellido</label> 
+               <input type="text" name="personaApellido" class="text"><br>
+               <label for="">Contraseña</label> 
+               <input type="text" name="personaPass" class="text"> <br>    
+            </div> 
+           <div class="botones">
+                <input type="reset" name="limpiar" value="Limpiar" class="boton">
+                <input type="submit" name="guardarPersona" value="Aceptar" class="boton">
+                <button class="boton">Cancelar</button>
+            </div>
         </form>
     </body>
     

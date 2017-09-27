@@ -131,24 +131,28 @@ footer {
 
 .formulario{
     background:#EEEEEE; 
-    width: 400px;
+    width: 900px;
     height: auto;
-    text-align: left;
     margin: 100px auto;
     padding-left:20px;
     padding-top: 10px;
     border-radius: 5px;
+      
 }
 
-.formularioListado{
-    background:#EEEEEE; 
-    width: 700px;
-    height: 500px;
-    text-align: left;
-    margin: 100px auto;
-    padding-left:20px;
-    padding-top: 10px;
-    border-radius: 5px;
+.columnaDerecha{
+    width:50%; 
+    float:right;
+}
+
+.columnaIzquierda{
+    width:50%; 
+    float:left;
+}
+
+.botones{
+    text-align: center;
+    clear: both;
 }
 
 .boton{
@@ -163,28 +167,50 @@ footer {
     height: auto;
 }
 
-.botonListado{
-    width: 100px;
-    margin: 70px;
-    margin-top: 50px;
-    padding: 10px;
-    background: #2C6CAF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    height: auto;
-}
-
 input{
     border-radius: 5px;
 }
 
 .text{
-    width: 350px;
+    width: 300px;
     margin: 10px;
+    
 }
 
 .titulo{
     font-size: 20px;
     margin-left: 250px;
 }
+
+
+/* TABLA */
+.Table {  
+   display: table;  
+   margin: 0 auto;
+   
+}  
+  
+.Title {  
+   display: table-caption;  
+   text-align: center;  
+   font-weight: bold;  
+   font-size: larger;  
+}  
+  
+.Heading {  
+  display: table-row;  
+  font-weight: bold;  
+  text-align: center;  
+}  
+  
+.Row{  
+  display: table-row;  
+}  
+  
+.Cell{  
+  display: table-cell;  
+  border: solid;  
+  border-width: thin;  
+  padding-left: 5px;  
+  padding-right: 5px;  
+ }  

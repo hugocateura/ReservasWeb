@@ -56,13 +56,19 @@
     </header>    
     <body class="contenido">
          <form action="" class="formulario">
-            <label for="">Nombre</label> <br>
-            <input type="text" name="tipoElementoNombre" class="text"> <br> <br>
-            <label for="">Cantidad maxima de reservas pendientes</label> <br>
-            <input type="text" name="tipoElementoCantMaxResPen" class="text"> <br> <br>
-            <input type="reset" name="limpiar" value="Limpiar" class="boton">
-            <input type="submit" name="guardarElemento" value="Aceptar" class="boton">
-            <button class="boton">Cancelar</button>
+           <div class="columnaIzquierda">
+                <label for="">Nombre</label> <br>
+                <input type="text" name="tipoElementoNombre" class="text"> <br>
+            </div>
+            <div class="columnaDerecha">
+                <label for="">Cantidad maxima de reservas</label> <br>
+                <input type="text" name="tipoElementoCantMaxResPen" class="text"> <br>
+            </div> 
+           <div class="botones">
+                <input type="reset" name="limpiar" value="Limpiar" class="boton">
+                <input type="submit" name="guardarElemento" value="Aceptar" class="boton">
+                <button class="boton">Cancelar</button>
+            </div>
         </form>
     </body>
     

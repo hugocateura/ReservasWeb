@@ -56,15 +56,21 @@
     </header>    
     <body class="contenido">
         <form action="" class="formulario">
-            <label for="">Nombre</label> <br>
-            <input type="text" name="elementoNombre" class="text"> <br> <br>
-            <label for="">Tipo de Elemento</label> <br>
-            <select class="text">
-              <option value="tipoElemento1">TipoElemento1</option>
-            </select> <br>  
-            <input type="reset" name="limpiar" value="Limpiar" class="boton">
-            <input type="submit" name="guardarElemento" value="Aceptar" class="boton">
-            <button class="boton">Cancelar</button>
+            <div class="columnaIzquierda">
+                <label for="">Nombre</label>
+                <input type="text" name="elementoNombre" class="text">
+            </div>
+            <div class="columnaDerecha">
+                <label for="">Tipo de Elemento</label>
+                <select class="text">
+                  <option value="tipoElemento1">TipoElemento1</option>
+                </select> 
+            </div> 
+           <div class="botones">
+                <input type="reset" name="limpiar" value="Limpiar" class="boton">
+                <input type="submit" name="guardarElemento" value="Aceptar" class="boton">
+                <button class="boton">Cancelar</button>
+            </div>
         </form>
     </body>
     
