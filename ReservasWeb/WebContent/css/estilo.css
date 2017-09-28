@@ -94,7 +94,7 @@ nav li:hover > ul > li{
 /* CONTENIDO */
 
 .contenido{
-    background-image: url(/assets/imagenFondo.jpg);
+    background-color:#01579B;
     width: 100%;
     margin-top: 50px;
     padding:0;
@@ -213,4 +213,4 @@ input{
   border-width: thin;  
   padding-left: 5px;  
   padding-right: 5px;  
- }  
+ }
