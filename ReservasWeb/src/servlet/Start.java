@@ -37,8 +37,8 @@ public class Start extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			String user=request.getParameter("user");
-			String pass=request.getParameter("pass");
+			String user=request.getParameter("user"); //recupero user
+			String pass=request.getParameter("pass");	//recupero pass (todos los parametros vienen como string)
 			
 			Persona per=new Persona();
 			per.setUsuario(user);
@@ -48,9 +48,9 @@ public class Start extends HttpServlet {
 			
 			Persona pers=ctrlPersona.buscarPersonaPorUsuyClave(per);
 			
-			request.getSession().setAttribute("user", pers);
+			request.getSession().setAttribute("user", pers); //crea o recupera una sesion si ya esta creada
 			
-			request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/Principal.jsp").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);
 			
 			
