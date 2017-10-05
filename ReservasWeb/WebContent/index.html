@@ -1,53 +1,31 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html lang="es"><head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
-
-    <title>Ingreso de usuario</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="style/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    
-    
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/estilo.css" type="text/css">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="icon" href="assets/icono.ico">
     <script src="style/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <title>Ingreso de usuario</title>
   </head>
 
   <body>
 
-    <div class="container">
-
+    <div class="container login">
       <form class="form-signin" name="signin" action="start" method="post">
-        <h2 class="form-signin-heading">Login</h2>
-        <label for="inputUser" class="sr-only">User</label>
-        <input name="user" id="inputUser" class="form-control" placeholder="User" required="" autofocus="" type="">
-        <label for="inputPass" class="sr-only">Pass</label>
-        <input name="pass" id="inputPass" class="form-control" placeholder="Password" required="" type="Password">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+        <h2 class="form-signin-heading"><img src="/assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">  LOGIN</h2>
+        
+        <input name="user" id="inputUser" class="form-control" placeholder="Usuario" required="" autofocus="" type="">
+        
+        <input name="pass" id="inputPass" class="form-control" placeholder="Contraseña" required="" type="Password">
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
       </form>
 
-    </div> <!-- /container -->
-
-
+    </div>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="style/ie10-viewport-bug-workaround.js"></script>
-  
-
-</body></html>
+</body>
+</html>

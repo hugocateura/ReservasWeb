@@ -1,119 +1,200 @@
-body{
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
+.login{
+	border-radius: 10px;
+    width: 500px;
+    margin: 0 auto;
+    height: 250px;
+    border: solid;
+    background: gainsboro;
+    padding-top: 20px;
+    border-color: gainsboro;
+    margin-top: 130px;
 }
 
-
-/* ESTILOS GENERALES */
-
-nav ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.login h2{
+    text-align: center;
+    color: #868e96;
 }
 
-nav li{
-    line-height: 3rem;
-    position: relative;
+.login button{
+    margin-top: 15px;
 }
 
-nav li ul{
-    position: absolute;
-    
+.login input{
+    margin-top: 5px;
 }
 
-nav a {
+.link{
     text-decoration: none;
     display: block;
-    color: #EEEEEE;
-    padding: 0 5em;
-    transition: .5s;
-    
+    color:#868e96;
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
 }
-
-nav a:hover{
-   color:#FFFFFF;
-   background: #303F9F;
-   
-   
-}
-
-
-
-/* PRIMER NIVEL MENU*/
 
 .menu{
+    padding: 0px;
+    margin: 0px;
+    border-radius: 10px;
+}
+
+.menu a{
+    border-radius: 20px;
+    background: #2196F3;
+    padding-left: 10px;
+    padding-right: 5px;
+    color: gainsboro;
+    height: 35px;
+    line-height: 30px;
+}
+
+.contenedor{
     width: 100%;
-    display: table;
-    background: #1A237E;
+    display: inline-block;
+}
+
+.contenedor .menu{
+    width: 100%;
+}
+
+.contenedor ul{
+    list-style: none;
+
+}
+
+.contenedor ul ul{
+    padding: 0px;
+    margin: 0px;
+}
+
+.contenedor ul ul ul{
+    padding: 0px;
+    margin: 0px;
+}
+
+.contenedor .menu li a:hover{
+    color: black;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.contenedor .menu .icono{
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.contenedor .menu .icono.izquierda{
+  float: left;
+  margin-right: 10px;
+    line-height: 30px;
+}
+
+.icono.izquierda{
+  float: left;
+  margin-right: 5px;
+  line-height: 25px; 
+}
+
+.contenedor .menu .icono.derecha{
+    float: right;
+    margin-left: 10px;
+    line-height: 30px;
+}
+
+.contenedor .menu ul{
+/*     display: none; */
     
 }
 
-.menu > li{
+/* SUBMENU */
+.contenedor .menu ul li a{
+    background: #E0E0E0;
+    color: #90A4AE;
+    padding-left: 15px;
+    font-size: 15px;
+} 
+
+/* SUBSUBMENU */
+.contenedor .menu ul li ul li a{
+    background: #E0E0E0;
+    font-size: 12px;
+    padding-left: 25px;
+}
+
+.caja.izquierda{
+    width: 150px;
     float: left;
+    border:solid;
+    border-radius: 10px;
+    color: white;
+    background: #2196F3;
+    margin-right:50px;
+    border-color: #2196F3;
+    padding-left: 20px;
 }
 
-
-/* SEGUNDO NIVEL MENU*/
-
- nav li li{
-    background:#303F9F;
-    width: 370px;
-    max-height: 0;
-    transition: all .1s;
-    overflow: hidden;
+.caja.izquierda a{
+    color: gainsboro;
 }
 
-nav li:hover > ul > li{
-    max-height: 1000px;
-    overflow: visible;
+.caja.derecha.salir{
+    width: 75px;;
+    float: right;
+    height: 30px;
+    text-align: left;
+    background: red;
+    margin-right: 10px;
+    padding-left: 5px;
+    color: white;
+    border-color:red;
+    border-radius: 10px;
 }
 
-.menu > li > ul{
-    top: :100%;
+.caja.derecha.salir:hover{
+    text-decoration: none;
+    color:red;
+    border-color:red;
+    background: white;
 }
 
-.menu ul ul{
-    left: 100%;
-    top: 0;
-} 
+.caja.derecha{
+    width: 300px;;
+    float: right;
+    height: 30px;
+    text-align: left;
+    border: solid;
+    margin-right: 10px;
+    padding-left: 5px;
+    border-radius: 10px;
+    border-color: #2196F3;
+    background: #2196F3;
+    color: gainsboro;
+}
 
-
-/* ENCABEZADO*/
-.encabezado{
-    position: fixed;
+.todo{
     width: 100%;
-    padding:0;
-    margin:0;
-    top: 0; 
-    left: 0; 
-} 
-
-
-/* CONTENIDO */
-
-.contenido{
-    background-color:#01579B;
-    width: 100%;
-    margin-top: 50px;
-    padding:0;
-    background-position: center center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: #EEEEEE;
+    padding: 0px;
+    margin: 0px;
+    height: auto;
 }
 
 /* PIE DE PAGINA */
 
-footer {
-    background: #1A237E;
-    text-align: center;
-    color: white;
+.footer {
+    background: #BDBDBD;
     bottom: 0;
     width: 100%;
     position: fixed;
-    line-height: 1px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.footerTexto{
+    margin: auto;
+    color: white;
+    line-height: 5px;
+    float: left;
 }
 
 /* BIENVENIDA */
@@ -214,3 +295,11 @@ input{
   padding-left: 5px;  
   padding-right: 5px;  
  }
+
+.hrVertical{ 
+    border:         none;
+    border-left:    1px solid;
+    height:         100vh;
+    width:          1px;   
+    float: left;
+}
