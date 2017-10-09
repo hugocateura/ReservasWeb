@@ -13,14 +13,14 @@ import entidades.Persona;
 /**
  * Servlet implementation class Start
  */
-@WebServlet({ "/AgregarPersona", "/agregarPersona" })
-public class AgregarPersona extends HttpServlet {
+@WebServlet({ "/ListadoPersona", "/listadoPersona" })
+public class ListadoPersona extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public AgregarPersona() {
+    public ListadoPersona() {
         // TODO Auto-generated constructor stub
     }
 
@@ -38,7 +38,7 @@ public class AgregarPersona extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 
-			request.getRequestDispatcher("WEB-INF/AgregarPersona.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/ListadoPersona.jsp").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);
 			
 			

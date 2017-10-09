@@ -10,6 +10,8 @@ public class TipoElemento implements Serializable {
 	private int limiteMaxHorasReserva;
 	private int cantMaxDiasAnticipacion;
 	
+	public TipoElemento(){}
+	
 	public int getId() {
 		return id;
 	}

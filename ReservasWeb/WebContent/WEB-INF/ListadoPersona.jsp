@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="/css/estilo.css" type="text/css">
-    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="css/estilo.css" type="text/css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="icon" href="/assets/icono.ico">
+    <link rel="icon" href="assets/icono.ico">
     <title>Listado Persona</title>
 </head>
  <body>
@@ -17,7 +17,7 @@
                <nav class="navbar navbar-expand-lg navbar-light bg-light">
                   <div class="collapse navbar-collapse" id="navbarText">
                       <div class="caja izquierda">
-                          <a class="navbar-brand" href="#"><img src="/assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">   SYSRES</a>
+                          <a class="navbar-brand" href="#"><img src="assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">   SYSRES</a>
                       </div>
                       <a class="breadcrumb-item" href="Principal.jsp">Inicio</a>
                       <a class="breadcrumb-item" href="#">Administracion</a>
@@ -33,38 +33,37 @@
               </nav>
            </div>
        </div>
-        <div class="row todo">
+           <div class="row todo">
             <div class="col-2 contenedor">
-              <!-- <a href="" class="link">Menu<i class="icono derecha fa fa-bars" aria-hidden="true"></i></a> -->
                <ul class="menu">
                   <li class="">
-                    <a class="link" href="#"><i class="icono izquierda fa fa-wrench" aria-hidden="true"></i>Administración<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
+                    <a class="link" href="#"><i class="icono izquierda fa fa-wrench" aria-hidden="true"></i>Administracion<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                        <ul>
                           <li>
                             <a class="link" href="#">Persona<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                                <ul>
-                                  <li><a class="link" href="AgregarPersona.html">Agregar</a></li>
-                                  <li><a class="link" href="ListadoPersona.html">Listado</a></li>
+                                  <li><a class="link" href="AgregarPersona">Agregar</a></li>
+                                  <li><a class="link" href="ListadoPersona">Listado</a></li>
                                 </ul> 
                           </li>
                           <li>
                             <a class="link" href="#">Tipo de Elemento<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                                 <ul>
-                                  <li><a class="link" href="AgregarTipoElemento.html">Agregar</a></li>
-                                  <li><a class="link" href="ListadoTipoElemento.html">Listado</a></li>
+                                  <li><a class="link" href="AgregarTipoElemento">Agregar</a></li>
+                                  <li><a class="link" href="ListadoTipoElemento">Listado</a></li>
                                 </ul>
                           </li>
                           <li>
                             <a class="link" href="#">Elemento<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                                 <ul>
-                                  <li><a class="link" href="AgregarElemento.html">Agregar</a></li>
-                                  <li><a class="link" href="ListadoElemento.html">Listado</a></li>
+                                  <li><a class="link" href="AgregarElemento">Agregar</a></li>
+                                  <li><a class="link" href="ListadoElemento">Listado</a></li>
                                 </ul>
                           </li>
                           <li>
                             <a class="link" href="#">Reserva<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                                 <ul>
-                                  <li><a class="link" href="AnularReserva.html">Anular</a></li>
+                                  <li><a class="link" href="AnularReserva">Anular</a></li>
                                 </ul>
                           </li>
                         </ul>
@@ -72,56 +71,69 @@
                   <li>
                     <a class="link" href="#"><i class="icono izquierda fa fa-ticket" aria-hidden="true"></i>Reserva<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                         <ul class="">
-                              <li><a class="link" href="ReservarElemento.html">Reservar</a></li>
-                              <li><a class="link" href="MisReservas.html">Mis Reservas</a></li>
+                              <li><a class="link res" href="ReservarElemento">Reservar</a></li>
+                              <li><a class="link res" href="MisReservas">Mis Reservas</a></li>
                         </ul>
                   </li>
                 </ul>
             </div>
-           <!-- <hr class="hrVertical"> -->
             <div class="col-10 contenido">
-                 <form action="" class="formulario">
-                    <div class="Table">  
-                      <div class="Title">  
-                          <label for="">Listado de Personas</label>
-                      </div>  
-                      <div class="Heading">  
-                          <div class="Cell">  
-                              <p>DNI</p>  
-                          </div>  
-                          <div class="Cell">  
-                              <p>Nombre</p>  
-                          </div>
-                          <div class="Cell">  
-                              <p>Apellido</p>  
-                          </div>
-                          <div class="Cell">  
-                              <p>Usuario</p>  
-                          </div>
-                          <div class="Cell">  
-                              <p>Contraseña</p>  
-                          </div>
-                          <div class="Cell">  
-                              <p>Habilitado</p>  
-                          </div>
-                          <div class="Cell">  
-                              <p>Categoria</p>  
-                          </div>
-                     </div>  
-                     <div class="Row">  
-                          <div class="Cell">  
-                          </div>  
-                          <div class="Cell">  
-                          </div>  
-                     </div>  
-                   </div> 
-                    <div class="botones">
-                        <input type="submit" name="eliminarPersona" value="Eliminar" class="boton">
-                        <input type="submit" name="modificarPersona" value="Modificar" class="boton">
-                        <button class="boton">Cancelar</button>
-                    </div>
-                </form>
-            </div>
+           		 <form action="" class="formulario">
+	                  <div class="tituloFormularioRes">
+		            		<h3>Listado de Personas</h3>
+		              </div>
+	                  <table class="table table-striped">
+						  <thead>
+						    <tr>
+						      <th>Id</th>
+						      <th>Dni</th>
+						      <th>Nombre</th>
+						      <th>Apellido</th>
+						      <th>Usuario</th>
+						      <th>Contrase�a</th>
+						      <th>Categoria</th>
+						      <th>Habilitado</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <th scope="row">1</th>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						    <tr>
+						      <th scope="row">2</th>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						    <tr>
+						      <th scope="row">3</th>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						  </tbody>
+						 </table>
+						 <div class="botones">
+							<input type="submit" name="siguiente" value="Eliminar" class="btn btn-primary btnEliminar">
+							<input type="submit" name="siguiente" value="Modificar" class="btn btn-primary">
+						 </div>
+                    </form>
+                 </div>
         </div>
        <div class="row footer">
            <div class="col-12">

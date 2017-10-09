@@ -67,8 +67,7 @@ public class Persona implements Serializable {
 //		return	this.getNombre();
 		return (this.id + " - " + this.getNombre()+", "+this.getApellido()  );
 	}
-	public Persona()
-		{}
 	
+	public Persona(){}
 	
 }

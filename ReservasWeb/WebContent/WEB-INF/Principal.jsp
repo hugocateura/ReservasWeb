@@ -21,48 +21,48 @@
                       <div class="caja izquierda">
                           <a class="navbar-brand" href="#"><img src="assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">   SYSRES</a>
                       </div>
-                      <a class="breadcrumb-item" href="WEB-INF/Principal.jsp">Inicio</a>
+                      <a class="breadcrumb-item" href="Start">Inicio</a>
                   </div>
                   <div class="caja derecha">
                       <p><i class="icono izquierda fa fa-user" aria-hidden="true"></i>Usuario</p>
                   </div>
                   <form class="form-inline my-2 my-lg-0">
-                      <a class="caja derecha salir" href="index.html"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
+                      <a class="caja derecha salir" href="#"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
                   </form>
               </nav>
            </div>
        </div>
-        <div class="row todo">
+         <div class="row todo">
             <div class="col-2 contenedor">
                <ul class="menu">
                   <li class="">
-                    <a class="link" href="#"><i class="icono izquierda fa fa-wrench" aria-hidden="true"></i>Administración<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
+                    <a class="link" href="#"><i class="icono izquierda fa fa-wrench" aria-hidden="true"></i>Administracion<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                        <ul>
                           <li>
                             <a class="link" href="#">Persona<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                                <ul>
-                                  <li><a class="link" href="WEB-INF/AgregarPersona.html">Agregar</a></li>
-                                  <li><a class="link" href="WEB-INF/ListadoPersona.html">Listado</a></li>
+                                  <li><a class="link" href="AgregarPersona">Agregar</a></li>
+                                  <li><a class="link" href="ListadoPersona">Listado</a></li>
                                 </ul> 
                           </li>
                           <li>
                             <a class="link" href="#">Tipo de Elemento<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                                 <ul>
-                                  <li><a class="link" href="WEB-INF/AgregarTipoElemento.html">Agregar</a></li>
-                                  <li><a class="link" href="WEB-INF/ListadoTipoElemento.html">Listado</a></li>
+                                  <li><a class="link" href="AgregarTipoElemento">Agregar</a></li>
+                                  <li><a class="link" href="ListadoTipoElemento">Listado</a></li>
                                 </ul>
                           </li>
                           <li>
                             <a class="link" href="#">Elemento<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                                 <ul>
-                                  <li><a class="link" href="WEB-INF/AgregarElemento.html">Agregar</a></li>
-                                  <li><a class="link" href="WEB-INF/ListadoElemento.html">Listado</a></li>
+                                  <li><a class="link" href="AgregarElemento">Agregar</a></li>
+                                  <li><a class="link" href="ListadoElemento">Listado</a></li>
                                 </ul>
                           </li>
                           <li>
                             <a class="link" href="#">Reserva<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                                 <ul>
-                                  <li><a class="link" href="WEB-INF/AnularReserva.html">Anular</a></li>
+                                  <li><a class="link" href="AnularReserva">Anular</a></li>
                                 </ul>
                           </li>
                         </ul>
@@ -70,15 +70,14 @@
                   <li>
                     <a class="link" href="#"><i class="icono izquierda fa fa-ticket" aria-hidden="true"></i>Reserva<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                         <ul class="">
-                              <li><a class="link" href="WEB-INF/ReservarElemento.html">Reservar</a></li>
-                              <li><a class="link" href="WEB-INF/MisReservas.html">Mis Reservas</a></li>
+                              <li><a class="link res" href="ReservarElemento">Reservar</a></li>
+                              <li><a class="link res" href="MisReservas">Mis Reservas</a></li>
                         </ul>
                   </li>
                 </ul>
             </div>
-           <!-- <hr class="hrVertical"> -->
             <div class="col-10 contenido">
-                <p class="textoBienvenida">BIENVENIDO A SYSRES</p>
+                <h1 class="textoBienvenida">BIENVENIDO A SYSRES</h1>
             </div>
         </div>
        <div class="row footer">

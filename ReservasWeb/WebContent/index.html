@@ -14,13 +14,18 @@
   <body>
 
     <div class="container login">
-      <form class="form-signin" name="signin" action="start" method="post">
-        <h2 class="form-signin-heading"><img src="/assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">  LOGIN</h2>
-        
-        <input name="user" id="inputUser" class="form-control" placeholder="Usuario" required="" autofocus="" type="">
-        
-        <input name="pass" id="inputPass" class="form-control" placeholder="Contraseña" required="" type="Password">
-        
+      <form class="form-signin" name="signin" action="Start" method="post">
+        <h2 class="form-signin-heading"><img src="assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">  LOGIN</h2>
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <div class="input-group-addon iconoLogin"><i class="fa fa-user" aria-hidden="true"></i></div>
+                      <input name="user" id="inputUser" class="form-control" placeholder="Usuario" required="" autofocus="" type="">
+          </div>
+     
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+		    <div class="input-group-addon iconoLogin"><i class="fa fa-unlock" aria-hidden="true"></i></div>
+		    <input name="pass" id="inputPass" class="form-control" placeholder="Contraseña" required="" type="Password">
+		  </div>
+                
         <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
       </form>
 

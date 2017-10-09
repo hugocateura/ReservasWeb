@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
+ 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/estilo.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/estilo.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-    <link rel="icon" href="/assets/icono.ico">
-    <title>Agregar Tipo</title>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="icon" href="assets/icono.ico">
+    <title>Listado Elemento</title>
 </head>
-<body>
+ <body>
     <div class="container-fluid">
        <div class="row">
            <div class="col-12">
                <nav class="navbar navbar-expand-lg navbar-light bg-light">
                   <div class="collapse navbar-collapse" id="navbarText">
                       <div class="caja izquierda">
-                          <a class="navbar-brand" href="#"><img src="/assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">   SYSRES</a>
+                          <a class="navbar-brand" href="#"><img src="assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">   SYSRES</a>
                       </div>
-                      <a class="breadcrumb-item" href="/WEB-INF/Principal.jsp">Inicio</a>
+                      <a class="breadcrumb-item" href="Principal.jsp">Inicio</a>
                       <a class="breadcrumb-item" href="#">Administracion</a>
-                      <a class="breadcrumb-item" href="#">Tipo de Elemento</a>
-                      <span class="breadcrumb-item active">Agregar</span>
+                      <a class="breadcrumb-item" href="#">Elemento</a>
+                      <span class="breadcrumb-item active">Listado</span>
                   </div>
                   <div class="caja derecha">
                       <p><i class="icono izquierda fa fa-user" aria-hidden="true"></i>Usuario</p>
@@ -33,38 +33,37 @@
               </nav>
            </div>
        </div>
-        <div class="row todo">
+          <div class="row todo">
             <div class="col-2 contenedor">
-              <!-- <a href="" class="link">Menu<i class="icono derecha fa fa-bars" aria-hidden="true"></i></a> -->
                <ul class="menu">
                   <li class="">
-                    <a class="link" href="#"><i class="icono izquierda fa fa-wrench" aria-hidden="true"></i>AdministraciÃ³n<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
+                    <a class="link" href="#"><i class="icono izquierda fa fa-wrench" aria-hidden="true"></i>Administracion<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                        <ul>
                           <li>
                             <a class="link" href="#">Persona<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                                <ul>
-                                  <li><a class="link" href="/WEB-INF/AgregarPersona.html">Agregar</a></li>
-                                  <li><a class="link" href="/WEB-INF/ListadoPersona.html">Listado</a></li>
+                                  <li><a class="link" href="AgregarPersona">Agregar</a></li>
+                                  <li><a class="link" href="ListadoPersona">Listado</a></li>
                                 </ul> 
                           </li>
                           <li>
                             <a class="link" href="#">Tipo de Elemento<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                                 <ul>
-                                  <li><a class="link" href="/WEB-INF/AgregarTipoElemento.html">Agregar</a></li>
-                                  <li><a class="link" href="/WEB-INF/ListadoTipoElemento.html">Listado</a></li>
+                                  <li><a class="link" href="AgregarTipoElemento">Agregar</a></li>
+                                  <li><a class="link" href="ListadoTipoElemento">Listado</a></li>
                                 </ul>
                           </li>
                           <li>
                             <a class="link" href="#">Elemento<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                                 <ul>
-                                  <li><a class="link" href="/WEB-INF/AgregarElemento.html">Agregar</a></li>
-                                  <li><a class="link" href="/WEB-INF/ListadoElemento.html">Listado</a></li>
+                                  <li><a class="link" href="AgregarElemento">Agregar</a></li>
+                                  <li><a class="link" href="ListadoElemento">Listado</a></li>
                                 </ul>
                           </li>
                           <li>
                             <a class="link" href="#">Reserva<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                                 <ul>
-                                  <li><a class="link" href="/WEB-INF/AnularReserva.html">Anular</a></li>
+                                  <li><a class="link" href="AnularReserva">Anular</a></li>
                                 </ul>
                           </li>
                         </ul>
@@ -72,28 +71,48 @@
                   <li>
                     <a class="link" href="#"><i class="icono izquierda fa fa-ticket" aria-hidden="true"></i>Reserva<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                         <ul class="">
-                              <li><a class="link" href="/WEB-INF/ReservarElemento.html">Reservar</a></li>
-                              <li><a class="link" href="/WEB-INF/MisReservas.html">Mis Reservas</a></li>
+                              <li><a class="link res" href="ReservarElemento">Reservar</a></li>
+                              <li><a class="link res" href="MisReservas">Mis Reservas</a></li>
                         </ul>
                   </li>
                 </ul>
             </div>
             <div class="col-10 contenido">
-                <form action="" class="formulario">
-                   <div class="columnaIzquierda">
-                        <label for="">Nombre</label> <br>
-                        <input type="text" name="tipoElementoNombre" class="text"> <br>
-                    </div>
-                    <div class="columnaDerecha">
-                        <label for="">Cantidad maxima de reservas</label> <br>
-                        <input type="text" name="tipoElementoCantMaxResPen" class="text"> <br>
-                    </div> 
-                   <div class="botones">
-                        <input type="reset" name="limpiar" value="Limpiar" class="boton">
-                        <input type="submit" name="guardarElemento" value="Aceptar" class="boton">
-                        <button class="boton">Cancelar</button>
-                    </div>
-                </form>
+                  <form action="" class="formulario">
+	                  <div class="tituloFormularioRes">
+		            		<h3>Listado de Elementos</h3>
+		              </div>
+	                  <table class="table table-striped">
+						  <thead>
+						    <tr>
+						      <th>Id</th>
+						      <th>Nombre</th>
+						      <th>Tipo de Elemento</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <th scope="row">1</th>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						    <tr>
+						      <th scope="row">2</th>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						    <tr>
+						      <th scope="row">3</th>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						  </tbody>
+						 </table>
+						 <div class="botones">
+							<input type="submit" name="siguiente" value="Eliminar" class="btn btn-primary btnEliminar">
+							<input type="submit" name="siguiente" value="Modificar" class="btn btn-primary">
+						 </div>
+                    </form>
             </div>
         </div>
        <div class="row footer">
@@ -103,11 +122,12 @@
             </nav>
            </div>
         </div>
+     </div>
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="js/bootstrap.js" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
-    </body>
+  </body>
 </html>

@@ -16,6 +16,8 @@ public class Reserva implements Serializable{
 	private Persona persona;
 	private String estado;
 	
+	public Reserva(){}
+	
 	public int getId() {
 		return id;
 	}

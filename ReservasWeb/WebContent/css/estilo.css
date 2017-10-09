@@ -1,3 +1,58 @@
+ul.menu>li>a{
+	display: block;
+	text-decoration: none;
+	cursor:default;
+}
+
+ul.menu>li>ul{
+	overflow: hidden;
+	transition: .7s all ease-in;
+	max-height: 0;
+} 
+
+ul.menu>li:HOVER>ul{
+	transition: .7s all ease-in;
+	max-height: 300px;
+	text-decoration: none;
+
+}
+
+ul.menu>li>ul>li>ul{
+	overflow: hidden;
+	transition: .7s all ease-in;
+	max-height: 0;
+	text-decoration: none;
+} 
+
+ul.menu>li>ul>li:HOVER>ul{
+	transition: .7s all ease-in;
+	max-height: 300px;
+}
+
+ul.menu>li>ul>li:hover>a{
+/*     color: black;
+    font-weight: bolder; */
+    text-decoration: none;
+    background: #90CAF9;
+    cursor:default;
+}
+
+ul.menu>li>ul>li>ul>li:hover>a{
+    color: black;
+    font-weight: bolder;
+    text-decoration: none;
+    background: #BBDEFB;
+}
+
+ul.menu>li>ul>li:hover>a.link.res{
+    color: black;
+    font-weight: bolder;
+    text-decoration: none;
+    background: #BBDEFB;
+    cursor:pointer;
+}
+
+
 .login{
 	border-radius: 10px;
     width: 500px;
@@ -8,6 +63,23 @@
     padding-top: 20px;
     border-color: gainsboro;
     margin-top: 130px;
+}
+
+.btnEliminar:HOVER{
+	background: red;
+	border-color: red;
+}
+
+.btnEliminar{
+	background: white;
+	border-color: red;
+	color:red;
+	cursor:pointer;
+}
+
+.iconoLogin{
+  margin-top: 5px;
+  width: 35px;
 }
 
 .login h2{
@@ -72,11 +144,7 @@
     margin: 0px;
 }
 
-.contenedor .menu li a:hover{
-    color: black;
-    font-weight: bolder;
-    text-decoration: none;
-}
+
 
 .contenedor .menu .icono{
     font-size: 12px;
@@ -86,7 +154,7 @@
 .contenedor .menu .icono.izquierda{
   float: left;
   margin-right: 10px;
-    line-height: 30px;
+  line-height: 30px;
 }
 
 .icono.izquierda{
@@ -117,7 +185,7 @@
 /* SUBSUBMENU */
 .contenedor .menu ul li ul li a{
     background: #E0E0E0;
-    font-size: 12px;
+    font-size: 14px;
     padding-left: 25px;
 }
 
@@ -142,19 +210,19 @@
     float: right;
     height: 30px;
     text-align: left;
-    background: red;
+    background: white;
     margin-right: 10px;
     padding-left: 5px;
-    color: white;
+    color: red;
     border-color:red;
     border-radius: 10px;
 }
 
 .caja.derecha.salir:hover{
     text-decoration: none;
-    color:red;
+    color:white;
     border-color:red;
-    background: white;
+    background: red;
 }
 
 .caja.derecha{
@@ -174,7 +242,7 @@
 .todo{
     width: 100%;
     background: #EEEEEE;
-    padding: 0px;
+    padding-top:5px;
     margin: 0px;
     height: auto;
 }
@@ -202,23 +270,48 @@
 .textoBienvenida{
    text-align: center;
     font-size: 40px;
-    color: white;
+    color: #BDBDBD;
     padding: 50px;
    
 }
 
+/* .migajaPan{
+	display:block;
+	background: #2196F3;
+	padding: 5px;
+	border-radius: 5px;
+} */
 
 /* FORMULARIO */
 
 .formulario{
-    background:#EEEEEE; 
-    width: 900px;
+    width: auto;
     height: auto;
-    margin: 100px auto;
-    padding-left:20px;
-    padding-top: 10px;
+    margin-left: 20px;
+    margin-top: 5px;
+    padding:20px;
+    padding-left:0px;
+    padding-top:5px;
     border-radius: 5px;
-      
+    background:#E0E0E0;
+          
+}
+
+.tituloFormulario{
+	text-align: center;
+    color:#424242;
+    padding: 10px;
+}
+
+.tituloFormularioRes{
+	text-align: left;
+    color:#424242;
+    padding: 10px;
+    padding-left: 10px;
+}
+
+.dia{
+	margin-bottom: 20px;
 }
 
 .columnaDerecha{
@@ -232,8 +325,8 @@
 }
 
 .botones{
-    text-align: center;
-    clear: both;
+    text-align: right;
+    padding: 20px;
 }
 
 .boton{
@@ -264,7 +357,7 @@ input{
 }
 
 
-/* TABLA */
+/* TABLA
 .Table {  
    display: table;  
    margin: 0 auto;
@@ -302,4 +395,4 @@ input{
     height:         100vh;
     width:          1px;   
     float: left;
-}
+}*/
