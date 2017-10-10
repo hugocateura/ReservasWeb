@@ -42,6 +42,7 @@ ul.menu>li>ul>li>ul>li:hover>a{
     font-weight: bolder;
     text-decoration: none;
     background: #BBDEFB;
+    cursor:pointer;
 }
 
 ul.menu>li>ul>li:hover>a.link.res{
@@ -167,7 +168,23 @@ ul.menu>li>ul>li:hover>a.link.res{
     float: right;
     margin-left: 10px;
     line-height: 30px;
+    
 }
+
+.iconoInicio{
+	float: right;
+	padding-top: 10px;
+	cursor: pointer;
+	
+}
+
+.migajaPan{
+	background: #2196F3;
+	border-radius: 5px;
+	height: 40px;
+	padding: 5px;
+}
+
 
 .contenedor .menu ul{
 /*     display: none; */
@@ -205,6 +222,10 @@ ul.menu>li>ul>li:hover>a.link.res{
     color: gainsboro;
 }
 
+.caja.izquierda:hover a{
+    cursor:pointer;
+}
+
 .caja.derecha.salir{
     width: 75px;;
     float: right;
@@ -223,6 +244,7 @@ ul.menu>li>ul>li:hover>a.link.res{
     color:white;
     border-color:red;
     background: red;
+    cursor: pointer;
 }
 
 .caja.derecha{
@@ -232,12 +254,12 @@ ul.menu>li>ul>li:hover>a.link.res{
     text-align: left;
     border: solid;
     margin-right: 10px;
-    padding-left: 5px;
+    padding-left: 10px;
     border-radius: 10px;
     border-color: #2196F3;
     background: #2196F3;
     color: gainsboro;
-}
+ }
 
 .todo{
     width: 100%;
@@ -275,12 +297,6 @@ ul.menu>li>ul>li:hover>a.link.res{
    
 }
 
-/* .migajaPan{
-	display:block;
-	background: #2196F3;
-	padding: 5px;
-	border-radius: 5px;
-} */
 
 /* FORMULARIO */
 

@@ -1,3 +1,6 @@
+<%@page import="entidades.Persona"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,18 +20,18 @@
                <nav class="navbar navbar-expand-lg navbar-light bg-light">
                   <div class="collapse navbar-collapse" id="navbarText">
                       <div class="caja izquierda">
-                          <a class="navbar-brand" href="#"><img src="assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">   SYSRES</a>
+                          <a class="navbar-brand" href="Start"><img src="assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">   SYSRES</a>
                       </div>
-                      <a class="breadcrumb-item" href="/WEB-INF/Principal.jsp">Inicio</a>
+                      <a class="breadcrumb-item" href="Start"><i class="iconoInicio fa fa-home" aria-hidden="true"></i></a>
                       <a class="breadcrumb-item" href="#">Administracion</a>
                       <a class="breadcrumb-item" href="#">Tipo de Elemento</a>
                       <span class="breadcrumb-item active">Agregar</span>
                   </div>
                   <div class="caja derecha">
-                      <p><i class="icono izquierda fa fa-user" aria-hidden="true"></i>Usuario</p>
+                      <p><i class="icono izquierda fa fa-user" aria-hidden="true"></i><%=((Persona)session.getAttribute("user")).getUsuario()%></p>
                   </div>
                   <form class="form-inline my-2 my-lg-0">
-                      <a class="caja derecha salir" href="/index.html"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
+                      <a class="caja derecha salir" href="Login"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
                   </form>
               </nav>
            </div>
@@ -90,10 +93,10 @@
 						</div>
 					</div>
 					<div class="form-group row">
-					  <label class="col-2 col-form-label">Cant. m·xima de reservas</label>
+					  <label class="col-2 col-form-label">Cant. m√°xima de reservas</label>
 					  <div class="col-10">
 					    <input class="form-control" type="number" value="5" id="example-number-input" aria-describedby="cantmaxHelp">
-					    <small id="cantmaxlHelp" class="form-text text-muted">Seleccione la cantidad m·xima de reservas.</small>
+					    <small id="cantmaxlHelp" class="form-text text-muted">Seleccione la cantidad m√°xima de reservas.</small>
 					  </div>
 					</div>
 					<div class="botones">

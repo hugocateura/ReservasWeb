@@ -1,3 +1,6 @@
+<%@page import="entidades.Persona"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,18 +20,18 @@
                <nav class="navbar navbar-expand-lg navbar-light bg-light">
                   <div class="collapse navbar-collapse" id="navbarText">
                       <div class="caja izquierda">
-                          <a class="navbar-brand" href="#"><img src="assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">   SYSRES</a>
+                          <a class="navbar-brand" href="Start"><img src="assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">   SYSRES</a>
                       </div>
-                      <a class="breadcrumb-item" href="Principal.jsp">Inicio</a>
+                      <a class="breadcrumb-item" href="Start"><i class="iconoInicio fa fa-home" aria-hidden="true"></i></a>
                       <a class="breadcrumb-item" href="#">Reserva</a>
                       <a class="breadcrumb-item" href="#">Reservar Elemento</a>
                       <span class="breadcrumb-item active">Paso 2</span>
                   </div>
                   <div class="caja derecha">
-                      <p><i class="icono izquierda fa fa-user" aria-hidden="true"></i>Usuario</p>
+                      <p><i class="icono izquierda fa fa-user" aria-hidden="true"></i><%=((Persona)session.getAttribute("user")).getUsuario()%></p>
                   </div>
                   <form class="form-inline my-2 my-lg-0">
-                      <a class="caja derecha salir" href="/index.html"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
+                      <a class="caja derecha salir" href="Login"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
                   </form>
               </nav>
            </div>

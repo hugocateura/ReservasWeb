@@ -38,7 +38,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 
-			request.getRequestDispatcher("/index.html").forward(request, response);
+			request.getRequestDispatcher("index.html").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);
 			
 			

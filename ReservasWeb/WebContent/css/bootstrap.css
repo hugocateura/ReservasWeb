@@ -188,16 +188,16 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: #0056b3;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
 
 a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
+   text-decoration: none;
+   cursor: default;
+} 
 
 a:not([href]):not([tabindex]) {
   color: inherit;
@@ -3872,6 +3872,7 @@ tbody.collapse.show {
 /*   background: gainsboro;
   border-radius: 5px;
   padding: 5px; */
+  text-decoration: none;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
@@ -3880,10 +3881,13 @@ tbody.collapse.show {
   padding-left: 0.5rem;
   color: #868e96;
   content: ">";
+  color: #0056b3;
+  font-size: 30px;
+  text-decoration: none;
 }
 
 .breadcrumb-item + .breadcrumb-item:hover::before {
-  /* text-decoration: underline; */
+  text-decoration: none;
 }
 
 .breadcrumb-item + .breadcrumb-item:hover::before {
@@ -3891,7 +3895,8 @@ tbody.collapse.show {
 }
 
 .breadcrumb-item.active {
-  color: #868e96;
+  color: #424242;
+  
 }
 
 .pagination {

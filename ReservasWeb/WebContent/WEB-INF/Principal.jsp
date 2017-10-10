@@ -1,9 +1,10 @@
+<%@page import="entidades.Persona"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="es">
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/estilo.css">
@@ -19,15 +20,15 @@
                <nav class="navbar navbar-expand-lg navbar-light bg-light">
                   <div class="collapse navbar-collapse" id="navbarText">
                       <div class="caja izquierda">
-                          <a class="navbar-brand" href="#"><img src="assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">   SYSRES</a>
+                          <a class="navbar-brand" href="Start"><img src="assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">   SYSRES</a>
                       </div>
-                      <a class="breadcrumb-item" href="Start">Inicio</a>
+                      <a class="breadcrumb-item" href="Start"><i class="fa fa-home" aria-hidden="true"></i></a>
                   </div>
                   <div class="caja derecha">
-                      <p><i class="icono izquierda fa fa-user" aria-hidden="true"></i>Usuario</p>
+                      <p><i class="icono izquierda fa fa-user" aria-hidden="true"></i><%=((Persona)session.getAttribute("user")).getUsuario()%></p>
                   </div>
                   <form class="form-inline my-2 my-lg-0">
-                      <a class="caja derecha salir" href="#"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
+                      <a class="caja derecha salir" href="Login"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
                   </form>
               </nav>
            </div>
