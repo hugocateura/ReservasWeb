@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import logica.ControladorDePersona;
+import logica.ControladorDeReserva;
 import entidades.Persona;
 
 /**
@@ -38,6 +39,9 @@ public class AnularReserva extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 
+			ControladorDeReserva ctrlReserva = new ControladorDeReserva();
+			request.setAttribute("listadoReserva", ctrlReserva.consultarTodo());
+					
 			request.getRequestDispatcher("WEB-INF/AnularReserva.jsp").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);
 			

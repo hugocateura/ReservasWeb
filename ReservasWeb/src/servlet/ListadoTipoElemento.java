@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import logica.ControladorDePersona;
+import logica.ControladorDeTipoElemento;
 import entidades.Persona;
 
 /**
@@ -16,12 +17,12 @@ import entidades.Persona;
 @WebServlet({ "/ListadoTipoElemento", "/listadotipoelemento", "/listadoTipoElemento" })
 public class ListadoTipoElemento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    /**
-     * Default constructor. 
-     */
-    public ListadoTipoElemento() {
-        // TODO Auto-generated constructor stub
+	
+	private Persona persona = new Persona();
+    
+	public ListadoTipoElemento() {
+    	
+      
     }
 
 	/**
@@ -37,6 +38,12 @@ public class ListadoTipoElemento extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			
+			ControladorDeTipoElemento ctrlTipoElemento = new ControladorDeTipoElemento();
+			
+			persona = (Persona)request.getSession().getAttribute("user");
+			
+			request.setAttribute("listadoTipoElementos", ctrlTipoElemento.consultarTodo(persona));
 
 			request.getRequestDispatcher("WEB-INF/ListadoTipoElemento.jsp").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);

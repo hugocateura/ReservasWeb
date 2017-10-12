@@ -1,4 +1,6 @@
 <%@page import="entidades.Persona"%>
+<%@page import="entidades.Reserva"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%><!DOCTYPE html>
 <html lang="es">
@@ -98,32 +100,17 @@
 						  </thead>
 						  <tbody>
 						    <tr>
-						      <th scope="row">1</th>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
+						    <%ArrayList<Reserva> listadoReser = (ArrayList<Reserva>)request.getAttribute("listadoReserva");
+						      for(Reserva res : listadoReser){%>
+						      <th scope="row"><%=res.getId() %></th>
+						      <td><%=res.getElemento().getId() %></td>
+						      <td><%=res.getTipo().getId() %></td>
+						      <td><%=res.getPersona().getId() %></td>
+						      <td><%=res.getFechaHoraDesde() %></td>
+						      <td><%=res.getFechaHoraHasta() %></td>
+						      <td><%=res.getObservacion() %></td>
 						    </tr>
-						    <tr>
-						      <th scope="row">2</th>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						    <tr>
-						      <th scope="row">3</th>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						    </tr>
+						    <%} %>
 						  </tbody>
 						 </table>
 						 <div class="botones">

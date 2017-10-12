@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import logica.ControladorDeElemento;
 import logica.ControladorDePersona;
 import entidades.Persona;
 
@@ -37,6 +38,10 @@ public class ListadoElemento extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			
+			ControladorDeElemento ctrlElemento = new ControladorDeElemento();
+			request.setAttribute("listadoElementos", ctrlElemento.consultarTodo());
+			
 
 			request.getRequestDispatcher("WEB-INF/ListadoElemento.jsp").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);

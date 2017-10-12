@@ -82,7 +82,7 @@
             </div>
             <div class="col-10 contenido">
 	            <form class="formulario">
-		           	<div class="tituloFormulario">
+		           	<div class="tituloFormulario" action="AgregarTipoElemento" method="post">
 		           		<h3>Alta Tipo de Elemento</h3>
 		           	</div>	
 		           	<div class="form-group row">
@@ -95,7 +95,7 @@
 					<div class="form-group row">
 					  <label class="col-2 col-form-label">Cant. máxima de reservas</label>
 					  <div class="col-10">
-					    <input class="form-control" type="number" value="5" id="example-number-input" aria-describedby="cantmaxHelp">
+					    <input class="form-control" type="number" name="tipoElementoCantMaxRes" value="5" id="example-number-input" aria-describedby="cantmaxHelp">
 					    <small id="cantmaxlHelp" class="form-text text-muted">Seleccione la cantidad máxima de reservas.</small>
 					  </div>
 					</div>

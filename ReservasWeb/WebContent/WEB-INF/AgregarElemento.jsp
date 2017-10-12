@@ -81,7 +81,7 @@
                 </ul>
             </div>
             <div class="col-10 contenido">
-                    <form class="formulario">
+                    <form class="formulario" action="AgregarElemento" method="post">
 			           	<div class="tituloFormulario">
 			           		<h3>Alta de Elemento</h3>
 			           	</div>	

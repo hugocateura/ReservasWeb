@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import logica.ControladorDePersona;
+import logica.ControladorDeTipoElemento;
 import entidades.Persona;
+import entidades.TipoElemento;
 
 /**
  * Servlet implementation class Start
@@ -29,7 +31,7 @@ public class AgregarTipoElemento extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request,response);
+		request.getRequestDispatcher("WEB-INF/AgregarTipoElemento.jsp").forward(request, response);
 	}
 
 	/**
@@ -37,9 +39,18 @@ public class AgregarTipoElemento extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-
+			
+			String nombre = request.getParameter("tipoElementoNombre");
+			String cantMaxRes = request.getParameter("tipoElementoCantMaxRes");
+			TipoElemento tipoEle = new TipoElemento();
+			tipoEle.setNombre(nombre);
+			tipoEle.setCant_max_reservas(Integer.parseInt(cantMaxRes));
+			ControladorDeTipoElemento ctrlTipo = new ControladorDeTipoElemento();
+			ctrlTipo.crearTipoElemento(tipoEle);
 			request.getRequestDispatcher("WEB-INF/AgregarTipoElemento.jsp").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);
+
+			
 			
 			
 		} catch (Exception e) {

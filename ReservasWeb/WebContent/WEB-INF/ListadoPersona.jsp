@@ -1,4 +1,5 @@
 <%@page import="entidades.Persona"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -98,38 +99,23 @@
 						      <th>Habilitado</th>
 						    </tr>
 						  </thead>
-						  <tbody>
-						    <tr>
-						      <th scope="row">1</th>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						    <tr>
-						      <th scope="row">2</th>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						    <tr>
-						      <th scope="row">3</th>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						  </tbody>
+						  <tbody>     
+						      <%    ArrayList<Persona>listaPers= (ArrayList<Persona>)request.getAttribute("listadoPersonas");
+									for(Persona p : listaPers){%>
+							    <tr>
+							   		<th scope="row"><%=p.getId()%></th>
+									<td><%=p.getDni() %></td>
+									<td><%=p.getNombre() %></td>
+									<td><%=p.getApellido() %></td>
+									<td><%=p.getUsuario() %></td>
+									<td><%=p.getContrasena() %></td>
+									<td><%=p.getCategoria() %></td>
+									<td><%=p.isHabilitado() %></td>
+								</tr>
+								<%
+									}
+								%>
+						    </tbody>
 						 </table>
 						 <div class="botones">
 							<input type="submit" name="siguiente" value="Eliminar" class="btn btn-primary btnEliminar">

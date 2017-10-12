@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,6 +39,10 @@ public class ListadoPersona extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			
+			ControladorDePersona ctrlPersona = new ControladorDePersona();
+					
+			request.setAttribute("listadoPersonas",ctrlPersona.consultarTodo());
 
 			request.getRequestDispatcher("WEB-INF/ListadoPersona.jsp").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);

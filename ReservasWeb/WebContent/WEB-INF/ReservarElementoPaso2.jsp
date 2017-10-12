@@ -81,7 +81,7 @@
                 </ul>
             </div>
             <div class="col-10 contenido">
-                <form class="formulario" action="ReservarElemento2">
+                <form class="formulario" action="ReservarElemento2" method="post">
 	                <div class="tituloFormularioRes">
 	            		<h3>PASO 2: Seleccionar Elemento</h3>
 	            	</div>

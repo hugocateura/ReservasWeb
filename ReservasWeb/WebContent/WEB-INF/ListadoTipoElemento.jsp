@@ -1,4 +1,7 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="entidades.Persona"%>
+<%@page import="entidades.TipoElemento"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -93,23 +96,17 @@
 						      <th>Cant. máxima de Reservas</th>
 						    </tr>
 						  </thead>
-						  <tbody>
-						    <tr>
-						      <th scope="row">1</th>
-						      <td></td>
-						      <td></td>
+						  <tbody> 
+						     <% ArrayList<TipoElemento> listadoTipoEle = (ArrayList<TipoElemento>)request.getAttribute("listadoTipoElementos");
+						     	for(TipoElemento tipo : listadoTipoEle){
+						     %>
+						     <tr>
+						      <th scope="row"><%=tipo.getId() %></th>
+						      <td><%=tipo.getNombre() %></td>
+						      <td><%=tipo.getCant_max_reservas() %></td>
 						    </tr>
-						    <tr>
-						      <th scope="row">2</th>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						    <tr>
-						      <th scope="row">3</th>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						  </tbody>
+						    <%}%>
+						   </tbody>
 						 </table>
 						 <div class="botones">
 							<input type="submit" name="siguiente" value="Eliminar" class="btn btn-primary btnEliminar">

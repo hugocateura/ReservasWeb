@@ -38,7 +38,7 @@ public class Elemento implements Serializable {
 	public String toString()
 	{
 //		return	this.getNombre();
-		return (this.id + " - " + this.getNombre());
+		return (this.id + " + " + this.getNombre());
 	}
 	
 	

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import logica.ControladorDePersona;
+import logica.ControladorDeReserva;
 import entidades.Persona;
 
 /**
@@ -16,6 +17,7 @@ import entidades.Persona;
 @WebServlet({ "/MisReservas", "/misreservas", "/misReservas"  })
 public class MisReservas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Persona pers = new Persona();
 
     /**
      * Default constructor. 
@@ -37,7 +39,11 @@ public class MisReservas extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			
+			pers = (Persona)request.getSession().getAttribute("user");
 
+			ControladorDeReserva ctrlReserva = new ControladorDeReserva();
+			request.setAttribute("listadoMisReservas", ctrlReserva.reservasPendientesPersona(pers));
 			request.getRequestDispatcher("WEB-INF/MisReservas.jsp").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);
 			
