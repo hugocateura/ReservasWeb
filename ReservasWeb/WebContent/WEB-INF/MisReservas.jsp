@@ -1,6 +1,10 @@
 <%@page import="entidades.Persona"%>
 <%@page import="entidades.Reserva"%>
+<%@page import="entidades.Elemento"%>
+<%@page import="entidades.TipoElemento"%>
+
 <%@page import="java.util.ArrayList"%>
+<%@page import="logica.ControladorDeReserva"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -46,39 +50,29 @@
 	<%} %>
 
             <div class="col-10 contenido">
-            	<form action="" class="formulario">
+            	<form action="CancelarReserva" class="formulario" method="post">
 	                  <div class="tituloFormularioRes">
 		            		<h3>Mis Reservas</h3>
 		              </div>
-	                  <table class="table table-striped">
-						  <thead>
-						    <tr>
-						      <th>Id</th>
-						      <th>Elemento</th>
-						      <th>Tipo de Elemento</th>
-						      <th>Persona</th>
-						      <th>Fecha y Hora Desde</th>
-						      <th>Fecha y Hora Hasta</th>
-						      <th>Observaciones</th>
-						    </tr>
-						  </thead>
-						  <tbody>
-						  <%ArrayList<Reserva> lisMisRes= (ArrayList<Reserva>)request.getAttribute("listadoMisReservas");
-						  	for(Reserva res : lisMisRes){%>
-						    <tr>
-						      <th scope="row"><%=res.getId() %></th>
-						      <td><%=res.getElemento().getId() %></td>
-						      <td><%=res.getTipo().getId() %></td>
-						      <td><%=res.getPersona().getId() %></td>
-						      <td><%=res.getFechaHoraDesde() %></td>
-						      <td><%=res.getFechaHoraHasta()%></td>
-						      <td><%=res.getObservacion() %></td>
-						    </tr>
-						    <%} %>						   
-						  </tbody>
-						 </table>
+		              <div class="form-group row">
+						    <label class="col-2 col-form-label">Reservas activas</label>
+						    <div class="col-10">
+							    <select multiple class="form-control" name="itemReserva" aria-describedby="reservaHelp">
+									     <% ControladorDeReserva ctrlReserva = new ControladorDeReserva();
+							      	 Persona pers = ((Persona) request.getSession().getAttribute("user"));
+							      	 ArrayList<Reserva> todasLasReservas = ctrlReserva.reservasPendientesPersona(pers);
+							      	 for(Reserva res : todasLasReservas){ %>
+							      	 
+							      	<option value="<%=res.getId()%>"> ID:<%=res.getId()%> | Elemento:<%=res.getElemento().getId()%> | Tipo de Elemento:<%=res.getTipo().getId()%> | Desde:<%=res.getFechaHoraDesde()%> | Hasta:<%=res.getFechaHoraHasta()%> | Usuario:<%=(res.getPersona()).getId()%> | Obs:<%=res.getObservacion()%></option>
+							      								    
+							      <%} %>
+							    </select>
+							    <small id="tipoHelp" class="form-text text-muted">Seleccione la reserva a a cancelar.</small>
+							</div>
+					</div>
+	                  
 						 <div class="botones">
-							<input type="submit" name="siguiente" value="Cancelar" class="btn btn-primary btnEliminar">
+							<input type="submit" name="siguiente" value="Eliminar" class="btn btn-primary btnEliminar">
 						 </div>
                     </form>
                 </div>
