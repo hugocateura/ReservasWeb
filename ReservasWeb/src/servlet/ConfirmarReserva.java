@@ -48,11 +48,6 @@ public class ConfirmarReserva extends HttpServlet {
 			String fechaHoraHasta= (String) request.getSession().getAttribute("fechaHoraHasta");			//recupero fechaHoraHasta
 			String observacion=request.getParameter("observacion");							//recupero observaciones
 			
-			System.out.println(idElemento);
-			System.out.println(fechaHoraDesde);
-			System.out.println(fechaHoraHasta);
-			System.out.println(observacion);
-			
 			ControladorDeElemento ctrlElemento = new ControladorDeElemento(); 				//Instancio controladorElemento
 			Elemento elemento = new Elemento();												//Instancio un nuevo Objeto Elemento
 			elemento.setId(Integer.parseInt(idElemento));									//Seteo el Id obtenido
@@ -65,19 +60,12 @@ public class ConfirmarReserva extends HttpServlet {
 			reservaActual.setObservacion(observacion);
 			reservaActual.setTipo(elementoElegido.getTipo());
 			reservaActual.setEstado("Activa");
-			reservaActual.setPersona((Persona)request.getSession().getAttribute("user"));		
+			reservaActual.setPersona((Persona)request.getSession().getAttribute("user"));	//CARGO TODOS LOS DATOS DE LA RESERVA
 			
-			ControladorDeReserva ctrlReserva = new ControladorDeReserva();
+			ControladorDeReserva ctrlReserva = new ControladorDeReserva();					//PERSISTO LA RESERVA
 			ctrlReserva.crearReserva(reservaActual);
 			
 			request.getSession().setAttribute("reserva", reservaActual);
-			
-			//String fechaHoraDesde = request.getParameter("diaDesdeReserva")+" "+request.getParameter("horaDesdeReserva");  //Obtengo y concateno fecha y hora desde
-			//String fechaHoraHasta = request.getParameter("diaHastaReserva")+" "+request.getParameter("horaHastaReserva");  //Obtengo y concateno fecha y hora hasta	
-			
-			//request.getSession().setAttribute("tipoElemento", tipoElegido); 				//Envia el objeto TipoElemento
-			//request.getSession().setAttribute("fechaHoraDesde", fechaHoraDesde); 				//Envia el objeto TipoElemento
-			//request.getSession().setAttribute("fechaHoraHasta", fechaHoraHasta); 				//Envia el objeto TipoElemento
 			
 			request.getRequestDispatcher("WEB-INF/ConfirmacionReserva.jsp").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);

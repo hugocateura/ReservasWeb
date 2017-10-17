@@ -57,7 +57,7 @@
 		              <div class="form-group row">
 						    <label class="col-2 col-form-label">Reservas activas</label>
 						    <div class="col-10">
-							    <select multiple class="form-control" name="itemReserva" aria-describedby="reservaHelp">
+							    <select multiple class="form-control" name="itemReserva" aria-describedby="reservaHelp" required>
 									     <% ControladorDeReserva ctrlReserva = new ControladorDeReserva();
 							      	 Persona pers = ((Persona) request.getSession().getAttribute("user"));
 							      	 ArrayList<Reserva> todasLasReservas = ctrlReserva.reservasPendientesPersona(pers);

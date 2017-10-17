@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import logica.ControladorDePersona;
-import entidades.Persona;
 
 /**
  * Servlet implementation class Start
@@ -37,7 +35,9 @@ public class AgregarPersona extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-
+			
+			      
+			
 			request.getRequestDispatcher("WEB-INF/AgregarPersona.jsp").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);
 			

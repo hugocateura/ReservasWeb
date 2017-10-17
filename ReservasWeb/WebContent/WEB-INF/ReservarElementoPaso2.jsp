@@ -57,7 +57,7 @@
                    <div class="form-group row">          
 					    <label class="col-2 col-form-label">Mostrando elementos del tipo <%=((TipoElemento)session.getAttribute("tipoElemento")).getNombre()%></label>
 					    <div class="col-10">
-						    <select multiple class="form-control" name="itemElemento" aria-describedby="tipoHelp">
+						    <select multiple class="form-control" name="itemElemento" aria-describedby="tipoHelp" required>
 									     <% ControladorDeElemento ctrlElemento = new ControladorDeElemento();
 							      	     	ArrayList<Elemento> elementosDisponibles = ctrlElemento.getElementosDisponibles(((TipoElemento)session.getAttribute("tipoElemento")), ((String)session.getAttribute("fechaHoraDesde")), ((String)session.getAttribute("fechaHoraHasta")));
 							      		 	for(Elemento ele : elementosDisponibles){ %>							      	 

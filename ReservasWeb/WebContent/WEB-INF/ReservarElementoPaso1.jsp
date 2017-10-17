@@ -58,7 +58,7 @@
                    <div class="form-group row">
 						    <label class="col-2 col-form-label">Tipo Elemento</label>
 						    <div class="col-10">
-							    <select multiple class="form-control" name="itemTipo" aria-describedby="tipoHelp">
+							    <select multiple class="form-control" name="itemTipo" aria-describedby="tipoHelp" required>
 									     <% ControladorTipoDeElemento ctrlTipoDeElemento = new ControladorTipoDeElemento();
 							      	 Persona pers = ((Persona)session.getAttribute("user"));
 							      	 ArrayList<TipoElemento> todosTiposElemento = ctrlTipoDeElemento.consultarTodo(pers);
@@ -75,14 +75,14 @@
 									
 					<div class="form-inline dia">
 					  <label class="col-2">Desde</label>
-					  <input type="date" class=" form-control mb-2 mr-sm-2 mb-sm-0" name="diaDesdeReserva" aria-describedby="desdeHelp">
-					  <input type="time" value="00:00:00" class="form-control mb-2 mr-sm-2 mb-sm-0" name="horaDesdeReserva">
+					  <input type="date" class=" form-control mb-2 mr-sm-2 mb-sm-0" name="diaDesdeReserva" aria-describedby="desdeHelp" required>
+					  <input type="time" value="00:00:00" class="form-control mb-2 mr-sm-2 mb-sm-0" name="horaDesdeReserva" required>
 					  <small id="desdeHelp" class="form-text text-muted">Seleccione el dia y la hora desde la cual desea reservar el elemento.</small>
 					</div>
 					<div class="form-inline dia">
 					  <label class="col-2">Hasta</label>
-					  <input type="date" class="form-control mb-2 mr-sm-2 mb-sm-0" name="diaHastaReserva" aria-describedby="hastaHelp">
-					  <input type="time" value="00:00:00" class="form-control mb-2 mr-sm-2 mb-sm-0" name="horaHastaReserva">
+					  <input type="date" class="form-control mb-2 mr-sm-2 mb-sm-0" name="diaHastaReserva" aria-describedby="hastaHelp" required>
+					  <input type="time" value="00:00:00" class="form-control mb-2 mr-sm-2 mb-sm-0" name="horaHastaReserva" required>
 					  <small id="hastaHelp" class="form-text text-muted">Seleccione el dia y la hora hasta la cual desea reservar el elemento.</small>
 					 </div>
 					<div class="botones">
