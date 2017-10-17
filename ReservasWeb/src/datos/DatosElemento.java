@@ -205,7 +205,39 @@ public class DatosElemento implements Serializable
 		
 		return elemento;
 	}
-
+	
+	public Elemento buscarElemento(Elemento elemento) throws Exception
+	{
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		
+		try {
+			pstm = FactoryConnection.getinstancia().getConn().prepareStatement("Select * from elemento where id=?");
+			pstm.setInt(1, elemento.getId());
+			rs=pstm.executeQuery();
+			if(rs!=null){
+				while(rs.next())
+					{
+					elemento.setId(rs.getInt("id"));
+					elemento.setNombre(rs.getString("nombre"));
+					elemento.setTipo(new TipoElemento());
+					elemento.getTipo().setId(rs.getInt("tipo"));
+					}
+						}
+			} 
+			catch (Exception e) {
+			throw e;
+		}
+		
+		try {
+			if(pstm!=null)pstm.close();
+			FactoryConnection.getinstancia().releaseConn();
+		} catch (Exception e) {
+			throw e;
+		}	
+		return elemento;
+	}
+	
 		
 }
 

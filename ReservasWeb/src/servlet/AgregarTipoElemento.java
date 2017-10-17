@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import logica.ControladorDePersona;
-import logica.ControladorDeTipoElemento;
+import logica.ControladorTipoDeElemento;
 import entidades.Persona;
 import entidades.TipoElemento;
 
@@ -45,7 +45,7 @@ public class AgregarTipoElemento extends HttpServlet {
 			TipoElemento tipoEle = new TipoElemento();
 			tipoEle.setNombre(nombre);
 			tipoEle.setCant_max_reservas(Integer.parseInt(cantMaxRes));
-			ControladorDeTipoElemento ctrlTipo = new ControladorDeTipoElemento();
+			ControladorTipoDeElemento ctrlTipo = new ControladorTipoDeElemento();
 			ctrlTipo.crearTipoElemento(tipoEle);
 			request.getRequestDispatcher("WEB-INF/AgregarTipoElemento.jsp").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);

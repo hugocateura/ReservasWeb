@@ -14,7 +14,6 @@ ul.menu>li:HOVER>ul{
 	transition: .7s all ease-in;
 	max-height: 300px;
 	text-decoration: none;
-
 }
 
 ul.menu>li>ul>li>ul{
@@ -108,11 +107,11 @@ ul.menu>li>ul>li:hover>a.link.res{
 .menu{
     padding: 0px;
     margin: 0px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .menu a{
-    border-radius: 20px;
+    border-radius: 2px;
     background: #2196F3;
     padding-left: 10px;
     padding-right: 5px;

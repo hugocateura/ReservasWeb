@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import logica.ControladorDePersona;
-import logica.ControladorDeTipoElemento;
+import logica.ControladorTipoDeElemento;
 import entidades.Persona;
 
 /**
@@ -39,7 +39,7 @@ public class ListadoTipoElemento extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			
-			ControladorDeTipoElemento ctrlTipoElemento = new ControladorDeTipoElemento();
+			ControladorTipoDeElemento ctrlTipoElemento = new ControladorTipoDeElemento();
 			
 			persona = (Persona)request.getSession().getAttribute("user");
 			

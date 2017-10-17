@@ -8,7 +8,7 @@ import entidades.Persona;
 import entidades.TipoElemento;
 import utilidades.ExcepcionEspecial;
 
-public class ControladorDeTipoElemento implements Serializable{
+public class ControladorTipoDeElemento implements Serializable{
 private DatosTipoElemento baseTipoElemento = new DatosTipoElemento();
 	
 	public void crearTipoElemento(TipoElemento tipoele) throws Exception, ExcepcionEspecial{
@@ -44,6 +44,31 @@ private DatosTipoElemento baseTipoElemento = new DatosTipoElemento();
 	};
 	
 	public ArrayList<TipoElemento> consultarTodo(Persona pers) throws Exception{
-		return baseTipoElemento.buscarTodo(pers);
+		
+		DatosTipoElemento datosTipoEle = new DatosTipoElemento();  				
+		ArrayList<TipoElemento> listadoTipoElemento = datosTipoEle.devolverTodoTipoElemento();   //OBTIENE TODOS LOS ELEMENTOS
+		ArrayList<TipoElemento> listadoADevolver = new  ArrayList<TipoElemento>();     	//LOS QUE SE VAN A DEVOLVER
+		
+		if (pers.getCategoria().equals("Online") || pers.getCategoria().equals("Administrador"))
+		{
+			  
+			for(TipoElemento te : listadoTipoElemento)
+				{
+				if (!(te.getReservaEncargado()))
+					{
+					listadoADevolver.add(te);
+					}
+				}
+		}
+		else 
+			{
+			listadoADevolver = listadoTipoElemento;
+			};
+		return listadoADevolver;
+	};
+	
+	public TipoElemento buscarTipoElemento(TipoElemento tipoEle) throws Exception{
+		DatosTipoElemento datosTipoEle = new DatosTipoElemento();
+		return datosTipoEle.buscarTipoElemento(tipoEle);
 	}
 }

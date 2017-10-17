@@ -1,0 +1,166 @@
+
+*/
+
+/* Shared for all accordion types */
+/*
+COLOR CELESTE #90CAF9
+COLOR CELESTE SUAVE #BBDEFB
+COLOR GRIS #868e96
+COLOR GRIS CLARO #E0E0E0
+COLOR AZUL FUERTE #2196F3
+*/
+
+
+.accordion {
+  /*MENU INTERMEDIO*/
+    margin:0 auto;
+    font-size:14px;
+    border-radius:none;
+    width:200px;
+    display:inline-block;
+    background:#BBDEFB;
+}
+.accordion ul {
+    list-style:none;
+    margin:0;
+    padding:0;    
+}
+.accordion li {
+    margin:0;
+    padding:0;
+}
+.accordion [type=radio], .accordion [type=checkbox] {
+    display:none;
+}
+.accordion label {
+    /*BOTON NO SELECCIONADO*/
+    display:block;
+    font-size:16px;
+    line-height:14px;
+    background:#BBDEFB;
+    color:#E0E0E0;
+    text-shadow:1px 1px 1px rgba(255,255,255,0.3);
+    font-weight:600;
+    cursor:pointer;
+    text-transform:uppercase;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+}
+.accordion ul li label:hover, .accordion [type=radio]:checked ~ label, .accordion [type=checkbox]:checked ~ label {
+    /*BOTON PRINCIPAL SELECCIONADO*/
+    background:#2196F3;
+    color:gainsboro;
+    text-shadow:1px 1px 1px rgba(0,0,0,0.3)
+}
+.accordion .content {
+    overflow:hidden;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+}
+.accordion .btnInterior{
+    /*BOTON INTERIOR*/
+    margin-top:-15px;
+    font-weight: bold;
+    font-size:14px;
+    height:35px;
+    display:block;
+    line-height:14px;
+    background:#90CAF9;
+    color:#E0E0E0;
+    cursor:pointer;
+    text-transform:uppercase;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+}
+.accordion .btnInterior a{     
+    margin-left: 10px;
+    vertical-align: middle;
+    vertical-align: middle;
+    line-height: 35px;
+    color:#868e96;
+    text-decoration:none;
+}
+.accordion .btnInterior p:hover{
+    vertical-align: middle;
+    margin-left: 15px;
+    overflow:hidden;
+    background:#90CAF9;
+    height:30px;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+}
+.accordion .btnInteriorSub{
+    /*BOTON INTERIOR anidado*/
+    margin-top:-15px;
+    background:#BBDEFB;
+    font-size:12px;
+    font-weight: bold;
+    height:35px;
+    display:block;
+    line-height:14px;
+    background:#BBDEFB;
+    color:#E0E0E0;
+    cursor:pointer;
+    text-transform:uppercase;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+}
+.accordion .btnInteriorSub:hover{
+    background:#90CAF9;
+    display:block;
+}
+.accordion .btnInteriorSub a{     
+    margin-left: 20px;
+    vertical-align: middle;
+    vertical-align: middle;
+    line-height: 30px;
+    color:#868e96;
+    text-decoration:none;
+}
+.accordion .btnInteriorSub p:hover{
+    vertical-align: middle;
+    margin-left: 15px;
+    overflow:hidden;
+    background:#90CAF9;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+}/*
+.accordion p {
+    color:#333;
+    margin:0 0 10px;
+}
+.accordion h3 {
+    color:#542437;
+    padding:0;
+    margin:10px 0;
+}
+*/
+
+/* Vertical */
+.vertical ul li {
+    overflow:hidden;
+    margin:0 0 1px;
+}
+.vertical ul li label {
+    /*BOTON NO SELECCIONADO*/
+    padding:10px;
+    background:#BBDEFB;
+    color:#868e96;
+}
+.vertical [type=radio]:checked ~ label, .vertical [type=checkbox]:checked ~ label {
+    border-bottom:0;
+}
+
+  .vertical ul li label:hover {
+    /*BOTON NO SELECCIONADO*/
+  background:#2196F3;
+}
+ 
+.vertical ul li .content {
+    height:0px;
+    border-top:0;
+}
+.vertical [type=radio]:checked ~ label ~ .content, .vertical [type=checkbox]:checked ~ label ~ .content {
+    /*MARCA LA ALTURA DEL DESPLEGADO*/
+    height:250px;
+}

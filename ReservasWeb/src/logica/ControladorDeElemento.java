@@ -60,6 +60,9 @@ public class ControladorDeElemento implements Serializable{
 							
 				};
 			
+			public Elemento buscarElemento(Elemento ele) throws Exception{
+				return baseElemento.buscarElemento(ele);
+			}
 			
 
 			public Elemento consultaPorNombre(Elemento ele) throws Exception{

@@ -1,4 +1,9 @@
 <%@page import="entidades.Persona"%>
+<%@page import="entidades.TipoElemento"%>
+<%@page import="logica.ControladorTipoDeElemento"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.lang.Integer"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link rel="icon" href="assets/icono.ico">
+    <script type="text/javascript" src="js/tipoElementoSeleccionado.js"></script>
     <title>Reservar Elemento</title>
 </head>
  <body>
@@ -36,67 +42,36 @@
               </nav>
            </div>
        </div>
-         <div class="row todo">
-            <div class="col-2 contenedor">
-               <ul class="menu">
-                  <li class="">
-                    <a class="link" href="#"><i class="icono izquierda fa fa-wrench" aria-hidden="true"></i>Administracion<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
-                       <ul>
-                          <li>
-                            <a class="link" href="#">Persona<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
-                               <ul>
-                                  <li><a class="link" href="AgregarPersona">Agregar</a></li>
-                                  <li><a class="link" href="ListadoPersona">Listado</a></li>
-                                </ul> 
-                          </li>
-                          <li>
-                            <a class="link" href="#">Tipo de Elemento<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
-                                <ul>
-                                  <li><a class="link" href="AgregarTipoElemento">Agregar</a></li>
-                                  <li><a class="link" href="ListadoTipoElemento">Listado</a></li>
-                                </ul>
-                          </li>
-                          <li>
-                            <a class="link" href="#">Elemento<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
-                                <ul>
-                                  <li><a class="link" href="AgregarElemento">Agregar</a></li>
-                                  <li><a class="link" href="ListadoElemento">Listado</a></li>
-                                </ul>
-                          </li>
-                          <li>
-                            <a class="link" href="#">Reserva<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
-                                <ul>
-                                  <li><a class="link" href="AnularReserva">Anular</a></li>
-                                </ul>
-                          </li>
-                        </ul>
-                  </li>
-                  <li>
-                    <a class="link" href="#"><i class="icono izquierda fa fa-ticket" aria-hidden="true"></i>Reserva<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
-                        <ul class="">
-                              <li><a class="link res" href="ReservarElemento">Reservar</a></li>
-                              <li><a class="link res" href="MisReservas">Mis Reservas</a></li>
-                        </ul>
-                  </li>
-                </ul>
-            </div>
+         <% if (((Persona)session.getAttribute("user")).getCategoria().equals("Online")){%>
+	<jsp:include page="MenuUsuario.jsp" />
+	<%} else if(((Persona)session.getAttribute("user")).getCategoria().equals("Encargado")){%>
+	<jsp:include page="MenuEncargado.jsp" />
+	<%} else if(((Persona)session.getAttribute("user")).getCategoria().equals("Administrador")){%>
+	<jsp:include page="MenuAdmin.jsp" />
+	<%} %>
+
             <div class="col-10 contenido">
-                <form class="formulario" action="ReservarElemento2">
+                <form class="formulario" action="ReservarElemento1" method="post">
 	                <div class="tituloFormularioRes">
 	            		<h3>PASO 1: Seleccionar Tipo de Elemento y Fecha</h3>
 	            	</div>
                    <div class="form-group row">
 						    <label class="col-2 col-form-label">Tipo Elemento</label>
 						    <div class="col-10">
-							    <select multiple class="form-control" name="elementoTipo" aria-describedby="tipoHelp">
-							      <option>1</option>
-							      <option>2</option>
-							      <option>3</option>
+							    <select multiple class="form-control" name="itemTipo" aria-describedby="tipoHelp">
+									     <% ControladorTipoDeElemento ctrlTipoDeElemento = new ControladorTipoDeElemento();
+							      	 Persona pers = ((Persona)session.getAttribute("user"));
+							      	 ArrayList<TipoElemento> todosTiposElemento = ctrlTipoDeElemento.consultarTodo(pers);
+							      	 for(TipoElemento te : todosTiposElemento){ %>
+							      	 
+							      	<option value="<%=(te.getId())%>"><%=te.getNombre()%></option>
+							      								    
+							      <%} %>
 							    </select>
 							    <small id="tipoHelp" class="form-text text-muted">Seleccione el tipo de elemento a reservar.</small>
 							</div>
 					</div>
-					
+																	
 									
 					<div class="form-inline dia">
 					  <label class="col-2">Desde</label>

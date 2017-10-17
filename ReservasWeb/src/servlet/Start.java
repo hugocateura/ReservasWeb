@@ -21,15 +21,14 @@ public class Start extends HttpServlet {
      * Default constructor. 
      */
     public Start() {
-        // TODO Auto-generated constructor stub
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//		response.getWriter().append("Served at: ").append(request.getContextPath());
 		request.getRequestDispatcher("WEB-INF/Principal.jsp").forward(request, response);
 	}
 

@@ -10,15 +10,16 @@ public class DatosTipoElemento implements Serializable
 	
 	public ArrayList<TipoElemento> buscarTodo(Persona pers) throws Exception
 	{
+		Statement stm=null;
 		PreparedStatement pstm=null;
 		ResultSet rs=null;
-		ArrayList<TipoElemento> tipoelemento= new ArrayList<TipoElemento>();
+		ArrayList<TipoElemento> listadotipoelemento= new ArrayList<TipoElemento>();
 		
-		if(pers.getCategoria()!="Online"){
+		if(!((pers.getCategoria()).equals("Online"))){
 		try 
 		{
-			pstm = FactoryConnection.getinstancia().getConn().prepareStatement("select * from tipoelemento");
-			rs = pstm.executeQuery();
+			stm = FactoryConnection.getinstancia().getConn().createStatement();
+			rs = stm.executeQuery("select * from tipoelemento");
 			if(rs!=null){
 				while(rs.next()){
 					TipoElemento tipoele=new TipoElemento();
@@ -28,12 +29,13 @@ public class DatosTipoElemento implements Serializable
 					tipoele.setReservaEncargado(rs.getBoolean("reservaEncargado"));
 					tipoele.setLimiteMaxHorasReserva(rs.getInt("limiteMaxHorasReserva"));
 					tipoele.setCantMaxDiasAnticipacion(rs.getInt("cantMaxDiasAnticipacion"));
-					tipoelemento.add(tipoele);
+					listadotipoelemento.add(tipoele);
 					}
 			}
 		} 
 		catch (Exception e) 
 		{
+			e.printStackTrace();
 			throw e;
 		}
 		}
@@ -52,13 +54,13 @@ public class DatosTipoElemento implements Serializable
 						tipoele.setReservaEncargado(rs.getBoolean("reservaEncargado"));
 						tipoele.setLimiteMaxHorasReserva(rs.getInt("limiteMaxHorasReserva"));
 						tipoele.setCantMaxDiasAnticipacion(rs.getInt("cantMaxDiasAnticipacion"));
-						tipoelemento.add(tipoele);
+						listadotipoelemento.add(tipoele);
 						}
 				}
 			} 
-			catch (Exception e) 
+			catch (Exception a) 
 			{
-				throw e;
+				throw a;
 			}
 		}
 		try {
@@ -70,10 +72,50 @@ public class DatosTipoElemento implements Serializable
 			throw e;
 		}
 		
-		return tipoelemento;
+		return listadotipoelemento;
 		
 	}
-	
+
+	public ArrayList<TipoElemento> devolverTodoTipoElemento() throws Exception
+	{
+		Statement stm=null;
+		ResultSet rs=null;
+		ArrayList<TipoElemento> listadotipoelemento= new ArrayList<TipoElemento>();
+		try 
+		{
+			stm = FactoryConnection.getinstancia().getConn().createStatement();
+			rs = stm.executeQuery("select * from tipoelemento");
+			if(rs!=null){
+				while(rs.next()){
+					TipoElemento tipoele=new TipoElemento();
+					tipoele.setId(rs.getInt("id"));
+					tipoele.setNombre(rs.getString("nombre"));
+					tipoele.setCant_max_reservas(rs.getInt("cant_max_reservas"));
+					tipoele.setReservaEncargado(rs.getBoolean("reservaEncargado"));
+					tipoele.setLimiteMaxHorasReserva(rs.getInt("limiteMaxHorasReserva"));
+					tipoele.setCantMaxDiasAnticipacion(rs.getInt("cantMaxDiasAnticipacion"));
+					listadotipoelemento.add(tipoele);
+					}
+			}
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			throw e;
+		}
+		
+		try {
+			if(stm!=null){
+				stm.close();
+				FactoryConnection.getinstancia().releaseConn();
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		}
+		return listadotipoelemento;	
+		
+	}
 	
 	
 	public void agregarTipoElemento (TipoElemento tipoele) throws Exception
@@ -157,6 +199,42 @@ public class DatosTipoElemento implements Serializable
 			throw e;
 		}	
 		
+	}
+	
+	public TipoElemento buscarTipoElemento(TipoElemento tipoele) throws Exception
+	{
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		
+		try {
+			pstm = FactoryConnection.getinstancia().getConn().prepareStatement("Select * from tipoelemento where id=?");
+			pstm.setInt(1, tipoele.getId());
+			rs=pstm.executeQuery();
+			if(rs!=null){
+				while(rs.next())
+					{
+					tipoele.setId(rs.getInt("id"));
+					tipoele.setNombre(rs.getString("nombre"));
+					tipoele.setCant_max_reservas(rs.getInt("cant_max_reservas"));
+					tipoele.setReservaEncargado(rs.getBoolean("reservaEncargado"));
+					tipoele.setLimiteMaxHorasReserva(rs.getInt("limiteMaxHorasReserva"));
+					tipoele.setCantMaxDiasAnticipacion(rs.getInt("cantMaxDiasAnticipacion"));
+					}
+						}
+			} 
+			catch (Exception e) {
+			throw e;
+		}
+		
+		try {
+			if(pstm!=null)pstm.close();
+			FactoryConnection.getinstancia().releaseConn();
+		} catch (Exception e) {
+			throw e;
+		}	
+		
+		
+		return tipoele;
 	}
 	
 }
