@@ -6,15 +6,93 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <script type="text/javascript" src="/ReservasWeb/js/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/estilo.css" type="text/css">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="icon" href="assets/icono.ico">
+    <link rel="icon" href="assets/icono.ico">   
+    
+    <style>
+    #content {
+    position:absolute;
+    min-height:50%;
+    width:80%;
+    top:20%;
+    left:5%;
+    }
+    .selected{
+    cursor:pointer;
+    background:rgba(0, 0, 0, 0.2);
+    }
+    .selected:hover{
+    background-color:#0585c0;
+    color:white;
+    }
+	.table-striped tbody tr:hover{
+  	background-color: rgba(0, 0, 0, 0.5);
+  	}
+  	.table-striped tbody tr:seleccionada {
+  	background-color: rgba(0, 0, 0, 0.5);
+  	}
+  	.seleccionada{
+    color:red;
+ 	}
+    .seleccionada:hover{
+    background-color:#05858c0;
+    color:white;
+ 	}
+    </style>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		
+    	});
+    	var cont=0;
+    	var id_fila_selected;
+    	var idSeleccionada=0;
+    	
+    	function cantFilas(){
+    		cont=document.getElementById("tabla").rows.length;
+    		}
+    	function agregar(){
+    		cont++;
+    		var fila='<tr class="selected" id="fila'+cont+'" onclick="seleccionar(this.id);"><td>'+cont+'</td>valor por defecto<td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
+    		$('#tabla').append(fila)
+   		}
+    	function seleccionar(id_fila){
+    		var i;
+    		for (i=0;i<=cont;i++){					//Deselecciona las demas filas
+    			if($('#'+i).hasClass('seleccionada')){
+        			$('#'+i).removeClass('seleccionada');
+        		}
+    		};
+    		if($('#'+id_fila).hasClass('seleccionada')){
+    			$('#'+id_fila).removeClass('seleccionada');
+    		}
+    		else{
+    			$('#'+id_fila).addClass('seleccionada');
+    		}
+    		id_fila_selected=id_fila; //el id de la fila seleccionada
+    		
+    		idSeleccionada=(document.getElementById("tabla").rows[id_fila_selected].cells.namedItem("idPersona").innerHTML);
+    		
+    	}
+    	function completarInput() {
+    		
+    		if (idSeleccionada != 0){ 
+    		document.getElementById("inputId").value = idSeleccionada;	
+    		}
+    		
+    	}
+    	
+    </script>
     <title>Listado Persona</title>
 </head>
- <body>
+ <body onload="cantFilas();">
     <div class="container-fluid">
        <div class="row">
            <div class="col-12">
@@ -44,13 +122,14 @@
 	<%} else if(((Persona)session.getAttribute("user")).getCategoria().equals("Administrador")){%>
 	<jsp:include page="MenuAdmin.jsp" />
 	<%} %>
-
+		<div>
             <div class="col-10 contenido">
-           		 <form action="" class="formulario">
+           		<form class="formulario" action="" method="post">
 	                  <div class="tituloFormularioRes">
 		            		<h3>Listado de Personas</h3>
 		              </div>
-	                  <table class="table table-striped">
+		              </div id="content">
+	                  	<table id="tabla" class="table table-striped">
 						  <thead>
 						    <tr>
 						      <th>Id</th>
@@ -64,10 +143,13 @@
 						    </tr>
 						  </thead>
 						  <tbody>     
-						      <%    ArrayList<Persona>listaPers= (ArrayList<Persona>)request.getAttribute("listadoPersonas");
-									for(Persona p : listaPers){%>
-							    <tr>
-							   		<th scope="row"><%=p.getId()%></th>
+						      <%    int i=0;
+						      		ArrayList<Persona>listaPers= (ArrayList<Persona>)request.getAttribute("listadoPersonas");
+									for(Persona p : listaPers){
+									i++;
+								%>
+							    <tr class="selected" id=<%=i %> onclick="seleccionar(this.id);">
+							   		<td id="idPersona"><%=p.getId()%></td>
 									<td><%=p.getDni() %></td>
 									<td><%=p.getNombre() %></td>
 									<td><%=p.getApellido() %></td>
@@ -81,13 +163,16 @@
 								%>
 						    </tbody>
 						 </table>
+						 <input class="form-control" name="inputId" id="inputId" type="hidden" value="-1"/> 
 						 <div class="botones">
-							<input type="submit" name="siguiente" value="Eliminar" class="btn btn-primary btnEliminar">
-							<input type="submit" name="siguiente" value="Modificar" class="btn btn-primary">
+							<input type="button" onclick = "completarInput(); this.form.action = 'EliminarPersona';  this.form.submit();" class="btn btn-primary btnEliminar" value="Eliminar" />
+							<input type="button" onclick = "completarInput(); this.form.action = 'ModificarPersona';  this.form.submit();"  class="btn btn-primary" value="Modificar" />
+						 	
 						 </div>
+						 
                     </form>
                  </div>
-        </div>
+    	    </div>
        <div class="row footer">
            <div class="col-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -97,7 +182,6 @@
         </div>
      </div>
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="js/jquery-3.2.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="js/bootstrap.js" crossorigin="anonymous"></script>

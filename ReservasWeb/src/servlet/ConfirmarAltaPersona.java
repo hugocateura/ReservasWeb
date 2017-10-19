@@ -46,7 +46,6 @@ public class ConfirmarAltaPersona extends HttpServlet {
 		String pass = request.getParameter("personaPass");
 		String categoria = request.getParameter("personaCategoria");
 		String habilitado = request.getParameter("personaHabilitado");
-		System.out.println(habilitado);
 		
 		Persona nuevaPersona = new Persona();							//CREO UNA NUEVA PERSONA
 		nuevaPersona.setDni(dni);
