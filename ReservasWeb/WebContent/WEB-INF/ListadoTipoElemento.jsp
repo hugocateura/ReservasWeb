@@ -132,6 +132,9 @@
 						      <th>Id</th>
 						      <th>Nombre</th>
 						      <th>Cant. máxima de Reservas</th>
+						      <th>Duracion máxima</th>
+						      <th>Máxima anticipación</th>
+						      <th>Reserva solo encargado</th>
 						    </tr>
 						  </thead>
 						  <tbody> 
@@ -144,6 +147,9 @@
 						      <td id="idTipo"><%=tipo.getId() %></td>
 						      <td><%=tipo.getNombre() %></td>
 						      <td><%=tipo.getCant_max_reservas() %></td>
+						      <td><%=tipo.getLimiteMaxHorasReserva() %></td>
+						      <td><%=tipo.getCantMaxDiasAnticipacion() %></td>
+						      <td><%=tipo.getReservaEncargado() %></td>
 						    </tr>
 						    <%}%>
 						   </tbody>

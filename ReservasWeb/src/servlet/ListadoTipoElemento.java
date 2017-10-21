@@ -43,7 +43,7 @@ public class ListadoTipoElemento extends HttpServlet {
 			
 			persona = (Persona)request.getSession().getAttribute("user");
 			
-			request.setAttribute("listadoTipoElementos", ctrlTipoElemento.consultarTodo(persona));
+			request.setAttribute("listadoTipoElementos", ctrlTipoElemento.consultarTodos());
 
 			request.getRequestDispatcher("WEB-INF/ListadoTipoElemento.jsp").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);
