@@ -44,12 +44,6 @@ public class ConfirmarAltaTipoElemento extends HttpServlet {
 		String anticipacion	= request.getParameter("anticipacionMaxima");
 		String reservaEncargado	= request.getParameter("reservaEncargado");
 		
-		System.out.println(nombre);
-		System.out.println(cantMaxRes);
-		System.out.println(duracion);
-		System.out.println(anticipacion);
-		System.out.println(reservaEncargado);
-		
 		TipoElemento tipoEle = new TipoElemento();
 		tipoEle.setNombre(nombre);
 		tipoEle.setCant_max_reservas(Integer.parseInt(cantMaxRes));

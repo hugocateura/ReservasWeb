@@ -48,10 +48,7 @@ public class ConfirmarModificacionPersona extends HttpServlet {
 		String usuario = request.getParameter("personaUsuario");
 		String pass = request.getParameter("personaPass");
 		String categoria = request.getParameter("personaCategoria");
-		String habilitado = request.getParameter("personaHabilitado");
-		
-		System.out.println("El valor del checkbox es :"+habilitado);
-		
+		String habilitado = request.getParameter("personaHabilitado");	
 		
 		persModificar.setDni(dni);
 		persModificar.setNombre(nombre);
