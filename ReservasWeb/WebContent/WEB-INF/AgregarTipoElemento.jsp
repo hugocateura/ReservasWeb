@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link rel="icon" href="assets/icono.ico">
-    <title>Agregar Tipo</title>
+    <title>Agregar Tipo de Elemento</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -43,30 +43,57 @@
 	<%} else if(((Persona)session.getAttribute("user")).getCategoria().equals("Administrador")){%>
 	<jsp:include page="MenuAdmin.jsp" />
 	<%} %>
-
+		
             <div class="col-10 contenido">
-	            <form class="formulario">
-		           	<div class="tituloFormulario" action="AgregarTipoElemento" method="post">
+	            <form class="formulario" action="ConfirmarAltaTipoElemento" method="post">
+		           	<div class="tituloFormulario" >
 		           		<h3>Alta Tipo de Elemento</h3>
 		           	</div>	
+		           	
 		           	<div class="form-group row">
 					    <label class="col-2 col-form-label">Nombre</label>
 					    <div class="col-10">
-					    	<input type="text" class="form-control" name="tipoElementoNombre" aria-describedby="nombreHelp" placeholder="Ingrese Nombre">
+					    	<input type="text" class="form-control" name="tipoElementoNombre" aria-describedby="nombreHelp" placeholder="Ingrese Nombre" required>
 					    	<small id="nombrelHelp" class="form-text text-muted">Ingrese el nombre del tipo de elemento.</small>
 						</div>
 					</div>
+					
 					<div class="form-group row">
 					  <label class="col-2 col-form-label">Cant. máxima de reservas</label>
 					  <div class="col-10">
-					    <input class="form-control" type="number" name="tipoElementoCantMaxRes" value="5" id="example-number-input" aria-describedby="cantmaxHelp">
+					    <input class="form-control" type="number" name="tipoElementoCantMaxRes" id="example-number-input" aria-describedby="cantmaxHelp" placeholder="Ingrese la cantidad" required>
 					    <small id="cantmaxlHelp" class="form-text text-muted">Seleccione la cantidad máxima de reservas.</small>
 					  </div>
 					</div>
+					
+					<div class="form-group row">
+					  <label class="col-2 col-form-label">Cant. máxima de horas</label>
+					  <div class="col-10">
+					    <input class="form-control" type="number" name="tipoElementoCantMaxHs" id="example-number-input" aria-describedby="cantmaxhsHelp" placeholder="Ingrese la duración" required>
+					    <small id="cantmaxhsHelp" class="form-text text-muted">Seleccione la cantidad máxima de horas que puede durar una reserva.</small>
+					  </div>
+					</div>
+					
+					<div class="form-group row">
+					  <label class="col-2 col-form-label">Anticipación máxima</label>
+					  <div class="col-10">
+					    <input class="form-control" type="number" name="anticipacionMaxima" id="example-number-input" aria-describedby="anticipacionMaximaHelp" placeholder="Ingrese la cantidad" required>
+					    <small id="anticipacionMaximalHelp" class="form-text text-muted">Seleccione máxima anticipación en días que puede tener una reserva.</small>
+					  </div>
+					</div>
+					
+				  	<div class="form-group row">
+					   	<label class="col-2 col-form-label">Reserva Encargado</label>
+				    	<div class="col-10">
+				    		<input type="checkbox" class="form-check-input" value="1" name="reservaEncargado" aria-describedby="reservaEncargadoHelp">
+				      		<small id="reservaEncargadoHelp" class="form-text text-muted">Tilde esta opción si el tipo de Elemento solo puede ser reservado por un encargado.</small>
+				    	</div>
+				  	</div>
+					
 					<div class="botones">
 						<input type="submit" name="guardarElemento" value="Guardar" class="btn btn-primary">
 					</div>
-		           </form>
+		          </form>
             </div>
         </div>
        <div class="row footer">
