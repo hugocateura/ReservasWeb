@@ -81,8 +81,8 @@
 				<div class="form-group row">
 				  <label class="col-2 col-form-label">Contraseña</label>
 				  <div class="col-10">
-				    <input class="form-control" type="password" value="hunter2" name="personaPass" required>
-				    <small id="usuarioHelp" class="form-text text-muted">Ingrese una contraseña para ingresar al sistema.</small>
+				    <input class="form-control" type="password" name="personaPass" required>
+				    <small id="usuarioHelp" class="form-text text-muted">Ingrese una contraseña que luego utilizará para ingresar al sistema.</small>
 				  </div>
 				</div>
 				<div class="form-group row">
@@ -99,7 +99,7 @@
 				  <div class="form-group row">
 				    <label class="col-2 col-form-label">Habilitado</label>
 				    <div class="col-10">
-				      <input type="checkbox" class="form-check-input" name="personaHabilitado" aria-describedby="habilitadoHelp">
+				      <input type="checkbox" class="form-check-input" value="1" name="personaHabilitado" aria-describedby="habilitadoHelp">
 				      <small id="habilitadoHelp" class="form-text text-muted">Tilde esta opción si la persona esta habilitada.</small>
 				    </div>
 				  </div>

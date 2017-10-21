@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,19 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import entidades.Persona;
 import logica.ControladorDePersona;
-import utilidades.ExcepcionEspecial;
 
 /**
- * Servlet implementation class ConfirmarAlta
+ * Servlet implementation class ConfirmarModificacionPersona
  */
-@WebServlet({ "/ConfirmarAltaPersona", "/confirmaraltapersona", "/Confirmaraltapersona", "/confirmarAltaPersona" })
-public class ConfirmarAltaPersona extends HttpServlet {
+@WebServlet({ "/ConfirmarModificacionPersona", "/Confirmarmodificacionpersona", "/confirmarmodificacionpersona" })
+public class ConfirmarModificacionPersona extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ConfirmarAltaPersona() {
+    public ConfirmarModificacionPersona() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,6 +40,8 @@ public class ConfirmarAltaPersona extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		Persona persModificar = (Persona)request.getSession().getAttribute("personaModificar");
+		
 		String dni = request.getParameter("personaDni");
 		String nombre = request.getParameter("personaNombre");
 		String apellido = request.getParameter("personaApellido");
@@ -47,40 +50,45 @@ public class ConfirmarAltaPersona extends HttpServlet {
 		String categoria = request.getParameter("personaCategoria");
 		String habilitado = request.getParameter("personaHabilitado");
 		
-		Persona nuevaPersona = new Persona();							//CREO UNA NUEVA PERSONA
-		nuevaPersona.setDni(dni);
-		nuevaPersona.setNombre(nombre);
-		nuevaPersona.setApellido(apellido);
-		nuevaPersona.setUsuario(usuario);
-		nuevaPersona.setContrasena(pass);
-		nuevaPersona.setCategoria(categoria);
+		System.out.println("El valor del checkbox es :"+habilitado);
+		
+		
+		persModificar.setDni(dni);
+		persModificar.setNombre(nombre);
+		persModificar.setApellido(apellido);
+		persModificar.setUsuario(usuario);
+		persModificar.setContrasena(pass);
+		persModificar.setCategoria(categoria);
 		if (habilitado != null){
 			if (habilitado.equals("1")){
-				nuevaPersona.setHabilitado(true);
+				persModificar.setHabilitado(true);
 			};
 			}
 		else{
-			nuevaPersona.setHabilitado(false);	
-		}															//SETEO LOS DATOS DE LA PERSONA
-				
+			persModificar.setHabilitado(false);	
+		}
+										
+		
 		ControladorDePersona ctrlPersona = new ControladorDePersona();
 		try {
-			ctrlPersona.crearPersona(nuevaPersona);
-		} catch (ExcepcionEspecial e) {
-		
-			e.printStackTrace();
-		} catch (Exception e) {
-		
-			e.printStackTrace();
+			ctrlPersona.modificarPersona(persModificar);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
-		request.getSession().setAttribute("nuevoUsuario", nuevaPersona);
+		ArrayList<Persona> listadoPersonas = new ArrayList<Persona>();
 		
-		request.getRequestDispatcher("WEB-INF/ConfirmacionAltaPersona.jsp").forward(request, response);
+		try {
+			listadoPersonas = ctrlPersona.consultarTodo();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("listadoPersonas", listadoPersonas);
 		
-		
+		request.getRequestDispatcher("WEB-INF/ListadoPersona.jsp").forward(request, response);
 		return;
-		//doGet(request, response);
 	}
 
 }

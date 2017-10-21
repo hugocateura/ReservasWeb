@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,11 +42,12 @@ public class EliminarPersona extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String inputId = request.getParameter("inputId");
+		ControladorDePersona ctrlPersona = new ControladorDePersona();
 		if (inputId!="0"){
 			Persona pers = new Persona();
 			pers.setId(Integer.parseInt(inputId));
 			
-			ControladorDePersona ctrlPersona = new ControladorDePersona();
+			
 			try {
 				ctrlPersona.borrarPersona(pers);
 			} catch (Exception e) {
@@ -54,7 +57,16 @@ public class EliminarPersona extends HttpServlet {
 			
 		}
 		
-		request.getRequestDispatcher("WEB-INF/Principal.jsp").forward(request, response);
+		ArrayList<Persona> listadoPersonas = new ArrayList<Persona>();
+		try {
+			listadoPersonas = ctrlPersona.consultarTodo();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("listadoPersonas", listadoPersonas);
+		
+		request.getRequestDispatcher("WEB-INF/ListadoPersona.jsp").forward(request, response);
 		
 		//doGet(request, response);
 	}

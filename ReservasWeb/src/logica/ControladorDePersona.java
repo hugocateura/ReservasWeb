@@ -59,7 +59,18 @@ public class ControladorDePersona implements Serializable{
 	public ArrayList<Persona> consultarTodo() throws Exception{
 		return basePersona.buscarTodo();
 	}
-
+	
+	public Persona getPersona(Persona pers) throws Exception
+	{
+		Persona persona = new Persona();
+		try {
+			persona = basePersona.getPersona(pers);
+			
+		} catch (Exception e) {
+			throw e;
+		}
+		return persona;
+	}
 	public Persona buscarPersonaPorUsuyClave(Persona pers) throws Exception
 	{
 		Persona persona = new Persona();

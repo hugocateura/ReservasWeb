@@ -235,6 +235,44 @@ public class DatosPersona implements Serializable
 		return persona;
 	}
 	
-	
+	public Persona getPersona(Persona pers) throws Exception
+	{
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		Persona persona=null;
+		
+		try {
+			pstm = FactoryConnection.getinstancia().getConn().prepareStatement("SELECT * FROM personas WHERE id=?");
+			pstm.setInt(1, pers.getId());
+			rs=pstm.executeQuery();
+			if(rs!=null)
+			{	rs.next();
+					persona=new Persona();
+					persona.setId(rs.getInt("id"));
+					persona.setDni(rs.getString("dni"));
+					persona.setNombre(rs.getString("nombre"));
+					persona.setApellido(rs.getString("apellido"));
+					persona.setUsuario(rs.getString("usuario"));
+					persona.setContrasena(rs.getString("contrasena"));
+					persona.setHabilitado(rs.getBoolean("habilitado"));
+					persona.setCategoria(rs.getString("categoria"));				
+			}
+			
+		} catch (SQLException e) {
+			throw e;
+		} catch (ExcepcionesEscritorio e) {
+			throw e;
+		}
+				
+		try {
+			if(pstm!=null)pstm.close();
+			if(rs!=null)rs.close();
+			FactoryConnection.getinstancia().releaseConn();
+		} catch (Exception e) {
+			throw e;
+		}
+		
+		return persona;
+	}
 }
 

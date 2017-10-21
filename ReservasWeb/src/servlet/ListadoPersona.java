@@ -41,8 +41,8 @@ public class ListadoPersona extends HttpServlet {
 		try {
 			
 			ControladorDePersona ctrlPersona = new ControladorDePersona();
-					
-			request.setAttribute("listadoPersonas",ctrlPersona.consultarTodo());
+			ArrayList<Persona> listadoPersonas = ctrlPersona.consultarTodo();
+			request.setAttribute("listadoPersonas", listadoPersonas);
 
 			request.getRequestDispatcher("WEB-INF/ListadoPersona.jsp").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);
@@ -51,6 +51,7 @@ public class ListadoPersona extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return;
 		//doGet(request, response);
 	}
 
