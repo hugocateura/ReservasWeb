@@ -67,6 +67,14 @@ private DatosTipoElemento baseTipoElemento = new DatosTipoElemento();
 		return listadoADevolver;
 	};
 	
+public ArrayList<TipoElemento> consultarTodos() throws Exception{
+		
+		DatosTipoElemento datosTipoEle = new DatosTipoElemento();  				
+		ArrayList<TipoElemento> listadoTipoElemento = datosTipoEle.devolverTodoTipoElemento();   //OBTIENE TODOS LOS ELEMENTOS
+		
+		return listadoTipoElemento;
+	};
+	
 	public TipoElemento buscarTipoElemento(TipoElemento tipoEle) throws Exception{
 		DatosTipoElemento datosTipoEle = new DatosTipoElemento();
 		return datosTipoEle.buscarTipoElemento(tipoEle);

@@ -10,19 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entidades.Persona;
+import entidades.TipoElemento;
 import logica.ControladorDePersona;
+import logica.ControladorTipoDeElemento;
 
 /**
- * Servlet implementation class EliminarPersona
+ * Servlet implementation class EliminarTipoElemento
  */
-@WebServlet({ "/EliminarPersona", "/eliminarpersona", "/Eliminarpersona", "/eliminarPersona" })
-public class EliminarPersona extends HttpServlet {
+@WebServlet({ "/EliminarTipoElemento", "/eliminartipoelemento", "/Eliminartipoelemento", "/eliminarTipoElemento" })
+public class EliminarTipoElemento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EliminarPersona() {
+    public EliminarTipoElemento() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +35,6 @@ public class EliminarPersona extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
 	}
 
 	/**
@@ -42,13 +43,13 @@ public class EliminarPersona extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String inputId = request.getParameter("inputId");
-		ControladorDePersona ctrlPersona = new ControladorDePersona();
+		ControladorTipoDeElemento ctrlTipoElemento = new ControladorTipoDeElemento();
 		if (inputId!="0"){
-			Persona pers = new Persona();
-			pers.setId(Integer.parseInt(inputId));
-				
+			TipoElemento tipoEle = new TipoElemento();
+			tipoEle.setId(Integer.parseInt(inputId));
+			
 			try {
-				ctrlPersona.borrarPersona(pers);
+				ctrlTipoElemento.borrarTipoElemento(tipoEle);;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -56,19 +57,19 @@ public class EliminarPersona extends HttpServlet {
 			
 		}
 		
-		ArrayList<Persona> listadoPersonas = new ArrayList<Persona>();
+		ArrayList<TipoElemento> listadoTipoElementos = new ArrayList<TipoElemento>();
 		try {
-			listadoPersonas = ctrlPersona.consultarTodo();
+			listadoTipoElementos = ctrlTipoElemento.consultarTodos();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("listadoPersonas", listadoPersonas);
+		request.setAttribute("listadoTipoElementos", listadoTipoElementos);
 		
-		request.getRequestDispatcher("WEB-INF/ListadoPersona.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/ListadoTipoElemento.jsp").forward(request, response);
 		
 		//doGet(request, response);
-		return;
+		//doGet(request, response);
 	}
 
 }
