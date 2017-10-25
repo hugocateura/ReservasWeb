@@ -9,20 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidades.Elemento;
 import entidades.Persona;
-import logica.ControladorDePersona;
+import logica.ControladorDeElemento;
 
 /**
- * Servlet implementation class ModificarPersona
+ * Servlet implementation class ModificarElemento
  */
-@WebServlet({ "/ModificarPersona", "/modificarpersona", "/Modificarpersona", "/modificarPersona" })
-public class ModificarPersona extends HttpServlet {
+@WebServlet({ "/ModificarElemento", "/Modificarelemento", "/modificarElemento", "/modificarelemento" })
+public class ModificarElemento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModificarPersona() {
+    public ModificarElemento() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,38 +40,38 @@ public class ModificarPersona extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 
 		String inputId = request.getParameter("inputId");
-		ControladorDePersona ctrlPersona = new ControladorDePersona();		
-		Persona personaModificar = new Persona();
+		ControladorDeElemento ctrlElemento = new ControladorDeElemento();		
+		Elemento elementoaModificar = new Elemento();
 		
 		if (!(inputId.equals("-1"))){
-			Persona pers = new Persona();
-			pers.setId(Integer.parseInt(inputId));
-						
+			
+			elementoaModificar.setId(Integer.parseInt(inputId));	
 			
 			try {
-				personaModificar = ctrlPersona.getPersona(pers);
+				elementoaModificar = ctrlElemento.buscarElemento(elementoaModificar);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.getSession().setAttribute("personaModificar", personaModificar);
-			request.getRequestDispatcher("WEB-INF/ModificarPersona.jsp").forward(request, response);
+			request.getSession().setAttribute("elementoaModificar", elementoaModificar);
+			request.getRequestDispatcher("WEB-INF/ModificarElemento.jsp").forward(request, response);
 		}
 		else{
 			
-			ArrayList<Persona> listadoPersonas;
+			ArrayList<Elemento> listadoElementos;
 			try {
-				listadoPersonas = ctrlPersona.consultarTodo();
-				request.setAttribute("listadoPersonas", listadoPersonas);
+				listadoElementos = ctrlElemento.consultarTodo();
+				request.setAttribute("listadoElementos", listadoElementos);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
-			request.getRequestDispatcher("WEB-INF/ListadoPersona.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/ListadoElemento.jsp").forward(request, response);
 		}
 		return;
 	}
+
+	
 
 }
