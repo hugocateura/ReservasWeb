@@ -9,22 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entidades.Persona;
+import entidades.Elemento;
 import entidades.TipoElemento;
-import logica.ControladorDePersona;
+import logica.ControladorDeElemento;
 import logica.ControladorTipoDeElemento;
 
 /**
- * Servlet implementation class ModificarTipoElemento
+ * Servlet implementation class EliminarElemento
  */
-@WebServlet({ "/ModificarTipoElemento", "/modificartipoelemento", "/modificarTipoElemento" })
-public class ModificarTipoElemento extends HttpServlet {
+@WebServlet({ "/EliminarElemento", "/eliminarelemento", "/eliminarElemento", "/Eliminarelemento" })
+public class EliminarElemento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModificarTipoElemento() {
+    public EliminarElemento() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,35 +43,30 @@ public class ModificarTipoElemento extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String inputId = request.getParameter("inputId");
-		ControladorTipoDeElemento ctrlTipoElemento = new ControladorTipoDeElemento();
-		TipoElemento tipoEleaModificar = new TipoElemento();
+		ControladorDeElemento ctrlElemento = new ControladorDeElemento();
 		
 		if (!(inputId.equals("-1"))){
-			TipoElemento tipoEle = new TipoElemento();
-			tipoEle.setId(Integer.parseInt(inputId));	
+			Elemento ele = new Elemento();
+			ele.setId(Integer.parseInt(inputId));
 			
 			try {
-				tipoEleaModificar = ctrlTipoElemento.buscarTipoElemento(tipoEle);
+				ctrlElemento.borrarElemento(ele);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.getSession().setAttribute("tipoEleaModificar", tipoEleaModificar);
-			request.getRequestDispatcher("WEB-INF/ModificarTipoElemento.jsp").forward(request, response);
-		}	
-		else{
-			ArrayList<TipoElemento> listadoTipoElementos = new ArrayList<TipoElemento>();
-			try {
-				listadoTipoElementos = ctrlTipoElemento.consultarTodos();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			request.setAttribute("listadoTipoElementos", listadoTipoElementos);
-			request.getRequestDispatcher("WEB-INF/ListadoTipoElemento.jsp").forward(request, response);
 		}
-		return;
-	}
+		
+		ArrayList<Elemento> listadoElementos = new ArrayList<Elemento>();
+		try 
+			{
+			listadoElementos = ctrlElemento.consultarTodo();
+			} 
+		catch (Exception e) 
+			{
+			e.printStackTrace();
+			}
+		request.setAttribute("listadoElementos", listadoElementos);
+		request.getRequestDispatcher("WEB-INF/ListadoElemento.jsp").forward(request, response);
+		}
 }
-
 

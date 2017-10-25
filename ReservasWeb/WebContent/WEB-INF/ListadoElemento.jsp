@@ -7,16 +7,89 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
- 	<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="/ReservasWeb/js/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/estilo.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <link rel="icon" href="assets/icono.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="icon" href="assets/icono.ico">   
+    
+    <style>
+    #content {
+    position:absolute;
+    min-height:50%;
+    width:80%;
+    top:20%;
+    left:5%;
+    }
+    .selected{
+    cursor:pointer;
+    background:rgba(0, 0, 0, 0.2);
+    }
+    .selected:hover{
+    background-color:#0585c0;
+    color:white;
+    }
+	.table-striped tbody tr:hover{
+  	background-color: rgba(0, 0, 0, 0.5);
+  	}
+  	.table-striped tbody tr:seleccionada {
+  	background-color: rgba(0, 0, 0, 0.5);
+  	}
+  	.seleccionada{
+    color:red;
+ 	}
+    .seleccionada:hover{
+    background-color:#05858c0;
+    color:white;
+ 	}
+    </style>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		
+    	});
+    	var cont=0;
+    	var id_fila_selected;
+    	var idSeleccionada=0;
+    	
+    	function cantFilas(){
+    		cont=document.getElementById("tabla").rows.length;
+    		}
+    	function seleccionar(id_fila){
+    		var i;
+    		for (i=0;i<=cont;i++){					//Deselecciona las demas filas
+    			if($('#'+i).hasClass('seleccionada')){
+        			$('#'+i).removeClass('seleccionada');
+        		}
+    		};
+    		if($('#'+id_fila).hasClass('seleccionada')){
+    			$('#'+id_fila).removeClass('seleccionada');
+    		}
+    		else{
+    			$('#'+id_fila).addClass('seleccionada');
+    		}
+    		id_fila_selected=id_fila; //el id de la fila seleccionada
+    		
+    		idSeleccionada=(document.getElementById("tabla").rows[id_fila_selected].cells.namedItem("idElemento").innerHTML);
+    		
+    	}
+    	function completarInput() {
+    		
+    		if (idSeleccionada != 0){ 
+    		document.getElementById("inputId").value = idSeleccionada;	
+    		}
+    		
+    	}
+    	
+    </script>
     <title>Listado Elemento</title>
 </head>
- <body>
+ <body onload="cantFilas();">
     <div class="container-fluid">
        <div class="row">
            <div class="col-12">
@@ -48,11 +121,12 @@
 	<%} %>
 
             <div class="col-10 contenido">
-                  <form action="" class="formulario">
+                  <form class="formulario" action="" method="post">
 	                  <div class="tituloFormularioRes">
 		            		<h3>Listado de Elementos</h3>
 		              </div>
-	                  <table class="table table-striped">
+		              <div>
+	                  <table id="tabla" class="table table-striped">
 						  <thead>
 						    <tr>
 						      <th>Id</th>
@@ -61,19 +135,25 @@
 						    </tr>
 						  </thead>
 						  <tbody>
-						   <% ArrayList<Elemento> listadoEle = (ArrayList<Elemento>)request.getAttribute("listadoElementos");
-						   	  for(Elemento ele : listadoEle){%>
-						    <tr>
-						      <th scope="row"><%=ele.getId() %></th>
-						      <td><%=ele.getNombre() %></td>
-						      <td><%=ele.getTipo().getId() %></td>
-						    </tr>
-						    <%} %>
+						   		<% 	int i=0;
+						   			ArrayList<Elemento> listadoEle = (ArrayList<Elemento>)request.getAttribute("listadoElementos");
+						   	  		for(Elemento ele : listadoEle){
+						   	  		i++;
+						   	  	%>
+						    	<tr class="selected" id=<%=i %> onclick="seleccionar(this.id);">
+						      		<td id="idElemento"><%=ele.getId() %></td>
+						      		<td><%=ele.getNombre() %></td>
+						      		<td><%=ele.getTipo().getId() %></td>
+						    	</tr>
+						    	<%
+						    	} 
+						    	%>
 						   </tbody>
 						 </table>
+						 <input class="form-control" name="inputId" id="inputId" type="hidden" value="-1"/> 
 						 <div class="botones">
-							<input type="submit" name="siguiente" value="Eliminar" class="btn btn-primary btnEliminar">
-							<input type="submit" name="siguiente" value="Modificar" class="btn btn-primary">
+							<input type="button" onclick = "completarInput(); this.form.action = 'EliminarElemento';  this.form.submit();" class="btn btn-primary btnEliminar" value="Eliminar" />
+							<input type="button" onclick = "completarInput(); this.form.action = 'ModificarElemento';  this.form.submit();"  class="btn btn-primary" value="Modificar" />
 						 </div>
                     </form>
             </div>

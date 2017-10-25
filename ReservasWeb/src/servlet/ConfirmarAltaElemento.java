@@ -1,30 +1,30 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidades.Elemento;
 import entidades.Persona;
 import entidades.TipoElemento;
-import logica.ControladorDePersona;
+import logica.ControladorDeElemento;
 import logica.ControladorTipoDeElemento;
+import utilidades.ExcepcionEspecial;
 
 /**
- * Servlet implementation class EliminarTipoElemento
+ * Servlet implementation class ConfirmarAltaElemento
  */
-@WebServlet({ "/EliminarTipoElemento", "/eliminartipoelemento", "/Eliminartipoelemento", "/eliminarTipoElemento" })
-public class EliminarTipoElemento extends HttpServlet {
+@WebServlet({ "/ConfirmarAltaElemento", "/Confirmaraltaelemento", "/confirmaraltaelemento" })
+public class ConfirmarAltaElemento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EliminarTipoElemento() {
+    public ConfirmarAltaElemento() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,31 +42,39 @@ public class EliminarTipoElemento extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String inputId = request.getParameter("inputId");
-		ControladorTipoDeElemento ctrlTipoElemento = new ControladorTipoDeElemento();
-		if (inputId!="0"){
-			TipoElemento tipoEle = new TipoElemento();
-			tipoEle.setId(Integer.parseInt(inputId));
-			
-			try {
-				ctrlTipoElemento.borrarTipoElemento(tipoEle);;
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
 		
-		ArrayList<TipoElemento> listadoTipoElementos = new ArrayList<TipoElemento>();
+		String nombre = request.getParameter("elementoNombre");
+		String idTipo = request.getParameter("itemTipo");
+		
+		ControladorTipoDeElemento ctrlTipoElemento = new ControladorTipoDeElemento();
+		TipoElemento tipoEle = new TipoElemento();
+		tipoEle.setId(Integer.parseInt(idTipo));
 		try {
-			listadoTipoElementos = ctrlTipoElemento.consultarTodos();
+			tipoEle = ctrlTipoElemento.buscarTipoElemento(tipoEle);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("listadoTipoElementos", listadoTipoElementos);
-		request.getRequestDispatcher("WEB-INF/ListadoTipoElemento.jsp").forward(request, response);
+				
+		Elemento nuevoElemento = new Elemento();							//CREO UN NUEVO ELEMENTO
+		nuevoElemento.setNombre(nombre);									//SETEO EL NOMBRE
+		nuevoElemento.setTipo(tipoEle);										//SETEO EL TIPO DE LA CLASE TIPOELEMENTO
+		
+		
+		ControladorDeElemento ctrlElemento = new ControladorDeElemento();
+		
+		try {
+			ctrlElemento.crearElemento(nuevoElemento);
+		} catch (ExcepcionEspecial e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+		request.getSession().setAttribute("nuevoElemento", nuevoElemento);
+		request.getRequestDispatcher("WEB-INF/ConfirmacionAltaElemento.jsp").forward(request, response);
 
+		return;	
 	}
-
 }
+
+

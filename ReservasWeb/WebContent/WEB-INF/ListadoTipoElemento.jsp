@@ -125,7 +125,7 @@
                 <form  class="formulario" action="" method="post">
 	                  <div class="tituloFormularioRes">
 		            		<h3>Listado Tipo de Elementos</h3>
-		              </div id="content">
+		              </div>
 	                  <table id="tabla" class="table table-striped">
 						  <thead>
 						    <tr>

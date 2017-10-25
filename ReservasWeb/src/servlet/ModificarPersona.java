@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,25 +41,36 @@ public class ModificarPersona extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 
 		String inputId = request.getParameter("inputId");
-		
+		ControladorDePersona ctrlPersona = new ControladorDePersona();		
 		Persona personaModificar = new Persona();
-		if (inputId!="0"){
+		
+		if (!(inputId.equals("-1"))){
+			System.out.println("Entra al if");
 			Persona pers = new Persona();
 			pers.setId(Integer.parseInt(inputId));
 						
-			ControladorDePersona ctrlPersona = new ControladorDePersona();
+			
 			try {
 				personaModificar = ctrlPersona.getPersona(pers);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			request.getSession().setAttribute("personaModificar", personaModificar);
-			
 			request.getRequestDispatcher("WEB-INF/ModificarPersona.jsp").forward(request, response);
 		}
-		//doGet(request, response);
+		else{
+			
+			ArrayList<Persona> listadoPersonas;
+			try {
+				listadoPersonas = ctrlPersona.consultarTodo();
+				request.setAttribute("listadoPersonas", listadoPersonas);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			request.getRequestDispatcher("WEB-INF/ListadoPersona.jsp").forward(request, response);
+		}
 		return;
 	}
 

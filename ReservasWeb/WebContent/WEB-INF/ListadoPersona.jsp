@@ -122,13 +122,12 @@
 	<%} else if(((Persona)session.getAttribute("user")).getCategoria().equals("Administrador")){%>
 	<jsp:include page="MenuAdmin.jsp" />
 	<%} %>
-		<div>
+		
             <div class="col-10 contenido">
            		<form class="formulario" action="" method="post">
 	                  <div class="tituloFormularioRes">
 		            		<h3>Listado de Personas</h3>
 		              </div>
-		              </div id="content">
 	                  	<table id="tabla" class="table table-striped">
 						  <thead>
 						    <tr>
@@ -167,9 +166,7 @@
 						 <div class="botones">
 							<input type="button" onclick = "completarInput(); this.form.action = 'EliminarPersona';  this.form.submit();" class="btn btn-primary btnEliminar" value="Eliminar" />
 							<input type="button" onclick = "completarInput(); this.form.action = 'ModificarPersona';  this.form.submit();"  class="btn btn-primary" value="Modificar" />
-						 	
 						 </div>
-						 
                     </form>
                  </div>
     	    </div>
@@ -180,7 +177,6 @@
             </nav>
            </div>
         </div>
-     </div>
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>

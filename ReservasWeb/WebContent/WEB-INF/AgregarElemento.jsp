@@ -1,4 +1,7 @@
 <%@page import="entidades.Persona"%>
+<%@page import="entidades.TipoElemento"%>
+<%@page import="logica.ControladorTipoDeElemento"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -45,24 +48,29 @@
 	<%} %>
 
             <div class="col-10 contenido">
-                    <form class="formulario" action="AgregarElemento" method="post">
+                    <form class="formulario" action="ConfirmarAltaElemento" method="post">
 			           	<div class="tituloFormulario">
 			           		<h3>Alta de Elemento</h3>
 			           	</div>	
 			           	<div class="form-group row">
 						    <label class="col-2 col-form-label">Nombre</label>
 						    <div class="col-10">
-						    	<input type="text" class="form-control" name="elementoNombre" aria-describedby="nombreHelp" placeholder="Ingrese Nombre">
+						    	<input type="text" class="form-control" name="elementoNombre" aria-describedby="nombreHelp" placeholder="Ingrese Nombre" required>
 						    	<small id="nombrelHelp" class="form-text text-muted">Ingrese el nombre del elemento.</small>
 							</div>
 						</div>
 						<div class="form-group row">
 						    <label class="col-2 col-form-label">Tipo Elemento</label>
 						    <div class="col-10">
-							    <select multiple class="form-control" name="elementoTipo" aria-describedby="tipoHelp">
-							      <option>1</option>
-							      <option>2</option>
-							      <option>3</option>
+							    <select multiple class="form-control" name="itemTipo" aria-describedby="tipoHelp" required>
+									     <% ControladorTipoDeElemento ctrlTipoDeElemento = new ControladorTipoDeElemento();
+							      		 Persona pers = ((Persona)session.getAttribute("user"));
+							      	 	 ArrayList<TipoElemento> todosTiposElemento = ctrlTipoDeElemento.consultarTodos();
+							      	 	 for(TipoElemento te : todosTiposElemento){ %>
+							      	 
+							      	<option value="<%=(te.getId())%>"><%=te.getNombre()%></option>
+							      								    
+							      <%} %>
 							    </select>
 							    <small id="tipoHelp" class="form-text text-muted">Seleccione el tipo de elemento.</small>
 							</div>
