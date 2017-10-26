@@ -131,7 +131,8 @@
 						    <tr>
 						      <th>Id</th>
 						      <th>Nombre</th>
-						      <th>Tipo de Elemento</th>
+						      <th>Id Tipo de Elemento</th>
+						      <th>Descripción Tipo</th>
 						    </tr>
 						  </thead>
 						  <tbody>
@@ -144,6 +145,7 @@
 						      		<td id="idElemento"><%=ele.getId() %></td>
 						      		<td><%=ele.getNombre() %></td>
 						      		<td><%=ele.getTipo().getId() %></td>
+						      		<td><%=ele.getTipo().getNombre() %></td>
 						    	</tr>
 						    	<%
 						    	} 

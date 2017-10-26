@@ -14,6 +14,7 @@ import entidades.TipoElemento;
 import logica.ControladorDeElemento;
 import logica.ControladorDeReserva;
 import logica.ControladorTipoDeElemento;
+import utilidades.ExcepcionEspecial;
 
 /**
  * Servlet implementation class ConfirmarReserva
@@ -58,16 +59,24 @@ public class ConfirmarReserva extends HttpServlet {
 			reservaActual.setFechaHoraDesde(fechaHoraDesde);
 			reservaActual.setFechaHoraHasta(fechaHoraHasta);
 			reservaActual.setObservacion(observacion);
-			reservaActual.setTipo(elementoElegido.getTipo());
+			reservaActual.setTipo((TipoElemento) request.getSession().getAttribute("tipoElemento"));
 			reservaActual.setEstado("Activa");
 			reservaActual.setPersona((Persona)request.getSession().getAttribute("user"));	//CARGO TODOS LOS DATOS DE LA RESERVA
 			
 			ControladorDeReserva ctrlReserva = new ControladorDeReserva();					//PERSISTO LA RESERVA
-			ctrlReserva.crearReserva(reservaActual);
+			try {
+				
+				ctrlReserva.crearReserva(reservaActual);
+				request.getSession().setAttribute("reserva", reservaActual);
+				request.getRequestDispatcher("WEB-INF/ConfirmacionReserva.jsp").forward(request, response);
+				
+			} catch (ExcepcionEspecial ex) {	
+				
+				request.getSession().setAttribute("mensaje", ex.getMessage());
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+			}
 			
-			request.getSession().setAttribute("reserva", reservaActual);
 			
-			request.getRequestDispatcher("WEB-INF/ConfirmacionReserva.jsp").forward(request, response);
 			//response.getWriter().append(user).append(" ").append(pass);
 			
 			
@@ -75,6 +84,7 @@ public class ConfirmarReserva extends HttpServlet {
 			e.printStackTrace();
 		}
 		//doGet(request, response);
+		return;
 	}
 
 }

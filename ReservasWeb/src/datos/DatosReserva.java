@@ -247,5 +247,40 @@ public void cancelarReserva(Reserva res) throws Exception
 	}
 }
 
+public String getHoraActual() throws Exception
+{
+	Statement stm=null;
+	ResultSet rs=null;
+	String fechaActual="";
+	
+	try {
+		stm = FactoryConnection.getinstancia().getConn().createStatement();
+		rs = stm.executeQuery("SELECT CURRENT_TIMESTAMP");
+				
+		if(rs!=null){
+			while(rs.next()){
+				fechaActual=(rs.getString("CURRENT_TIMESTAMP"));
+			}
+		}
+		
+		
+	} catch (SQLException e) {
+		throw e;
+	} catch (ExcepcionesEscritorio e) {
+		throw e;
+	}
+	
+	try {
+		if(rs!=null)rs.close();
+		if(stm!=null)stm.close();
+		FactoryConnection.getinstancia().releaseConn();
+	} catch (SQLException e) {
+		throw e;
+	}
+	
+	return fechaActual;
+}
+
+	
 }
 

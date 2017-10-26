@@ -70,7 +70,18 @@ public class ControladorDeElemento implements Serializable{
 			}
 			
 			public ArrayList<Elemento> consultarTodo() throws Exception{
-				return baseElemento.buscarTodo();
+				
+				ArrayList<Elemento> elementos = baseElemento.buscarTodo();
+				ControladorTipoDeElemento ctrlTipo = new ControladorTipoDeElemento();
+				
+				
+				for (Elemento ele : elementos){
+					TipoElemento tipoEle = new TipoElemento();
+					tipoEle.setId(ele.getTipo().getId());
+					tipoEle = ctrlTipo.buscarTipoElemento(tipoEle);
+					ele.setTipo(tipoEle);
+				}
+				return  elementos;
 			}
 			
 			public ArrayList<TipoElemento> getTipoElemento(Persona pers) throws Exception
