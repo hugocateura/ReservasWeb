@@ -97,7 +97,7 @@
                           <a class="navbar-brand" href="Start"><img src="assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">   SYSRES</a>
                       </div>
                       <a class="breadcrumb-item" href="Start"><i class="iconoInicio fa fa-home" aria-hidden="true"></i></a>
-                      <a class="breadcrumb-item" href="#">Administracion</a>
+                      <a class="breadcrumb-item" href="#"><%=((Persona) session.getAttribute("user")).getCategoria()%></a>
                       <a class="breadcrumb-item" href="#">Reserva</a>
                       <span class="breadcrumb-item active">Anular</span>
                   </div>
