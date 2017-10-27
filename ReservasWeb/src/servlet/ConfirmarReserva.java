@@ -61,7 +61,7 @@ public class ConfirmarReserva extends HttpServlet {
 			reservaActual.setObservacion(observacion);
 			reservaActual.setTipo((TipoElemento) request.getSession().getAttribute("tipoElemento"));
 			reservaActual.setEstado("Activa");
-			reservaActual.setPersona((Persona)request.getSession().getAttribute("user"));	//CARGO TODOS LOS DATOS DE LA RESERVA
+			reservaActual.setPersona((Persona)request.getSession().getAttribute("usuarioReserva"));	//CARGO TODOS LOS DATOS DE LA RESERVA
 			
 			ControladorDeReserva ctrlReserva = new ControladorDeReserva();					//PERSISTO LA RESERVA
 			try {

@@ -7,7 +7,7 @@
                           <li>
                             <a class="link" href="#">Reserva<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                                 <ul>
-                                  <li><a class="link" href="ReservarElemento">ReservarElemento</a></li>
+                                  <li><a class="link" href="SeleccionarUsuarioReserva">ReservarElemento</a></li>
                                 </ul>
                           </li>
                         </ul>

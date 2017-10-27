@@ -7,11 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import logica.ControladorDePersona;
-import logica.ControladorTipoDeElemento;
-import entidades.Persona;
-import entidades.TipoElemento;
-
 /**
  * Servlet implementation class Start
  */

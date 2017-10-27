@@ -141,11 +141,11 @@
 						   	  		for(Elemento ele : listadoEle){
 						   	  		i++;
 						   	  	%>
-						    	<tr class="selected" id=<%=i %> onclick="seleccionar(this.id);">
-						      		<td id="idElemento"><%=ele.getId() %></td>
-						      		<td><%=ele.getNombre() %></td>
-						      		<td><%=ele.getTipo().getId() %></td>
-						      		<td><%=ele.getTipo().getNombre() %></td>
+						    	<tr class="selected" id=<%=i%> onclick="seleccionar(this.id);">
+						      		<td id="idElemento"><%=ele.getId()%></td>
+						      		<td><%=ele.getNombre()%></td>
+						      		<td><%=ele.getTipo().getId()%></td>
+						      		<td><%=ele.getTipo().getNombre()%></td>
 						    	</tr>
 						    	<%
 						    	} 

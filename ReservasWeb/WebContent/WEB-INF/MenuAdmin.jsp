@@ -37,8 +37,8 @@
                   <li>
                     <a class="link" href="#"><i class="icono izquierda fa fa-ticket" aria-hidden="true"></i>Reserva<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
                         <ul class="">
-                              <li><a class="link res" href="ReservarElemento">Reservar</a></li>
-                              <li><a class="link res" href="MisReservas">Mis Reservas</a></li>
+                              <li><a class="link res" href="SeleccionarUsuarioReserva">Reservar</a></li>
+
                         </ul>
                   </li>
                 </ul>

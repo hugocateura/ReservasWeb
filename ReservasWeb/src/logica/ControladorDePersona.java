@@ -59,7 +59,7 @@ public class ControladorDePersona implements Serializable{
 	public ArrayList<Persona> consultarTodo() throws Exception{
 		return basePersona.buscarTodo();
 	}
-	
+		
 	public Persona getPersona(Persona pers) throws Exception
 	{
 		Persona persona = new Persona();

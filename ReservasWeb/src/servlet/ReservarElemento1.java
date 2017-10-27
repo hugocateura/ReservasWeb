@@ -40,6 +40,8 @@ public class ReservarElemento1 extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+				
 		try {
 			String idTipoElemento=request.getParameter("itemTipo"); 						//recupero idTipoElemento
 			ControladorTipoDeElemento ctrlTipoElemento = new ControladorTipoDeElemento(); 	//Instancio controladorTipoElemento
@@ -61,7 +63,7 @@ public class ReservarElemento1 extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//doGet(request, response);
+		return;
 	}
 
 }

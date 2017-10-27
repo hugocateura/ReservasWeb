@@ -11,21 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import entidades.Persona;
 import entidades.Reserva;
-import entidades.TipoElemento;
 import logica.ControladorDeReserva;
-import logica.ControladorTipoDeElemento;
 
 /**
- * Servlet implementation class CancelarReserva
+ * Servlet implementation class ConfirmarAnulacionReserva
  */
-@WebServlet({ "/CancelarReserva", "/cancelarReserva", "/cancelarreserva", "/Cancelarreserva" })
-public class CancelarReserva extends HttpServlet {
+@WebServlet({ "/ConfirmarAnulacionReserva", "/confirmarAnulacionReserva", "/confirmaranulacionreserva" })
+public class ConfirmarAnulacionReserva extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CancelarReserva() {
+    public ConfirmarAnulacionReserva() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,28 +43,24 @@ public class CancelarReserva extends HttpServlet {
 		try {
 			String idReserva=request.getParameter("inputId"); 							//recupero idReserva
 			
-			Reserva reservaAEliminar = new Reserva();
-			reservaAEliminar.setId(Integer.parseInt(idReserva));
+			Reserva reservaAnular = new Reserva();
+			reservaAnular.setId(Integer.parseInt(idReserva));
 			
 			ControladorDeReserva ctrlReserva = new ControladorDeReserva(); 					//Instancio controladorReserva
-			ctrlReserva.borrarReserva(reservaAEliminar);
-			
-			
-			Persona pers = (Persona)request.getSession().getAttribute("user");			//Actualizo el listado de las reservas		
+			ctrlReserva.cancelarReserva(reservaAnular);
+					
 			ArrayList<Reserva> listado = new ArrayList<Reserva>(); 
 			
 			try {
-				listado = ctrlReserva.reservasPendientesPersona(pers);
+				listado = ctrlReserva.consultarTodo(); 		//Actualizo el listado de las reservas
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-			request.setAttribute("listadoMisReservas", listado);
+			request.setAttribute("listadoReserva", listado);
 			
-			request.getRequestDispatcher("WEB-INF/MisReservas.jsp").forward(request, response);
-			
-			
+			request.getRequestDispatcher("WEB-INF/AnularReserva.jsp").forward(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -75,3 +69,5 @@ public class CancelarReserva extends HttpServlet {
 	}
 
 }
+
+

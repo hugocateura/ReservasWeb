@@ -230,7 +230,7 @@ public void cancelarReserva(Reserva res) throws Exception
 	
 	try {
 		pstm = FactoryConnection.getinstancia().getConn().prepareStatement("UPDATE reserva SET estado=? WHERE id=?");
-		pstm.setString(1, "Cancelada");
+		pstm.setString(1, "Anulada");
 		pstm.setInt(2, res.getId());
 		pstm.executeUpdate();
 	} catch (SQLException e) {

@@ -41,10 +41,6 @@ private DatosElemento baseElemento = new DatosElemento();
 				horaBD = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(strHoraBD);					
 				duracion = (fechaHasta.getTime() - fechaDesde.getTime())/(1000*60*60);			//CALCULO LA DURACION DE LA RESERVA
 				anticipacion = (fechaDesde.getTime() - horaBD.getTime())/(1000*60*60*24);		//CALCULO LA ANTICIPACION CON RESPECTO A LA HORA ACTUAL DE LA BD
-				System.out.println("mi anticipacion es de : "+anticipacion);
-				System.out.println("pero solo puedo anticiparme : "+res.getTipo().getCantMaxDiasAnticipacion());
-				System.out.println("la duracion es de : "+duracion);
-				System.out.println("pero solo puede se de : "+res.getTipo().getLimiteMaxHorasReserva());
 			}
 		catch (ParseException ex) 
 			{
@@ -81,7 +77,20 @@ private DatosElemento baseElemento = new DatosElemento();
 	};
 	
 	public ArrayList<Reserva> consultarTodo() throws Exception{
-		return baseReserva.buscarTodo();
+		
+		ControladorTipoDeElemento ctrlTipo = new ControladorTipoDeElemento();
+		ControladorDeElemento ctrlElemento = new ControladorDeElemento();
+		ControladorDePersona ctrlPersona = new ControladorDePersona();
+		
+		ArrayList<Reserva> listado = baseReserva.buscarTodo();
+		for (Reserva res: listado){
+			res.setTipo(ctrlTipo.buscarTipoElemento(res.getTipo()));
+			res.setElemento(ctrlElemento.buscarElemento(res.getElemento()));
+			res.setPersona(ctrlPersona.getPersona(res.getPersona()));
+		}
+		
+		return listado;
+		
 	}
 	
 	public ArrayList<TipoElemento> getTipoElemento(Persona pers) throws Exception
@@ -112,7 +121,19 @@ private DatosElemento baseElemento = new DatosElemento();
 
 
 	public ArrayList<Reserva> reservasPendientesPersona(Persona pers) throws Exception{
-		return baseReserva.reservasPendientesPersona(pers);
+		
+		ControladorTipoDeElemento ctrlTipo = new ControladorTipoDeElemento();
+		ControladorDeElemento ctrlElemento = new ControladorDeElemento();
+		ControladorDePersona ctrlPersona = new ControladorDePersona();
+		
+		ArrayList<Reserva> listado = baseReserva.reservasPendientesPersona(pers);
+		for (Reserva res: listado){
+			res.setTipo(ctrlTipo.buscarTipoElemento(res.getTipo()));
+			res.setElemento(ctrlElemento.buscarElemento(res.getElemento()));
+			res.setPersona(ctrlPersona.getPersona(res.getPersona()));
+		}
+		
+		return listado;
 	}
 
 }

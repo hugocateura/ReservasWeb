@@ -59,10 +59,10 @@
 						    <label class="col-2 col-form-label">Tipo Elemento</label>
 						    <div class="col-10">
 							    <select multiple class="form-control" name="itemTipo" aria-describedby="tipoHelp" required>
-									     <% ControladorTipoDeElemento ctrlTipoDeElemento = new ControladorTipoDeElemento();
-							      	 Persona pers = ((Persona)session.getAttribute("user"));
-							      	 ArrayList<TipoElemento> todosTiposElemento = ctrlTipoDeElemento.consultarTodo(pers);
-							      	 for(TipoElemento te : todosTiposElemento){ %>
+									    <% 
+							      	 	ArrayList<TipoElemento> todosTiposElemento = (ArrayList<TipoElemento>) request.getAttribute("listaTipos");
+							      	 	for(TipoElemento te : todosTiposElemento){ 
+							      	 	%>
 							      	 
 							      	<option value="<%=(te.getId())%>"><%=te.getNombre()%></option>
 							      								    
