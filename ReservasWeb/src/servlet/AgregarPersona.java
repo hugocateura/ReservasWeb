@@ -45,7 +45,7 @@ public class AgregarPersona extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//doGet(request, response);
+		return;
 	}
 
 }

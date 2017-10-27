@@ -3,7 +3,11 @@ package datos;
 import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
+
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+
 import entidades.*;
+import utilidades.ExcepcionEspecial;
 import utilidades.ExcepcionesEscritorio;
 
 public class DatosPersona implements Serializable 
@@ -137,21 +141,27 @@ public class DatosPersona implements Serializable
 	{
 		PreparedStatement pstm = null;
 		
-		
 		try {
 			pstm = FactoryConnection.getinstancia().getConn().prepareStatement(
 					"DELETE FROM personas WHERE id=?");
 			pstm.setInt(1, perselimina.getId());
 			pstm.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		}
+		catch (MySQLIntegrityConstraintViolationException exc) {
+			throw new ExcepcionEspecial("Error de integridad, no se puede eliminar la Persona");
+		}  
+		catch (SQLException exc) {
+			throw new ExcepcionEspecial("Error de integridad, no se puede eliminar la Persona");
+		} 
+		catch(Exception e){
+			throw new ExcepcionEspecial("Error Genérico");		
 		}
 		
 		try {
 			if(pstm!=null)pstm.close();
 			FactoryConnection.getinstancia().releaseConn();
-		} catch (Exception e) {
-			throw e;
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial("Error de conexión");			
 		}		
 	}
 	

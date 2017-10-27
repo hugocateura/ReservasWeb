@@ -31,8 +31,17 @@ public class ControladorDePersona implements Serializable{
 		}	
 		};
 	
-	public void borrarPersona (Persona pers) throws Exception{
-		basePersona.eliminarPersona(pers);
+	public void borrarPersona (Persona pers) throws Exception, ExcepcionEspecial{
+		
+		try {
+			basePersona.eliminarPersona(pers);
+		} catch (ExcepcionEspecial e) {
+			throw e;
+		}
+		catch (Exception ex) {
+			throw ex;
+		}
+				
 	};
 	
 	public void modificarPersona(Persona pers) throws Exception{

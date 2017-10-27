@@ -39,7 +39,11 @@ public class ControladorDeElemento implements Serializable{
 			public void borrarElemento (Elemento ele) throws Exception{
 				try {
 					baseElemento.eliminarElemento(ele);
-				} catch (Exception e) {
+				}
+				catch (ExcepcionEspecial e) {
+					throw e;
+				}
+				catch (Exception e) {
 					throw e;
 				}
 			};

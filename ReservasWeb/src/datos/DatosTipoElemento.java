@@ -3,7 +3,11 @@ package datos;
 import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
+
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+
 import entidades.*;
+import utilidades.ExcepcionEspecial;
 
 public class DatosTipoElemento implements Serializable
 {
@@ -151,7 +155,7 @@ public class DatosTipoElemento implements Serializable
 		
 	}
 	
-	public void eliminarTipoElemento(TipoElemento tipoele) throws Exception
+	public void eliminarTipoElemento(TipoElemento tipoele) throws Exception, ExcepcionEspecial
 	{
 		PreparedStatement pstm = null;
 		
@@ -161,15 +165,21 @@ public class DatosTipoElemento implements Serializable
 					"DELETE FROM tipoelemento WHERE id=?");
 			pstm.setInt(1, tipoele.getId());
 			pstm.executeUpdate();
-		} catch (Exception e) {
-			throw e;
+		}catch (MySQLIntegrityConstraintViolationException exc) {
+			throw new ExcepcionEspecial("Error de integridad, no se puede eliminar el Tipo de Elemento");
+		}  
+		catch (SQLException exc) {
+			throw new ExcepcionEspecial("Error de integridad, no se puede eliminar el Tipo de Elemento");
+		} 
+			catch(Exception e){
+				throw new ExcepcionEspecial("Error Genérico");		
 		}
 		
 		try {
 			if(pstm!=null)pstm.close();
 			FactoryConnection.getinstancia().releaseConn();
-		} catch (Exception e) {
-			throw e;
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial("Error de conexión");			
 		}		
 	}
 	

@@ -25,8 +25,15 @@ private DatosTipoElemento baseTipoElemento = new DatosTipoElemento();
 			}		
 	};
 	
-	public void borrarTipoElemento (TipoElemento tipoele) throws Exception{
-		baseTipoElemento.eliminarTipoElemento(tipoele);
+	public void borrarTipoElemento (TipoElemento tipoele) throws Exception, ExcepcionEspecial{
+		try {
+			baseTipoElemento.eliminarTipoElemento(tipoele);
+		} catch (ExcepcionEspecial e) {
+			throw e;
+		}
+		catch (Exception ex) {
+			throw ex;
+		}
 	};
 	
 	public void modificarTipoElemento(TipoElemento tipoele) throws Exception, ExcepcionEspecial{

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entidades.Persona;
 import logica.ControladorDePersona;
+import utilidades.ExcepcionEspecial;
 
 /**
  * Servlet implementation class EliminarPersona
@@ -43,32 +44,32 @@ public class EliminarPersona extends HttpServlet {
 		
 		String inputId = request.getParameter("inputId");
 		ControladorDePersona ctrlPersona = new ControladorDePersona();
+		ArrayList<Persona> listadoPersonas = new ArrayList<Persona>();
+		
 		if (inputId!="0"){
 			Persona pers = new Persona();
 			pers.setId(Integer.parseInt(inputId));
 				
 			try {
 				ctrlPersona.borrarPersona(pers);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				listadoPersonas = ctrlPersona.consultarTodo();
+		
+				request.setAttribute("listadoPersonas", listadoPersonas);
+				request.getRequestDispatcher("WEB-INF/ListadoPersona.jsp").forward(request, response);
+				
+			} catch (ExcepcionEspecial ex) {	
+				request.getSession().setAttribute("mensaje", ex.getMessage());
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+			}	
+			catch (IllegalStateException e) {
+				request.getSession().setAttribute("mensaje", "Error General");
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
-			
-		}
-		
-		ArrayList<Persona> listadoPersonas = new ArrayList<Persona>();
-		try {
-			listadoPersonas = ctrlPersona.consultarTodo();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		request.setAttribute("listadoPersonas", listadoPersonas);
-		
-		request.getRequestDispatcher("WEB-INF/ListadoPersona.jsp").forward(request, response);
-		
-		//doGet(request, response);
+			catch (Exception e) {
+				request.getSession().setAttribute("mensaje", "Error Genérico");
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+			}		
+		}	
 		return;
 	}
-
 }

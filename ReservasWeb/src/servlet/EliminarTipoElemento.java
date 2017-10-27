@@ -13,6 +13,7 @@ import entidades.Persona;
 import entidades.TipoElemento;
 import logica.ControladorDePersona;
 import logica.ControladorTipoDeElemento;
+import utilidades.ExcepcionEspecial;
 
 /**
  * Servlet implementation class EliminarTipoElemento
@@ -49,24 +50,30 @@ public class EliminarTipoElemento extends HttpServlet {
 			tipoEle.setId(Integer.parseInt(inputId));
 			
 			try {
-				ctrlTipoElemento.borrarTipoElemento(tipoEle);;
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
+				ctrlTipoElemento.borrarTipoElemento(tipoEle);
+				
+				ArrayList<TipoElemento> listadoTipoElementos = new ArrayList<TipoElemento>();
+				
+	
+				listadoTipoElementos = ctrlTipoElemento.consultarTodos();
+				request.setAttribute("listadoTipoElementos", listadoTipoElementos);
+				request.getRequestDispatcher("WEB-INF/ListadoTipoElemento.jsp").forward(request, response);
 		
-		ArrayList<TipoElemento> listadoTipoElementos = new ArrayList<TipoElemento>();
-		try {
-			listadoTipoElementos = ctrlTipoElemento.consultarTodos();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				} 
+			catch (ExcepcionEspecial ex) {	
+				request.getSession().setAttribute("mensaje", ex.getMessage());
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+			}	
+			catch (IllegalStateException e) {
+				request.getSession().setAttribute("mensaje", "Error General");
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+			}
+			catch (Exception e) {
+				request.getSession().setAttribute("mensaje", "Error Genérico");
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+			}	
 		}
-		request.setAttribute("listadoTipoElementos", listadoTipoElementos);
-		request.getRequestDispatcher("WEB-INF/ListadoTipoElemento.jsp").forward(request, response);
-
+		return;
 	}
 
 }

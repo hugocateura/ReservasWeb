@@ -13,6 +13,7 @@ import entidades.Elemento;
 import entidades.TipoElemento;
 import logica.ControladorDeElemento;
 import logica.ControladorTipoDeElemento;
+import utilidades.ExcepcionEspecial;
 
 /**
  * Servlet implementation class EliminarElemento
@@ -44,6 +45,7 @@ public class EliminarElemento extends HttpServlet {
 		
 		String inputId = request.getParameter("inputId");
 		ControladorDeElemento ctrlElemento = new ControladorDeElemento();
+		ArrayList<Elemento> listadoElementos = new ArrayList<Elemento>();
 		
 		if (!(inputId.equals("-1"))){
 			Elemento ele = new Elemento();
@@ -51,22 +53,26 @@ public class EliminarElemento extends HttpServlet {
 			
 			try {
 				ctrlElemento.borrarElemento(ele);
-			} catch (Exception e) {
-				e.printStackTrace();
+				listadoElementos = ctrlElemento.consultarTodo();
+				
+				request.setAttribute("listadoElementos", listadoElementos);
+				request.getRequestDispatcher("WEB-INF/ListadoElemento.jsp").forward(request, response);
 			}
+			catch (ExcepcionEspecial ex) {	
+				request.getSession().setAttribute("mensaje", ex.getMessage());
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+			}	
+			catch (IllegalStateException e) {
+				request.getSession().setAttribute("mensaje", "Error General");
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+			}
+			catch (Exception e) {
+				request.getSession().setAttribute("mensaje", "Error Genérico");
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+			}	
 		}
 		
-		ArrayList<Elemento> listadoElementos = new ArrayList<Elemento>();
-		try 
-			{
-			listadoElementos = ctrlElemento.consultarTodo();
-			} 
-		catch (Exception e) 
-			{
-			e.printStackTrace();
-			}
-		request.setAttribute("listadoElementos", listadoElementos);
-		request.getRequestDispatcher("WEB-INF/ListadoElemento.jsp").forward(request, response);
+		
 		}
 }
 

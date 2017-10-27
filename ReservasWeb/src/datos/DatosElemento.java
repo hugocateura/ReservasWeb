@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
 import entidades.*;
+import utilidades.ExcepcionEspecial;
 import utilidades.ExcepcionesEscritorio;
 
 
@@ -125,15 +126,18 @@ public class DatosElemento implements Serializable
 					"DELETE FROM elemento WHERE id=?");
 			pstm.setInt(1, ele.getId());
 			pstm.executeUpdate();
-		} catch (Exception e) {
-			throw e;
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial("Error de integridad, no se puede eliminar el Elemento");
+		} 
+		catch (Exception e) {
+			throw new ExcepcionEspecial("Error Genérico");
 		}
 		
 		try {
 			if(pstm!=null)pstm.close();
 			FactoryConnection.getinstancia().releaseConn();
-		} catch (Exception e) {
-			throw e;
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial("Error de conexión");				
 		}		
 	}
 	
