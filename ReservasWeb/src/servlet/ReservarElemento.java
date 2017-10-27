@@ -48,15 +48,24 @@ public class ReservarElemento extends HttpServlet {
       	if (pers.getCategoria().equals("Online")){     						//Si es online se guarda el user actual
       		      		
       		request.getSession().setAttribute("usuarioReserva", pers);
+      		try {
+				request.setAttribute("listaTipos", ctrlTipoDeElemento.consultarTodo(pers));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
       	}
       	else {
       		String idPersona = request.getParameter("inputId");				//si no es online se guarda el user seleccionado
       		
       		pers.setId(Integer.parseInt(idPersona));
+      		Persona encargado = new Persona();
+      		encargado = (Persona) request.getSession().getAttribute("user");
       		
       		ControladorDePersona ctrlPersona = new ControladorDePersona();
       		
       		try {
+      			request.setAttribute("listaTipos", ctrlTipoDeElemento.consultarTodo(encargado));
 				pers = ctrlPersona.getPersona(pers);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -66,9 +75,7 @@ public class ReservarElemento extends HttpServlet {
       	}
       	
 		try {
-							
-			request.setAttribute("listaTipos", ctrlTipoDeElemento.consultarTodo(pers));
-			
+										
 			request.getRequestDispatcher("WEB-INF/ReservarElementoPaso1.jsp").forward(request, response);
 			
 		} catch (Exception e) {
