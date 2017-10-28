@@ -3869,6 +3869,8 @@ tbody.collapse.show {
 
 .breadcrumb-item {
   float: left;
+  font-size:15px;
+  color:#868e96;
 /*   background: gainsboro;
   border-radius: 5px;
   padding: 5px; */
@@ -3879,10 +3881,9 @@ tbody.collapse.show {
   display: inline-block;
   padding-right: 0.5rem;
   padding-left: 0.5rem;
-  color: #868e96;
-  content: ">";
-  color: #0056b3;
-  font-size: 30px;
+  color:#868e96;
+  content: "/";
+  font-size: 15px;
   text-decoration: none;
 }
 

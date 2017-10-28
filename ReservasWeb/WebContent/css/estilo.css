@@ -171,10 +171,10 @@ ul.menu>li>ul>li:hover>a.link.res{
 }
 
 .iconoInicio{
-	float: right;
-	padding-top: 10px;
+	float: center;
+	padding-top: -10px;
 	cursor: pointer;
-	
+	line-height: 30px;	
 }
 
 .migajaPan{
