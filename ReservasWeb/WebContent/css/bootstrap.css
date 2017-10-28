@@ -3877,6 +3877,12 @@ tbody.collapse.show {
   text-decoration: none;
 }
 
+.breadcrumb-item:hover{
+  
+  color:gainsboro;
+  text-decoration: underline;
+}
+
 .breadcrumb-item + .breadcrumb-item::before {
   display: inline-block;
   padding-right: 0.5rem;
@@ -3897,7 +3903,6 @@ tbody.collapse.show {
 
 .breadcrumb-item.active {
   color: #424242;
-  
 }
 
 .pagination {
