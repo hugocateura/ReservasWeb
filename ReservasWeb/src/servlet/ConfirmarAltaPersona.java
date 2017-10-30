@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Level;
+
 import entidades.Persona;
 import logica.ControladorDePersona;
 import utilidades.ExcepcionEspecial;
@@ -66,21 +70,25 @@ public class ConfirmarAltaPersona extends HttpServlet {
 		ControladorDePersona ctrlPersona = new ControladorDePersona();
 		try {
 			ctrlPersona.crearPersona(nuevaPersona);
+			Logger logger = LogManager.getLogger(getClass());							//Agrego la transaccion al log de TRACE
+			logger.log(Level.INFO,"Alta Exitosa. User: "+nuevaPersona.getUsuario()+" Nombre: "+nuevaPersona.getNombre()+" Apellido: "+nuevaPersona.getApellido());
 		} catch (ExcepcionEspecial e) {
 		
-			e.printStackTrace();
+			request.getSession().setAttribute("mensaje", e.getMessage());
+			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		} catch (Exception e) {
-		
-			e.printStackTrace();
+			request.getSession().setAttribute("mensaje", "Error General");
+			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		
 		request.getSession().setAttribute("nuevoUsuario", nuevaPersona);
 		
 		request.getRequestDispatcher("WEB-INF/ConfirmacionAltaPersona.jsp").forward(request, response);
 		
-		
 		return;
-		//doGet(request, response);
+		
 	}
 
 }

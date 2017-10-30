@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.apache.logging.log4j.Level;
+
 import datos.DatosElemento;
 import datos.DatosReserva;
 import datos.DatosTipoElemento;
@@ -53,17 +55,17 @@ private DatosElemento baseElemento = new DatosElemento();
 				try {
 					baseReserva.agregarReserva(res);
 				} catch (Exception e) {
-					throw new ExcepcionEspecial("Error al agregar la reserva en la BD");
+					throw new ExcepcionEspecial("Error al agregar la reserva en la BD", Level.ERROR);
 				}
 			}
 			else{
 				String mensaje = ("La anticipación máxima permitida es "+res.getTipo().getCantMaxDiasAnticipacion()+"días y ud ingreso "+anticipacion+" días.");
-				throw new ExcepcionEspecial(mensaje);
+				throw new ExcepcionEspecial(mensaje, Level.ERROR);
 				}
 		}
 		else{
 			String mensaje = ("La duración máxima es "+res.getTipo().getLimiteMaxHorasReserva()+" hs y ud. intentó reservar por "+duracion+" hs.");
-			throw new ExcepcionEspecial(mensaje);
+			throw new ExcepcionEspecial(mensaje, Level.ERROR);
 		}
 		
 	};

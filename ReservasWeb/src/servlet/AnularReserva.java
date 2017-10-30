@@ -49,7 +49,7 @@ public class AnularReserva extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//doGet(request, response);
+		return;
 	}
 
 }

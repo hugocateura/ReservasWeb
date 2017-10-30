@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import entidades.TipoElemento;
 import logica.ControladorTipoDeElemento;
 import utilidades.ExcepcionEspecial;
@@ -61,25 +65,24 @@ public class ConfirmarAltaTipoElemento extends HttpServlet {
 		ControladorTipoDeElemento ctrlTipo = new ControladorTipoDeElemento();
 		try {
 			ctrlTipo.crearTipoElemento(tipoEle);
-		} catch (ExcepcionEspecial e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger logger = LogManager.getLogger(getClass());								//Agrego la transaccion al log de TRACE
+			logger.log(Level.INFO,"Alta Tipo Elemento Exitosa. Nombre: "+tipoEle.getNombre());
+		} 
+		catch (ExcepcionEspecial ex) {
+			request.getSession().setAttribute("mensaje", ex.getMessage());
+			request.getSession().setAttribute("error", ex.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+		} 
+		catch (Exception e) {
+			request.getSession().setAttribute("mensaje", "Error Genérico");
+			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		request.getSession().setAttribute("nuevoTipo", tipoEle);
 		
 		request.getRequestDispatcher("WEB-INF/ConfirmacionAltaTipoElemento.jsp").forward(request, response);
-		
-		
-		//response.getWriter().append(user).append(" ").append(pass);
 
-		
-		
-		
-		
-		//doGet(request, response);
+		return;
 	}
 
 }

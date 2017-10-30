@@ -50,7 +50,7 @@ public class ListadoElemento extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//doGet(request, response);
+		return;
 	}
 
 }

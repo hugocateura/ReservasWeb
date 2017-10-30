@@ -3,6 +3,8 @@ package logica;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.Level;
+
 import datos.DatosTipoElemento;
 import entidades.Persona;
 import entidades.TipoElemento;
@@ -17,11 +19,11 @@ private DatosTipoElemento baseTipoElemento = new DatosTipoElemento();
 				baseTipoElemento.agregarTipoElemento(tipoele);
 				}
 			else{
-				throw new ExcepcionEspecial("cantidad máxima de reservas");
+				throw new ExcepcionEspecial("cantidad máxima de reservas", Level.WARN);
 				}
 			}
 		else{
-			throw new ExcepcionEspecial("nombre");
+			throw new ExcepcionEspecial("nombre", Level.WARN);
 			}		
 	};
 	
@@ -42,11 +44,11 @@ private DatosTipoElemento baseTipoElemento = new DatosTipoElemento();
 				baseTipoElemento.modificarTipoElemento(tipoele);
 				}
 			else{
-				throw new ExcepcionEspecial("cantidad máxima de reservas");
+				throw new ExcepcionEspecial("cantidad máxima de reservas", Level.WARN);
 				}
 			}
 		else{
-			throw new ExcepcionEspecial("nombre");
+			throw new ExcepcionEspecial("nombre", Level.WARN);
 			}		
 	};
 	

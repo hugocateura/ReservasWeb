@@ -67,21 +67,26 @@ public class ConfirmarModificacionTipoElemento extends HttpServlet {
 		ControladorTipoDeElemento ctrlTipo = new ControladorTipoDeElemento();
 		try {
 			ctrlTipo.modificarTipoElemento(tipoEle);
-		} catch (ExcepcionEspecial e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} 
+		catch (ExcepcionEspecial ex) {
+			request.getSession().setAttribute("mensaje", ex.getMessage());
+			request.getSession().setAttribute("error", ex.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+		} 
+		catch (Exception e) {
+			request.getSession().setAttribute("mensaje", "Error Genérico");
+			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
-		
 		try {
-								
 			request.setAttribute("listadoTipoElementos", ctrlTipo.consultarTodos());
 			request.getRequestDispatcher("WEB-INF/ListadoTipoElemento.jsp").forward(request, response);
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+		} 
+		catch (Exception e) {
+			request.getSession().setAttribute("mensaje", "Error Genérico");
+			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		return;
 	}

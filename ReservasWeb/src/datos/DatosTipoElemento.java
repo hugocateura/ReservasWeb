@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.Level;
+
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 
 import entidades.*;
@@ -39,7 +41,6 @@ public class DatosTipoElemento implements Serializable
 		} 
 		catch (Exception e) 
 		{
-			e.printStackTrace();
 			throw e;
 		}
 		}
@@ -62,9 +63,9 @@ public class DatosTipoElemento implements Serializable
 						}
 				}
 			} 
-			catch (Exception a) 
+			catch (Exception e) 
 			{
-				throw a;
+				throw e;
 			}
 		}
 		try {
@@ -104,7 +105,6 @@ public class DatosTipoElemento implements Serializable
 		} 
 		catch (Exception e) 
 		{
-			e.printStackTrace();
 			throw e;
 		}
 		
@@ -166,20 +166,20 @@ public class DatosTipoElemento implements Serializable
 			pstm.setInt(1, tipoele.getId());
 			pstm.executeUpdate();
 		}catch (MySQLIntegrityConstraintViolationException exc) {
-			throw new ExcepcionEspecial("Error de integridad, no se puede eliminar el Tipo de Elemento");
+			throw new ExcepcionEspecial("Imposible eliminar, Tipo de Elemento tiene Elementos dependientes", Level.ERROR);
 		}  
 		catch (SQLException exc) {
-			throw new ExcepcionEspecial("Error de integridad, no se puede eliminar el Tipo de Elemento");
+			throw new ExcepcionEspecial("Imposible eliminar, Tipo de Elemento tiene Elementos dependientes", Level.ERROR);
 		} 
 			catch(Exception e){
-				throw new ExcepcionEspecial("Error Genérico");		
+				throw e;		
 		}
 		
 		try {
 			if(pstm!=null)pstm.close();
 			FactoryConnection.getinstancia().releaseConn();
 		} catch (SQLException exc) {
-			throw new ExcepcionEspecial("Error de conexión");			
+			throw new ExcepcionEspecial("Error de conexión", Level.ERROR);			
 		}		
 	}
 	

@@ -64,7 +64,7 @@ public class MisReservas extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		return;
 	}
 
 }

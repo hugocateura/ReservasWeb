@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/estilo.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/menu.css">
     <link rel="icon" href="assets/icono.ico">
     <title>Inicio</title>
 </head>
@@ -44,9 +43,21 @@
 	<%} %>
     
             <div class="col-10 contenido">
-                <h1 class="textoBienvenida"><%=(String) session.getAttribute("mensaje")%></h1>
+                <h1 class="tituloError"><%=(String) session.getAttribute("mensaje")%></h1>
+
+            <div class="contenedor mensaje_error">
+            	<ul class="menu">
+                  <li class="detalle_error">
+                    <a class="link" href="#"> Detalles del error<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
+                       <ul>
+                             
+                              <p><%=(String) session.getAttribute("error")%></p>
+                          
+                        </ul>
+                  </li>
+                </ul>
             </div>
-        </div>
+            
        <div class="row footer">
            <div class="col-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">

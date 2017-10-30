@@ -53,8 +53,9 @@ public class ModificarTipoElemento extends HttpServlet {
 			try {
 				tipoEleaModificar = ctrlTipoElemento.buscarTipoElemento(tipoEle);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				request.getSession().setAttribute("mensaje", "Error Genérico");
+				request.getSession().setAttribute("error", e.getClass().toString());
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
 			request.getSession().setAttribute("tipoEleaModificar", tipoEleaModificar);
 			request.getRequestDispatcher("WEB-INF/ModificarTipoElemento.jsp").forward(request, response);
@@ -64,8 +65,9 @@ public class ModificarTipoElemento extends HttpServlet {
 			try {
 				listadoTipoElementos = ctrlTipoElemento.consultarTodos();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				request.getSession().setAttribute("mensaje", "Error Genérico");
+				request.getSession().setAttribute("error", e.getClass().toString());
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
 			request.setAttribute("listadoTipoElementos", listadoTipoElementos);
 			request.getRequestDispatcher("WEB-INF/ListadoTipoElemento.jsp").forward(request, response);

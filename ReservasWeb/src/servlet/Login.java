@@ -45,7 +45,7 @@ public class Login extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//doGet(request, response);
+		return;
 	}
 
 }

@@ -55,7 +55,9 @@ public class ConfirmarModificacionElemento extends HttpServlet {
 		try {
 			tipoEle = ctrlTipoElemento.buscarTipoElemento(tipoEle);
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getSession().setAttribute("mensaje", "Error Genérico");
+			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 				
 		elementoaModificar.setNombre(nombre);									//SETEO EL NOMBRE
@@ -67,10 +69,14 @@ public class ConfirmarModificacionElemento extends HttpServlet {
 		try {
 			ctrlElemento.modificarElemento(elementoaModificar);
 			request.setAttribute("listadoElementos", ctrlElemento.consultarTodo());
-		} catch (ExcepcionEspecial e) {
-			e.printStackTrace();
+		} catch (ExcepcionEspecial ex) {
+			request.getSession().setAttribute("mensaje", ex.getMessage());
+			request.getSession().setAttribute("error", ex.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getSession().setAttribute("mensaje", "Error Genérico");
+			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		};
 			
 		request.getRequestDispatcher("WEB-INF/ListadoElemento.jsp").forward(request, response);

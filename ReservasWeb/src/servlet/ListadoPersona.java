@@ -52,7 +52,7 @@ public class ListadoPersona extends HttpServlet {
 			e.printStackTrace();
 		}
 		return;
-		//doGet(request, response);
+		
 	}
 
 }

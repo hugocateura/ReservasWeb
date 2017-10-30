@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/estilo.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/menu.css">
     <link rel="icon" href="assets/icono.ico">
     <title>Inicio</title>
 </head>

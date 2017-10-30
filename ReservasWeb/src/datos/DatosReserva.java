@@ -2,8 +2,12 @@ package datos;
 
 import java.sql.*;
 import java.util.Date;
+
+import org.apache.logging.log4j.Level;
+
 import java.util.ArrayList;
 import entidades.*;
+import utilidades.ExcepcionEspecial;
 import utilidades.ExcepcionesEscritorio;
 
 import java.io.Serializable;
@@ -151,9 +155,11 @@ public class DatosReserva implements Serializable
 			pstm = FactoryConnection.getinstancia().getConn().prepareStatement("DELETE FROM reserva WHERE id=?");
 			pstm.setInt(1, res.getId());
 			pstm.executeUpdate();
-		} catch (SQLException e) {
-			throw e;
-		} catch (ExcepcionesEscritorio e) {
+		} 
+		catch (SQLException exc) {
+			throw new ExcepcionEspecial("Error de integridad, no se puede eliminar la Reserva", Level.ERROR);
+		} 
+		catch (ExcepcionesEscritorio e) {
 			throw e;
 		}
 		

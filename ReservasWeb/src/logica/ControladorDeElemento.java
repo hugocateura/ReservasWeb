@@ -3,6 +3,8 @@ package logica;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.Level;
+
 import datos.DatosElemento;
 import datos.DatosTipoElemento;
 import entidades.Elemento;
@@ -27,11 +29,11 @@ public class ControladorDeElemento implements Serializable{
 							baseElemento.agregarElemento(ele);
 						}
 						catch (Exception a){
-							throw new ExcepcionEspecial("tipo de elemento");
+							throw new ExcepcionEspecial("tipo de elemento", Level.ERROR);
 						}
 					}
 				else{
-					throw new ExcepcionEspecial("nombre");
+					throw new ExcepcionEspecial("nombre", Level.ERROR);
 					}		
 						
 			};
@@ -55,11 +57,11 @@ public class ControladorDeElemento implements Serializable{
 								baseElemento.modificarElemento(ele);
 							}
 							catch (Exception a){
-								throw new ExcepcionEspecial("tipo de elemento");
+								throw new ExcepcionEspecial("tipo de elemento", Level.ERROR);
 							}
 						}
 					else{
-						throw new ExcepcionEspecial("nombre");
+						throw new ExcepcionEspecial("nombre", Level.ERROR);
 						}		
 							
 				};

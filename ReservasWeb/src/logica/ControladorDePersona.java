@@ -3,6 +3,8 @@ package logica;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.Level;
+
 import datos.DatosPersona;
 import entidades.Persona;
 import utilidades.ExcepcionEspecial;
@@ -19,15 +21,15 @@ public class ControladorDePersona implements Serializable{
 					basePersona.agregarPersona(pers);
 				}
 				else{
-					throw new ExcepcionEspecial("apellido");
+					throw new ExcepcionEspecial("apellido", Level.WARN);
 				}
 			}
 			else{
-				throw new ExcepcionEspecial("nombre");
+				throw new ExcepcionEspecial("nombre", Level.WARN);
 			}
 		}
 		else{
-			throw new ExcepcionEspecial("DNI");
+			throw new ExcepcionEspecial("DNI", Level.WARN);
 		}	
 		};
 	
@@ -51,15 +53,15 @@ public class ControladorDePersona implements Serializable{
 					basePersona.modificarPersona(pers);
 				}
 				else{
-					throw new ExcepcionEspecial("apellido");
+					throw new ExcepcionEspecial("apellido", Level.WARN);
 				}
 			}
 			else{
-				throw new ExcepcionEspecial("nombre");
+				throw new ExcepcionEspecial("nombre", Level.WARN);
 			}
 		}
 		else{
-			throw new ExcepcionEspecial("DNI");
+			throw new ExcepcionEspecial("DNI", Level.WARN);
 		}	
 		
 	};

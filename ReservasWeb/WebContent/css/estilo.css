@@ -1,3 +1,4 @@
+
 ul.menu>li>a{
 	display: block;
 	text-decoration: none;
@@ -356,7 +357,7 @@ ul.menu>li>ul>li:hover>a.link.res{
     height: auto;
 }
 
-input{
+.input{
     border-radius: 5px;
 }
 
@@ -411,3 +412,58 @@ input{
     width:          1px;   
     float: left;
 }*/
+
+.mensaje_error{
+	
+	width:100%;
+	
+}
+
+.mensaje_error .menu a{
+    list-style: none;
+    width:100%;
+    position:relative; 
+    border-radius: 2px;
+    background: #B33A3A;
+    color: gainsboro;
+    line-height: 30px;
+}
+.mensaje_error .menu a:hover{
+    background: #ce6666;
+    color:white;
+}
+.mensaje_error .menu p{
+	
+    list-style: none;
+    
+    border-radius: 2px;
+    background: #E0E0E0;
+    padding-left: 10px;
+    padding-right: 5px;
+    color: black;
+    height: 35px;
+    line-height: 30px;
+}
+.mensaje_error .icono.derecha{
+  float: right;
+  margin-right: 10px;
+  line-height: 30px;
+}
+.mensaje_error .menu .detalle_error{
+    list-style: none;
+    border-radius: 2px;
+    background: #f5f5f5;
+    padding-left: 10px;
+    padding-right: 5px;
+    color: black;
+    height: 35px;
+    line-height: 30px;
+}
+
+.tituloError{
+   text-align: center;
+    font-size: 20px;
+    color: #BDBDBD;
+    padding: 50px;
+   
+}

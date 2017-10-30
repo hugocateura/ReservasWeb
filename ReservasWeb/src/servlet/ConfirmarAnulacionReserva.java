@@ -54,8 +54,9 @@ public class ConfirmarAnulacionReserva extends HttpServlet {
 			try {
 				listado = ctrlReserva.consultarTodo(); 		//Actualizo el listado de las reservas
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				request.getSession().setAttribute("mensaje", "Error Genérico");
+				request.getSession().setAttribute("error", e.getClass().toString());
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
 			
 			request.setAttribute("listadoReserva", listado);

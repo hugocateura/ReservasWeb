@@ -69,9 +69,10 @@ public class ConfirmarModificacionPersona extends HttpServlet {
 		ControladorDePersona ctrlPersona = new ControladorDePersona();
 		try {
 			ctrlPersona.modificarPersona(persModificar);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		} catch (Exception e) {
+			request.getSession().setAttribute("mensaje", "Error Genérico");
+			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		
 		ArrayList<Persona> listadoPersonas = new ArrayList<Persona>();
@@ -79,8 +80,9 @@ public class ConfirmarModificacionPersona extends HttpServlet {
 		try {
 			listadoPersonas = ctrlPersona.consultarTodo();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			request.getSession().setAttribute("mensaje", "Error Genérico");
+			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		request.setAttribute("listadoPersonas", listadoPersonas);
 		

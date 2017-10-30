@@ -61,7 +61,9 @@ public class ReservarElemento1 extends HttpServlet {
 			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getSession().setAttribute("mensaje", "Error Genérico");
+			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		return;
 	}

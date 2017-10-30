@@ -52,8 +52,9 @@ public class ModificarPersona extends HttpServlet {
 			try {
 				personaModificar = ctrlPersona.getPersona(pers);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				request.getSession().setAttribute("mensaje", "Error Genérico");
+				request.getSession().setAttribute("error", e.getClass().toString());
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
 			request.getSession().setAttribute("personaModificar", personaModificar);
 			request.getRequestDispatcher("WEB-INF/ModificarPersona.jsp").forward(request, response);
@@ -65,7 +66,9 @@ public class ModificarPersona extends HttpServlet {
 				listadoPersonas = ctrlPersona.consultarTodo();
 				request.setAttribute("listadoPersonas", listadoPersonas);
 			} catch (Exception e) {
-				e.printStackTrace();
+				request.getSession().setAttribute("mensaje", "Error Genérico");
+				request.getSession().setAttribute("error", e.getClass().toString());
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
 			
 			request.getRequestDispatcher("WEB-INF/ListadoPersona.jsp").forward(request, response);

@@ -72,7 +72,7 @@ public class EliminarElemento extends HttpServlet {
 			}	
 		}
 		
-		
+		return;
 		}
 }
 

@@ -73,6 +73,7 @@ public class ConfirmarReserva extends HttpServlet {
 			} catch (ExcepcionEspecial ex) {	
 				
 				request.getSession().setAttribute("mensaje", ex.getMessage());
+				request.getSession().setAttribute("error", ex.getClass().toString());
 				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
 			
@@ -81,7 +82,9 @@ public class ConfirmarReserva extends HttpServlet {
 			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getSession().setAttribute("mensaje", "Error Genérico");
+			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		//doGet(request, response);
 		return;

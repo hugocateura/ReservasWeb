@@ -43,7 +43,8 @@ public class AgregarPersona extends HttpServlet {
 			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getSession().setAttribute("mensaje", "Error General");
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		return;
 	}

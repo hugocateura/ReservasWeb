@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import entidades.Elemento;
 import entidades.Persona;
 import entidades.TipoElemento;
@@ -51,8 +55,11 @@ public class ConfirmarAltaElemento extends HttpServlet {
 		tipoEle.setId(Integer.parseInt(idTipo));
 		try {
 			tipoEle = ctrlTipoElemento.buscarTipoElemento(tipoEle);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} 
+		catch (Exception e) {
+			request.getSession().setAttribute("mensaje", "Error General");
+			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 				
 		Elemento nuevoElemento = new Elemento();							//CREO UN NUEVO ELEMENTO
@@ -64,10 +71,18 @@ public class ConfirmarAltaElemento extends HttpServlet {
 		
 		try {
 			ctrlElemento.crearElemento(nuevoElemento);
-		} catch (ExcepcionEspecial e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
+			Logger logger = LogManager.getLogger(getClass());							//Agrego la transaccion al log de TRACE
+			logger.log(Level.INFO,"Alta Exitosa. Nombre: "+nuevoElemento.getNombre()+" Tipo: "+nuevoElemento.getTipo().getNombre());
+		} 
+		catch (ExcepcionEspecial ex) {
+			request.getSession().setAttribute("mensaje", ex.getMessage());
+			request.getSession().setAttribute("error", ex.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+		} 
+		catch (Exception e) {
+			request.getSession().setAttribute("mensaje", "Error General");
+			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 			
 		request.getSession().setAttribute("nuevoElemento", nuevoElemento);

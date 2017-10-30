@@ -3,6 +3,9 @@ package datos;
 import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
+
+import org.apache.logging.log4j.Level;
+
 import entidades.*;
 import utilidades.ExcepcionEspecial;
 import utilidades.ExcepcionesEscritorio;
@@ -127,17 +130,17 @@ public class DatosElemento implements Serializable
 			pstm.setInt(1, ele.getId());
 			pstm.executeUpdate();
 		} catch (SQLException exc) {
-			throw new ExcepcionEspecial("Error de integridad, no se puede eliminar el Elemento");
+			throw new ExcepcionEspecial("Imposible eliminar, existen reservas del Elemento", Level.ERROR);
 		} 
 		catch (Exception e) {
-			throw new ExcepcionEspecial("Error Genérico");
+			throw e;
 		}
 		
 		try {
 			if(pstm!=null)pstm.close();
 			FactoryConnection.getinstancia().releaseConn();
 		} catch (SQLException exc) {
-			throw new ExcepcionEspecial("Error de conexión");				
+			throw new ExcepcionEspecial("Error de conexión", Level.ERROR);				
 		}		
 	}
 	

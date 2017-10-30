@@ -58,8 +58,8 @@ public class CancelarReserva extends HttpServlet {
 			try {
 				listado = ctrlReserva.reservasPendientesPersona(pers);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				request.getSession().setAttribute("mensaje", "Error General");
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
 			
 			request.setAttribute("listadoMisReservas", listado);
@@ -69,7 +69,8 @@ public class CancelarReserva extends HttpServlet {
 			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getSession().setAttribute("mensaje", "Error General");
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		return;
 	}

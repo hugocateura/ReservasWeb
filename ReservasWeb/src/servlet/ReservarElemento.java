@@ -68,7 +68,9 @@ public class ReservarElemento extends HttpServlet {
       			request.setAttribute("listaTipos", ctrlTipoDeElemento.consultarTodo(encargado));
 				pers = ctrlPersona.getPersona(pers);
 			} catch (Exception e) {
-				e.printStackTrace();
+				request.getSession().setAttribute("mensaje", "Error Genérico");
+				request.getSession().setAttribute("error", e.getClass().toString());
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
       		request.getSession().setAttribute("usuarioReserva", pers);
       		      		
@@ -79,7 +81,9 @@ public class ReservarElemento extends HttpServlet {
 			request.getRequestDispatcher("WEB-INF/ReservarElementoPaso1.jsp").forward(request, response);
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getSession().setAttribute("mensaje", "Error Genérico");
+			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		return;
 	}

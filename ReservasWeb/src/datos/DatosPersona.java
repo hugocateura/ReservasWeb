@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.Level;
+
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 
 import entidades.*;
@@ -148,20 +150,20 @@ public class DatosPersona implements Serializable
 			pstm.executeUpdate();
 		}
 		catch (MySQLIntegrityConstraintViolationException exc) {
-			throw new ExcepcionEspecial("Error de integridad, no se puede eliminar la Persona");
+			throw new ExcepcionEspecial("Imposible eliminar,  la Persona posee reservas", Level.ERROR);
 		}  
 		catch (SQLException exc) {
-			throw new ExcepcionEspecial("Error de integridad, no se puede eliminar la Persona");
+			throw new ExcepcionEspecial("Imposible eliminar,  la Persona posee reservas", Level.ERROR);
 		} 
 		catch(Exception e){
-			throw new ExcepcionEspecial("Error Genérico");		
+			throw e;		
 		}
 		
 		try {
 			if(pstm!=null)pstm.close();
 			FactoryConnection.getinstancia().releaseConn();
 		} catch (SQLException exc) {
-			throw new ExcepcionEspecial("Error de conexión");			
+			throw new ExcepcionEspecial("Error de conexión", Level.ERROR);			
 		}		
 	}
 	
