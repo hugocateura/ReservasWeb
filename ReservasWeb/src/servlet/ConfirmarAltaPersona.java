@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Level;
 
 import entidades.Persona;
 import logica.ControladorDePersona;
+import utilidades.Emailer;
 import utilidades.ExcepcionEspecial;
 
 /**
@@ -72,6 +73,8 @@ public class ConfirmarAltaPersona extends HttpServlet {
 			ctrlPersona.crearPersona(nuevaPersona);
 			Logger logger = LogManager.getLogger(getClass());							//Agrego la transaccion al log de TRACE
 			logger.log(Level.INFO,"Alta Exitosa. User: "+nuevaPersona.getUsuario()+" Nombre: "+nuevaPersona.getNombre()+" Apellido: "+nuevaPersona.getApellido());
+			String contenidoMail = ("Nombre: "+nuevaPersona.getNombre()+"/nApellido: "+nuevaPersona.getApellido());
+			Emailer.getInstance().send("adrianmeca@gmail.com","Alta de nuevo usuario",contenidoMail);
 		} catch (ExcepcionEspecial e) {
 		
 			request.getSession().setAttribute("mensaje", e.getMessage());
