@@ -53,7 +53,7 @@ public class ModificarPersona extends HttpServlet {
 				personaModificar = ctrlPersona.getPersona(pers);
 			} catch (Exception e) {
 				request.getSession().setAttribute("mensaje", "Error Genérico");
-				request.getSession().setAttribute("error", e.getClass().toString());
+				request.getSession().setAttribute("error", e.getClass().getSimpleName());
 				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
 			request.getSession().setAttribute("personaModificar", personaModificar);
@@ -67,7 +67,7 @@ public class ModificarPersona extends HttpServlet {
 				request.setAttribute("listadoPersonas", listadoPersonas);
 			} catch (Exception e) {
 				request.getSession().setAttribute("mensaje", "Error Genérico");
-				request.getSession().setAttribute("error", e.getClass().toString());
+				request.getSession().setAttribute("error", e.getClass().getSimpleName());
 				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
 			

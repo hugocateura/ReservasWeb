@@ -75,11 +75,11 @@ public class ConfirmarAltaPersona extends HttpServlet {
 		} catch (ExcepcionEspecial e) {
 		
 			request.getSession().setAttribute("mensaje", e.getMessage());
-			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
 			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.getSession().setAttribute("mensaje", "Error General");
-			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
 			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		

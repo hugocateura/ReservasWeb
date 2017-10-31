@@ -44,14 +44,11 @@ try {
 			ControladorDePersona ctrlPersona = new ControladorDePersona();
 			ArrayList<Persona> listadoPersonas = ctrlPersona.consultarUsuariosExternos();
 			request.setAttribute("listadoPersonas", listadoPersonas);
-
 			request.getRequestDispatcher("WEB-INF/SeleccionarUsuarioReserva.jsp").forward(request, response);
-			//response.getWriter().append(user).append(" ").append(pass);
-			
 			
 		} catch (Exception e) {
 			request.getSession().setAttribute("mensaje", "Error Genérico");
-			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
 			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		return;

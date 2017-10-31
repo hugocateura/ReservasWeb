@@ -414,8 +414,9 @@ ul.menu>li>ul>li:hover>a.link.res{
 }*/
 
 .mensaje_error{
-	
-	width:100%;
+	display: inline-block;
+	margin: 0px 30%;
+	width:35%;
 	
 }
 

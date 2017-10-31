@@ -73,20 +73,15 @@ public class ConfirmarReserva extends HttpServlet {
 			} catch (ExcepcionEspecial ex) {	
 				
 				request.getSession().setAttribute("mensaje", ex.getMessage());
-				request.getSession().setAttribute("error", ex.getClass().toString());
+				request.getSession().setAttribute("error", ex.getClass().getSimpleName());
 				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
 			
-			
-			//response.getWriter().append(user).append(" ").append(pass);
-			
-			
 		} catch (Exception e) {
 			request.getSession().setAttribute("mensaje", "Error Genérico");
-			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
 			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
-		//doGet(request, response);
 		return;
 	}
 

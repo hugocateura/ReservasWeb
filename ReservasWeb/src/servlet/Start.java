@@ -50,13 +50,11 @@ public class Start extends HttpServlet {
 			
 			request.getSession().setAttribute("user", pers); //crea o recupera una sesion si ya esta creada
 			
-			request.getRequestDispatcher("WEB-INF/Principal.jsp").forward(request, response);
-			//response.getWriter().append(user).append(" ").append(pass);
-			
+			request.getRequestDispatcher("WEB-INF/Principal.jsp").forward(request, response);			
 			
 		} catch (Exception e) {
 			request.getSession().setAttribute("mensaje", "Error Genérico");
-			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
 			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		return;

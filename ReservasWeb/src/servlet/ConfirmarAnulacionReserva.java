@@ -55,7 +55,7 @@ public class ConfirmarAnulacionReserva extends HttpServlet {
 				listado = ctrlReserva.consultarTodo(); 		//Actualizo el listado de las reservas
 			} catch (Exception e) {
 				request.getSession().setAttribute("mensaje", "Error Genérico");
-				request.getSession().setAttribute("error", e.getClass().toString());
+				request.getSession().setAttribute("error", e.getClass().getSimpleName());
 				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
 			
@@ -64,7 +64,9 @@ public class ConfirmarAnulacionReserva extends HttpServlet {
 			request.getRequestDispatcher("WEB-INF/AnularReserva.jsp").forward(request, response);
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getSession().setAttribute("mensaje", "Error Genérico");
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		return;
 	}

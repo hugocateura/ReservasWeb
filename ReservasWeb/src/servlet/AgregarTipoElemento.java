@@ -42,6 +42,7 @@ public class AgregarTipoElemento extends HttpServlet {
 			
 		} catch (Exception e) {
 			request.getSession().setAttribute("mensaje", "Error General");
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
 			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		return;

@@ -52,8 +52,9 @@ public class MisReservas extends HttpServlet {
 			try {
 				listado = ctrlReserva.reservasPendientesPersona(pers);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				request.getSession().setAttribute("mensaje", "Error Genérico");
+				request.getSession().setAttribute("error", e.getClass().getSimpleName());
+				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
 			
 			request.setAttribute("listadoMisReservas", listado);
@@ -62,7 +63,9 @@ public class MisReservas extends HttpServlet {
 						
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getSession().setAttribute("mensaje", "Error Genérico");
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		return;
 	}

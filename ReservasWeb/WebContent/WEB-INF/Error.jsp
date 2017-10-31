@@ -44,7 +44,7 @@
     
             <div class="col-10 contenido">
                 <h1 class="tituloError"><%=(String) session.getAttribute("mensaje")%></h1>
-
+			
             <div class="contenedor mensaje_error">
             	<ul class="menu">
                   <li class="detalle_error">

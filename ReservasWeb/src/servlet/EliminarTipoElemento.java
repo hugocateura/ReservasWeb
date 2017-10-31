@@ -66,7 +66,6 @@ public class EliminarTipoElemento extends HttpServlet {
 			catch (ExcepcionEspecial ex) {	
 				request.getSession().setAttribute("mensaje", ex.getMessage());
 				request.getSession().setAttribute("error", ex.getClass().getSimpleName());
-				
 				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}	
 			catch (IllegalStateException e) {

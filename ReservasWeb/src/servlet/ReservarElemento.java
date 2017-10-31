@@ -69,7 +69,7 @@ public class ReservarElemento extends HttpServlet {
 				pers = ctrlPersona.getPersona(pers);
 			} catch (Exception e) {
 				request.getSession().setAttribute("mensaje", "Error Genérico");
-				request.getSession().setAttribute("error", e.getClass().toString());
+				request.getSession().setAttribute("error", e.getClass().getSimpleName());
 				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
       		request.getSession().setAttribute("usuarioReserva", pers);
@@ -82,7 +82,7 @@ public class ReservarElemento extends HttpServlet {
 			
 		} catch (Exception e) {
 			request.getSession().setAttribute("mensaje", "Error Genérico");
-			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
 			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		return;

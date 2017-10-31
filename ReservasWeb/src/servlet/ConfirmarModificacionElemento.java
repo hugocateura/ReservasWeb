@@ -56,7 +56,7 @@ public class ConfirmarModificacionElemento extends HttpServlet {
 			tipoEle = ctrlTipoElemento.buscarTipoElemento(tipoEle);
 		} catch (Exception e) {
 			request.getSession().setAttribute("mensaje", "Error Genérico");
-			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
 			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 				
@@ -71,11 +71,11 @@ public class ConfirmarModificacionElemento extends HttpServlet {
 			request.setAttribute("listadoElementos", ctrlElemento.consultarTodo());
 		} catch (ExcepcionEspecial ex) {
 			request.getSession().setAttribute("mensaje", ex.getMessage());
-			request.getSession().setAttribute("error", ex.getClass().toString());
+			request.getSession().setAttribute("error", ex.getClass().getSimpleName());
 			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.getSession().setAttribute("mensaje", "Error Genérico");
-			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
 			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		};
 			

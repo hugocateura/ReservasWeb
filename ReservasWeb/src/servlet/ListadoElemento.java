@@ -41,14 +41,12 @@ public class ListadoElemento extends HttpServlet {
 			
 			ControladorDeElemento ctrlElemento = new ControladorDeElemento();
 			request.setAttribute("listadoElementos", ctrlElemento.consultarTodo());
-			
-
 			request.getRequestDispatcher("WEB-INF/ListadoElemento.jsp").forward(request, response);
-			//response.getWriter().append(user).append(" ").append(pass);
-			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getSession().setAttribute("mensaje", "Error Genérico");
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		return;
 	}

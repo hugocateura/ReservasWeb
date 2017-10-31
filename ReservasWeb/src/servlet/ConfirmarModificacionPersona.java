@@ -71,7 +71,7 @@ public class ConfirmarModificacionPersona extends HttpServlet {
 			ctrlPersona.modificarPersona(persModificar);
 		} catch (Exception e) {
 			request.getSession().setAttribute("mensaje", "Error Genérico");
-			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
 			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		
@@ -81,7 +81,7 @@ public class ConfirmarModificacionPersona extends HttpServlet {
 			listadoPersonas = ctrlPersona.consultarTodo();
 		} catch (Exception e) {
 			request.getSession().setAttribute("mensaje", "Error Genérico");
-			request.getSession().setAttribute("error", e.getClass().toString());
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
 			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		request.setAttribute("listadoPersonas", listadoPersonas);

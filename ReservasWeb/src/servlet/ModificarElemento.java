@@ -52,7 +52,7 @@ public class ModificarElemento extends HttpServlet {
 				elementoaModificar = ctrlElemento.buscarElemento(elementoaModificar);
 			} catch (Exception e) {
 				request.getSession().setAttribute("mensaje", "Error Genérico");
-				request.getSession().setAttribute("error", e.getClass().toString());
+				request.getSession().setAttribute("error", e.getClass().getSimpleName());
 				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
 			request.getSession().setAttribute("elementoaModificar", elementoaModificar);
@@ -66,7 +66,7 @@ public class ModificarElemento extends HttpServlet {
 				request.setAttribute("listadoElementos", listadoElementos);
 			} catch (Exception e) {
 				request.getSession().setAttribute("mensaje", "Error Genérico");
-				request.getSession().setAttribute("error", e.getClass().toString());
+				request.getSession().setAttribute("error", e.getClass().getSimpleName());
 				request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 			}
 			

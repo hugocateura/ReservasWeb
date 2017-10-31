@@ -47,7 +47,9 @@ public class AnularReserva extends HttpServlet {
 			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getSession().setAttribute("mensaje", "Error General");
+			request.getSession().setAttribute("error", e.getClass().getSimpleName());
+			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
 		}
 		return;
 	}
