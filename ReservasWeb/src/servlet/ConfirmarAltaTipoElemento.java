@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import entidades.TipoElemento;
 import logica.ControladorTipoDeElemento;
+import utilidades.Emailer;
 import utilidades.ExcepcionEspecial;
 
 /**
@@ -67,6 +68,8 @@ public class ConfirmarAltaTipoElemento extends HttpServlet {
 			ctrlTipo.crearTipoElemento(tipoEle);
 			Logger logger = LogManager.getLogger(getClass());								//Agrego la transaccion al log de TRACE
 			logger.log(Level.INFO,"Alta Tipo Elemento Exitosa. Nombre: "+tipoEle.getNombre());
+			String contenidoMail = ("Alta exitosa de:\nNombre: "+tipoEle.getNombre()+"\nCant. Max. Reservas: "+tipoEle.getCant_max_reservas()+"\nMax. Anticipacion: "+tipoEle.getCantMaxDiasAnticipacion()+"\nMax. Duracion: "+tipoEle.getLimiteMaxHorasReserva()+"\nReserva Encargado: "+tipoEle.getReservaEncargado());
+			Emailer.getInstance().send("tpfinaljava2017@gmail.com","Alta de nuevo Tipo de Elemento",contenidoMail);
 		} 
 		catch (ExcepcionEspecial ex) {
 			request.getSession().setAttribute("mensaje", ex.getMessage());
