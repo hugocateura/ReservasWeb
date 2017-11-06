@@ -1356,9 +1356,10 @@ height: auto;
   border-bottom-width: 2px;
 }
 
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05);
-}
+/*TABLA. ESTA CLASE SIRVE PARA INTERCALAR LOS COLORES EN UNA TABLA. SE DESACTIVO PARA PODER PINTAR TODA LA D 
+/* .table-striped tbody tr:nth-of-type(odd) {
+  background-color: green;
+} */
 
 .table-hover tbody tr:hover {
   background-color: rgba(0, 0, 0, 0.075);
@@ -3871,16 +3872,20 @@ tbody.collapse.show {
   float: left;
   font-size:15px;
   color:#868e96;
+  text-decoration: none;
 /*   background: gainsboro;
   border-radius: 5px;
   padding: 5px; */
-  text-decoration: none;
+  
 }
 
+
 .breadcrumb-item:hover{
-  
+/*   
   color:gainsboro;
-  text-decoration: underline;
+  text-decoration: underline; */
+  text-decoration: none;
+  cursor: default;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {

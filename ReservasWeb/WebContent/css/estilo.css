@@ -1,4 +1,4 @@
-
+/* MENU */
 ul.menu>li>a{
 	display: block;
 	text-decoration: none;
@@ -53,7 +53,23 @@ ul.menu>li>ul>li:hover>a.link.res{
     cursor:pointer;
 }
 
+.menu{
+    padding: 0px;
+    margin: 0px;
+    border-radius: 5px;
+}
 
+.menu a{
+    border-radius: 2px;
+    background: #2196F3;
+    padding-left: 10px;
+    padding-right: 5px;
+    color: gainsboro;
+    height: 35px;
+    line-height: 30px;
+}
+
+/* LOGIN */
 .login{
 	border-radius: 10px;
     width: 500px;
@@ -65,6 +81,22 @@ ul.menu>li>ul>li:hover>a.link.res{
     border-color: gainsboro;
     margin-top: 130px;
 }
+
+.login h2{
+    text-align: center;
+    color: #868e96;
+}
+
+.login button{
+    margin-top: 15px;
+}
+
+.login input{
+    margin-top: 5px;
+}
+
+
+/* BOTONES */
 
 .btnEliminar:HOVER{
 	background: red;
@@ -83,18 +115,6 @@ ul.menu>li>ul>li:hover>a.link.res{
   width: 35px;
 }
 
-.login h2{
-    text-align: center;
-    color: #868e96;
-}
-
-.login button{
-    margin-top: 15px;
-}
-
-.login input{
-    margin-top: 5px;
-}
 
 .link{
     text-decoration: none;
@@ -105,21 +125,8 @@ ul.menu>li>ul>li:hover>a.link.res{
     text-align: left;
 }
 
-.menu{
-    padding: 0px;
-    margin: 0px;
-    border-radius: 5px;
-}
 
-.menu a{
-    border-radius: 2px;
-    background: #2196F3;
-    padding-left: 10px;
-    padding-right: 5px;
-    color: gainsboro;
-    height: 35px;
-    line-height: 30px;
-}
+/* CONTENEDOR */
 
 .contenedor{
     width: 100%;
@@ -144,7 +151,6 @@ ul.menu>li>ul>li:hover>a.link.res{
     padding: 0px;
     margin: 0px;
 }
-
 
 
 .contenedor .menu .icono{
@@ -178,6 +184,15 @@ ul.menu>li>ul>li:hover>a.link.res{
 	line-height: 30px;	
 }
 
+
+.contenedor .menu ul{
+/*     display: none; */
+    
+}
+
+
+/* MIGAJA DE PAN */
+
 .migajaPan{
 	background: #2196F3;
 	border-radius: 5px;
@@ -186,10 +201,6 @@ ul.menu>li>ul>li:hover>a.link.res{
 }
 
 
-.contenedor .menu ul{
-/*     display: none; */
-    
-}
 
 /* SUBMENU */
 .contenedor .menu ul li a{
@@ -206,6 +217,8 @@ ul.menu>li>ul>li:hover>a.link.res{
     padding-left: 25px;
 }
 
+
+/* CAJA */
 .caja.izquierda{
     width: 150px;
     float: left;
@@ -286,6 +299,7 @@ ul.menu>li>ul>li:hover>a.link.res{
     line-height: 5px;
     float: left;
 }
+
 
 /* BIENVENIDA */
 
@@ -373,45 +387,7 @@ ul.menu>li>ul>li:hover>a.link.res{
 }
 
 
-/* TABLA
-.Table {  
-   display: table;  
-   margin: 0 auto;
-   
-}  
-  
-.Title {  
-   display: table-caption;  
-   text-align: center;  
-   font-weight: bold;  
-   font-size: larger;  
-}  
-  
-.Heading {  
-  display: table-row;  
-  font-weight: bold;  
-  text-align: center;  
-}  
-  
-.Row{  
-  display: table-row;  
-}  
-  
-.Cell{  
-  display: table-cell;  
-  border: solid;  
-  border-width: thin;  
-  padding-left: 5px;  
-  padding-right: 5px;  
- }
-
-.hrVertical{ 
-    border:         none;
-    border-left:    1px solid;
-    height:         100vh;
-    width:          1px;   
-    float: left;
-}*/
+/* MENSAJES */
 
 .mensaje_error{
 	display: inline-block;
@@ -468,3 +444,44 @@ ul.menu>li>ul>li:hover>a.link.res{
     padding: 50px;
    
 }
+
+
+/* TABLA */
+#content {
+   position:absolute;
+   min-height:50%;
+   width:80%;
+   top:20%;
+   left:5%;
+ }
+ 
+.selected{
+   cursor:pointer;
+   background:#BDBDBD;
+}
+
+.selected:hover{
+   background:rgba(0, 0, 0, 0.5);
+   color:white;
+}
+
+.table-striped tbody tr:hover{
+ 	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.table-striped tbody tr:seleccionada {
+ 	background-color: rgba(0, 0, 0, 0.5);
+}
+ 
+ .seleccionada{
+ color:white;
+ background:rgba(0, 0, 0, 0.5);
+ font-weight: bolder;
+ 
+}
+
+.seleccionada:hover{
+   background-color:#0585C0;
+   color:white;
+}
+
