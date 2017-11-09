@@ -22,36 +22,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="icon" href="assets/icono.ico">   
     
-    <style>
-    #content {
-    position:absolute;
-    min-height:50%;
-    width:80%;
-    top:20%;
-    left:5%;
-    }
-    .selected{
-    cursor:pointer;
-    background:rgba(0, 0, 0, 0.2);
-    }
-    .selected:hover{
-    background-color:#0585c0;
-    color:white;
-    }
-	.table-striped tbody tr:hover{
-  	background-color: rgba(0, 0, 0, 0.5);
-  	}
-  	.table-striped tbody tr:seleccionada {
-  	background-color: rgba(0, 0, 0, 0.5);
-  	}
-  	.seleccionada{
-    color:red;
- 	}
-    .seleccionada:hover{
-    background-color:#05858c0;
-    color:white;
- 	}
-    </style>
     <script type="text/javascript">
     	$(document).ready(function(){
     		

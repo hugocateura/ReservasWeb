@@ -28,7 +28,12 @@
     	function cantFilas(){
     		cont=document.getElementById("tabla").rows.length;
     		}
-       	function seleccionar(id_fila){
+    	function agregar(){
+    		cont++;
+    		var fila='<tr class="selected" id="fila'+cont+'" onclick="seleccionar(this.id);"><td>'+cont+'</td>valor por defecto<td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
+    		$('#tabla').append(fila)
+   		}
+    	function seleccionar(id_fila){
     		var i;
     		for (i=0;i<=cont;i++){					//Deselecciona las demas filas
     			if($('#'+i).hasClass('seleccionada')){
