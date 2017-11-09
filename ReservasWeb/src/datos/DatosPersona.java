@@ -45,9 +45,9 @@ public class DatosPersona implements Serializable
 			throw e;
 		}
 		
-		catch (ExcepcionesEscritorio excep) 
+		catch (ExcepcionesEscritorio ex) 
 		{
-			throw excep;
+			throw ex;
 		}
 		
 		try {
@@ -56,7 +56,7 @@ public class DatosPersona implements Serializable
 			FactoryConnection.getinstancia().releaseConn();
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+			throw e;
 		}
 		
 		return pers;
