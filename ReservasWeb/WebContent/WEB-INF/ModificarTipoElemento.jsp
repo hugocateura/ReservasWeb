@@ -38,7 +38,7 @@
                       <a class="breadcrumb-item" href="Start"><i class="iconoInicio fa fa-home" aria-hidden="true"></i></a>
                       <a class="breadcrumb-item" href="#"><%=((Persona) session.getAttribute("user")).getCategoria()%></a>
                       <a class="breadcrumb-item" href="#">Tipo de Elemento</a>
-                      <span class="breadcrumb-item active">Agregar</span>
+                      <span class="breadcrumb-item active">Modificar</span>
                   </div>
                   <div class="caja derecha">
                       <p><i class="icono izquierda fa fa-user" aria-hidden="true"></i><%=(((Persona)session.getAttribute("user")).getNombre()+" as "+((Persona)session.getAttribute("user")).getUsuario())%></p>

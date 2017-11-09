@@ -465,18 +465,9 @@ ul.menu>li>ul>li:hover>a.link.res{
    color:white;
 }
 
-.table-striped tbody tr:hover{
- 	background-color: rgba(0, 0, 0, 0.5);
-}
-
-.table-striped tbody tr:seleccionada {
- 	background-color: rgba(0, 0, 0, 0.5);
-}
- 
  .seleccionada{
  color:white;
- background:rgba(0, 0, 0, 0.5);
- font-weight: bolder;
+ background:#0585C0;
  
 }
 
