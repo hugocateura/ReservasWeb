@@ -137,5 +137,23 @@ private DatosElemento baseElemento = new DatosElemento();
 		
 		return listado;
 	}
-
+	
+	public Reserva getReserva(Reserva res) throws Exception{
+		
+		res = baseReserva.getReserva(res);
+		Persona per = new Persona();
+		ControladorDePersona ctrlPers = new ControladorDePersona();
+		per.setId(res.getPersona().getId());
+		res.setPersona(ctrlPers.getPersona(per));
+		
+		Elemento ele = new Elemento();
+		ControladorDeElemento ctrlEle = new ControladorDeElemento();
+		ele.setId(res.getElemento().getId());
+		res.setElemento(ctrlEle.buscarElemento(ele));
+		
+		res.setTipo(ele.getTipo());		
+		
+		return res;
+		
+	}
 }

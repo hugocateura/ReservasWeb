@@ -286,7 +286,49 @@ public String getHoraActual() throws Exception
 	
 	return fechaActual;
 }
+public Reserva getReserva(Reserva res) throws Exception{
+	
+	PreparedStatement pstm=null;
+	ResultSet rs=null;
+	Reserva reserva = null;
+	
+	try {
+		pstm = FactoryConnection.getinstancia().getConn().prepareStatement("SELECT * FROM reserva where id=?");
+		pstm.setInt(1, res.getId());
+		rs = pstm.executeQuery();
+		if(rs!=null){
+			while(rs.next()){
+				reserva = new Reserva();
+				reserva.setId(rs.getInt("id"));
+				reserva.setElemento(new Elemento());
+				reserva.getElemento().setId(rs.getInt("elemento"));
+				reserva.setTipo(new TipoElemento());
+				reserva.getTipo().setId(rs.getInt("tipo"));
+				reserva.setPersona(new Persona());
+				reserva.getPersona().setId(rs.getInt("persona"));
+				reserva.setFechaHoraDesde(rs.getString("fechaHoraDesde"));
+				reserva.setFechaHoraHasta(rs.getString("fechaHoraHasta"));
+				reserva.setObservacion(rs.getString("observacion"));
+				reserva.setEstado(rs.getString("estado"));
+			}	
+		}
 
+	} catch (SQLException e) {
+		throw e;
+	} catch (ExcepcionesEscritorio e) {
+		throw e;
+	}
+	
+	try {
+		if(rs!=null)rs.close();
+		if(pstm!=null)pstm.close();
+		FactoryConnection.getinstancia().releaseConn();
+	} catch (SQLException e) {
+		throw e;
+	}
+	return reserva;	
+
+}
 	
 }
 

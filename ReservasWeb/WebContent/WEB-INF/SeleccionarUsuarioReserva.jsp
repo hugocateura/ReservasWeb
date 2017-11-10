@@ -19,7 +19,7 @@
     
     <script type="text/javascript">
     	$(document).ready(function(){
-    		
+    	
     	});
     	var cont=0;
     	var id_fila_selected;

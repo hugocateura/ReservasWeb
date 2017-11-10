@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import entidades.Persona;
 import entidades.Reserva;
 import logica.ControladorDeReserva;
+import utilidades.Emailer;
 
 /**
  * Servlet implementation class ConfirmarAnulacionReserva
@@ -48,6 +49,10 @@ public class ConfirmarAnulacionReserva extends HttpServlet {
 			
 			ControladorDeReserva ctrlReserva = new ControladorDeReserva(); 					//Instancio controladorReserva
 			ctrlReserva.cancelarReserva(reservaAnular);
+			reservaAnular = ctrlReserva.getReserva(reservaAnular);
+			
+			String contenidoMail = ("Reserva:\nNombre: "+reservaAnular.getPersona().getNombre()+"\nApellido: "+reservaAnular.getPersona().getApellido()+"\nUsuario: "+reservaAnular.getPersona().getUsuario()+"\nElemento: "+reservaAnular.getElemento().getNombre()+"\nFecha Desde: "+reservaAnular.getFechaHoraDesde()+"\nFecha Hasta: "+reservaAnular.getFechaHoraHasta());
+			Emailer.getInstance().send("tpfinaljava2017@gmail.com","Anulación de Reserva de Elemento",contenidoMail);
 					
 			ArrayList<Reserva> listado = new ArrayList<Reserva>(); 
 			

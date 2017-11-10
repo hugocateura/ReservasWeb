@@ -245,6 +245,41 @@ public class DatosElemento implements Serializable
 		return elemento;
 	}
 	
+	public Elemento getElemento(Elemento ele) throws Exception
+	{
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		Elemento elemento=null;
 		
+		try {
+			pstm = FactoryConnection.getinstancia().getConn().prepareStatement("SELECT * FROM elemento WHERE id=?");
+			pstm.setInt(1, ele.getId());
+			rs=pstm.executeQuery();
+			if(rs!=null)
+			{	rs.next();
+					elemento=new Elemento();
+					elemento.setId(rs.getInt("id"));
+					elemento.setNombre(rs.getString("nombre"));
+					TipoElemento tipo = new TipoElemento();
+					tipo.setId(rs.getInt("tipo"));
+					elemento.setTipo(tipo);				
+			}
+			
+		} catch (SQLException e) {
+			throw e;
+		} catch (ExcepcionesEscritorio e) {
+			throw e;
+		}
+				
+		try {
+			if(pstm!=null)pstm.close();
+			if(rs!=null)rs.close();
+			FactoryConnection.getinstancia().releaseConn();
+		} catch (Exception e) {
+			throw e;
+		}
+		
+		return elemento;
+	}	
 }
 

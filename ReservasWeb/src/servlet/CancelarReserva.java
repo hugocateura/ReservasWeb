@@ -14,6 +14,7 @@ import entidades.Reserva;
 import entidades.TipoElemento;
 import logica.ControladorDeReserva;
 import logica.ControladorTipoDeElemento;
+import utilidades.Emailer;
 
 /**
  * Servlet implementation class CancelarReserva
@@ -49,8 +50,13 @@ public class CancelarReserva extends HttpServlet {
 			reservaAEliminar.setId(Integer.parseInt(idReserva));
 			
 			ControladorDeReserva ctrlReserva = new ControladorDeReserva(); 					//Instancio controladorReserva
-			ctrlReserva.borrarReserva(reservaAEliminar);
 			
+			reservaAEliminar = ctrlReserva.getReserva(reservaAEliminar);
+						
+			String contenidoMail = ("Reserva:\nNombre: "+reservaAEliminar.getPersona().getNombre()+"\nApellido: "+reservaAEliminar.getPersona().getApellido()+"\nUsuario: "+reservaAEliminar.getPersona().getUsuario()+"\nElemento: "+reservaAEliminar.getElemento().getNombre()+"\nFecha Desde: "+reservaAEliminar.getFechaHoraDesde()+"\nFecha Hasta: "+reservaAEliminar.getFechaHoraHasta());
+			Emailer.getInstance().send("tpfinaljava2017@gmail.com","Cancelacion de Reserva de Elemento",contenidoMail);
+			
+			ctrlReserva.borrarReserva(reservaAEliminar);
 			
 			Persona pers = (Persona)request.getSession().getAttribute("user");			//Actualizo el listado de las reservas		
 			ArrayList<Reserva> listado = new ArrayList<Reserva>(); 
