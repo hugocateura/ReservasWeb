@@ -27,7 +27,6 @@
     	
     	function cantFilas(){
     		cont=document.getElementById("tabla").rows.length;
-    		alert("HOLA");
     		}
     	function agregar(){
     		cont++;
