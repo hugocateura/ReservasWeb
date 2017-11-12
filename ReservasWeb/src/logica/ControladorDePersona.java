@@ -98,5 +98,7 @@ public class ControladorDePersona implements Serializable{
 				
 		return basePersona.buscarUsuariosExternos();
 	}
+		
+	
 
 }

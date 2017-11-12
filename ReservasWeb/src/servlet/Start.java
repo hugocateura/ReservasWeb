@@ -45,13 +45,15 @@ public class Start extends HttpServlet {
 			per.setContrasena(pass);
 			
 			ControladorDePersona ctrlPersona= new ControladorDePersona();
-			
 			Persona pers=ctrlPersona.buscarPersonaPorUsuyClave(per);
 			
-			request.getSession().setAttribute("user", pers); //crea o recupera una sesion si ya esta creada
-			
-			request.getRequestDispatcher("WEB-INF/Principal.jsp").forward(request, response);			
-			
+			if(pers.isHabilitado()){
+				request.getSession().setAttribute("user", pers); //crea o recupera una sesion si ya esta creada			
+				request.getRequestDispatcher("WEB-INF/Principal.jsp").forward(request, response);							
+			}else {			
+				request.getRequestDispatcher("index.html").forward(request, response);				
+			}
+						
 		} catch (Exception e) {
 			request.getSession().setAttribute("mensaje", "Error Genérico");
 			request.getSession().setAttribute("error", e.getClass().getSimpleName());

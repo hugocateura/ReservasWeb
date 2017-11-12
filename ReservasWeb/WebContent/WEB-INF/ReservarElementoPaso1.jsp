@@ -23,7 +23,7 @@
     <div class="container-fluid">
        <div class="row">
            <div class="col-12">
-               <nav class="navbar navbar-expand-lg navbar-light bg-light">
+               <nav class="navbar navbar-expand-lg navbar-light bg-light cabecera">
                   <div class="collapse navbar-collapse" id="navbarText">
                       <div class="caja izquierda">
                           <a class="navbar-brand" href="Start"><img src="assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">   SYSRES</a>
@@ -34,7 +34,7 @@
                       <span class="breadcrumb-item active">Paso 1</span>
                   </div>
                   <div class="caja derecha">
-                      <p><i class="icono izquierda fa fa-user" aria-hidden="true"></i><%=(((Persona)session.getAttribute("user")).getNombre()+" as "+((Persona)session.getAttribute("user")).getUsuario())%></p>
+                      <p><i class="icono derecha fa fa-user" aria-hidden="true"></i> Logueado como <%=(((Persona)session.getAttribute("user")).getUsuario()+" con perfil "+((Persona)session.getAttribute("user")).getCategoria())%></p>
                   </div>
                   <form class="form-inline my-2 my-lg-0">
                       <a class="caja derecha salir" href="Login"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
@@ -50,10 +50,16 @@
 	<jsp:include page="MenuAdmin.jsp" />
 	<%} %>
 
-            <div class="col-10 contenido">
+            <div class="col-10 contenedor">
                 <form class="formulario" action="ReservarElemento1" method="post">
 	                <div class="tituloFormularioRes">
-	            		<h3>PASO 1: Seleccionar Tipo de Elemento y Fecha</h3>
+	                	<%String reservante = "";
+	                		if  (!(((Persona)session.getAttribute("usuarioReserva")).getUsuario()).equals(((Persona)session.getAttribute("user")).getUsuario())){
+	                			reservante = " (Reserva a nombre de "+((Persona)session.getAttribute("usuarioReserva")).getUsuario()+")"; 
+	                	}
+	                	%>
+	                	
+	            		<h3>PASO 1: Seleccionar Tipo de Elemento y Fecha <%=reservante%></h3>
 	            	</div>
                    <div class="form-group row">
 						    <label class="col-2 col-form-label">Tipo Elemento</label>

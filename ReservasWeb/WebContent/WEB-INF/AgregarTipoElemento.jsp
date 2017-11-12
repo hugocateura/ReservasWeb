@@ -17,7 +17,7 @@
     <div class="container-fluid">
        <div class="row">
            <div class="col-12">
-               <nav class="navbar navbar-expand-lg navbar-light bg-light">
+               <nav class="navbar navbar-expand-lg navbar-light bg-light cabecera">
                   <div class="collapse navbar-collapse" id="navbarText">
                       <div class="caja izquierda">
                           <a class="navbar-brand" href="Start"><img src="assets/icono.PNG" width="30" height="30" class="d-inline-block align-top" alt="">   SYSRES</a>
@@ -28,7 +28,7 @@
                       <span class="breadcrumb-item active">Agregar</span>
                   </div>
                   <div class="caja derecha">
-                      <p><i class="icono izquierda fa fa-user" aria-hidden="true"></i><%=(((Persona)session.getAttribute("user")).getNombre()+" as "+((Persona)session.getAttribute("user")).getUsuario())%></p>
+                      <p><i class="icono derecha fa fa-user" aria-hidden="true"></i> Logueado como <%=(((Persona)session.getAttribute("user")).getUsuario()+" con perfil "+((Persona)session.getAttribute("user")).getCategoria())%></p>
                   </div>
                   <form class="form-inline my-2 my-lg-0">
                       <a class="caja derecha salir" href="Login"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
@@ -44,7 +44,7 @@
 	<jsp:include page="MenuAdmin.jsp" />
 	<%} %>
 		
-            <div class="col-10 contenido">
+            <div class="col-10 contenedor">
 	            <form class="formulario" action="ConfirmarAltaTipoElemento" method="post">
 		           	<div class="tituloFormulario" >
 		           		<h3>Alta Tipo de Elemento</h3>
