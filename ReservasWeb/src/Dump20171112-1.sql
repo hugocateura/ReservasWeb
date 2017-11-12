@@ -31,7 +31,7 @@ CREATE TABLE `elemento` (
   PRIMARY KEY (`id`),
   KEY `tipo_idx` (`tipo`),
   CONSTRAINT `tipo` FOREIGN KEY (`tipo`) REFERENCES `tipoelemento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=big5 COLLATE=big5_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=big5 COLLATE=big5_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `elemento` (
 
 LOCK TABLES `elemento` WRITE;
 /*!40000 ALTER TABLE `elemento` DISABLE KEYS */;
-INSERT INTO `elemento` VALUES (53,'HP DC5750',14),(54,'HP DC220',14),(55,'Lenovo E73z',14),(56,'HP 6715b',15),(57,'HP 5572a',15),(58,'SAMSUNG SyncMaster 17\"',16),(59,'SAMSUNG SyncMaster 19\"',16),(60,'SAMSUNG SyncMaster 21\"',16),(61,'ViewSonic EDM 19\"',16),(62,'Cisco 6687xdr',17),(63,'Cisco 6870xdt',17);
+INSERT INTO `elemento` VALUES (1,'HP DC5750',14),(2,'HP DC220',14),(3,'Lenovo E73z',14),(4,'HP 6715b',15),(5,'HP 5572a',15),(6,'SAMSUNG SyncMaster 17\"',16),(7,'SAMSUNG SyncMaster 19\"',16),(8,'SAMSUNG SyncMaster 21\"',16),(9,'ViewSonic EDM 19\"',16),(10,'Cisco 6687xdr',17),(11,'Cisco 6870xdt',17),(12,'Lenovo 320-15IKB',2);
 /*!40000 ALTER TABLE `elemento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ CREATE TABLE `personas` (
   `categoria` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `usuario_UNIQUE` (`usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `personas` (
 
 LOCK TABLES `personas` WRITE;
 /*!40000 ALTER TABLE `personas` DISABLE KEYS */;
-INSERT INTO `personas` VALUES (124,'31789456','Hugo','Santarelli','hugosanta','pass1','','Administrador'),(125,'28555465','Emmanuel','Kippes','emmakip','pass2','','Encargado'),(126,'25009465','Luisa','Ramirez','luisaramirez','pass3','\0','Online');
+INSERT INTO `personas` VALUES (1,'31789456','Hugo','Santarelli','hugosanta','pass1','','Administrador'),(2,'28555465','Emmanuel','Kippes','emmakip','pass2','','Encargado'),(3,'25009465','Luisa','Ramirez','luisaramirez','pass3','\0','Online');
 /*!40000 ALTER TABLE `personas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -170,7 +170,7 @@ CREATE TABLE `tipoelemento` (
   `limiteMaxHorasReserva` int(11) DEFAULT NULL,
   `cantMaxDiasAnticipacion` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,7 +179,7 @@ CREATE TABLE `tipoelemento` (
 
 LOCK TABLES `tipoelemento` WRITE;
 /*!40000 ALTER TABLE `tipoelemento` DISABLE KEYS */;
-INSERT INTO `tipoelemento` VALUES (14,'PC Escritorio','5','\0',30,10),(15,'Notebook','10','\0',30,15),(16,'Monitor LCD','3','\0',25,13),(17,'Router','12','',30,30);
+INSERT INTO `tipoelemento` VALUES (1,'PC Escritorio','5','\0',30,10),(2,'Notebook','10','\0',30,15),(3,'Monitor LCD','3','\0',25,13),(4,'Router','12','',30,30);
 /*!40000 ALTER TABLE `tipoelemento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,4 +196,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-12  0:34:37
+-- Dump completed on 2017-11-12 11:53:19
