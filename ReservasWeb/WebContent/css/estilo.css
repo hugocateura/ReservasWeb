@@ -255,6 +255,7 @@ ul.menu>li>ul>li:hover>a.link.res{
     border-color:red;
     border-radius: 10px;
     padding-top:0px;
+    font-weight: normal;
 }
 
 .caja.derecha.salir:hover{
@@ -271,8 +272,9 @@ ul.menu>li>ul>li:hover>a.link.res{
   	height:50px;
     text-align: right;
     margin-right:10px;
-    color: #0b6fbf;
+    color: #7e7e7e;
     padding-top:10px;
+    font-weight: bold;
     /*border: solid;
     margin-right: 10px;
     padding-left: 10px;

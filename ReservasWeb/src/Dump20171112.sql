@@ -31,7 +31,7 @@ CREATE TABLE `elemento` (
   PRIMARY KEY (`id`),
   KEY `tipo_idx` (`tipo`),
   CONSTRAINT `tipo` FOREIGN KEY (`tipo`) REFERENCES `tipoelemento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=big5 COLLATE=big5_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=big5 COLLATE=big5_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `elemento` (
 
 LOCK TABLES `elemento` WRITE;
 /*!40000 ALTER TABLE `elemento` DISABLE KEYS */;
-INSERT INTO `elemento` VALUES (7,'PC Box 766',1),(10,'PC 345',1),(11,'PC Note 765',1),(13,'PC Escritorio',1),(14,'PC Boxes 900',1),(25,'Samsung 17\"',2),(26,'Negro Mate 1.30x0.65',3),(27,'Lenovo 23\"',2),(34,'Pino 1.30x0.60',3);
+INSERT INTO `elemento` VALUES (53,'HP DC5750',14),(54,'HP DC220',14),(55,'Lenovo E73z',14),(56,'HP 6715b',15),(57,'HP 5572a',15),(58,'SAMSUNG SyncMaster 17\"',16),(59,'SAMSUNG SyncMaster 19\"',16),(60,'SAMSUNG SyncMaster 21\"',16),(61,'ViewSonic EDM 19\"',16),(62,'Cisco 6687xdr',17),(63,'Cisco 6870xdt',17);
 /*!40000 ALTER TABLE `elemento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,8 +60,9 @@ CREATE TABLE `personas` (
   `contrasena` varchar(45) DEFAULT NULL,
   `habilitado` bit(1) DEFAULT NULL,
   `categoria` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `usuario_UNIQUE` (`usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +71,7 @@ CREATE TABLE `personas` (
 
 LOCK TABLES `personas` WRITE;
 /*!40000 ALTER TABLE `personas` DISABLE KEYS */;
-INSERT INTO `personas` VALUES (11,'31222333','Hugo','Perez','1','1','','Online'),(12,'28111222','Lucia','Gonzalez','2','2','','Encargado'),(13,'06888777','Miguel','Sanchez','3','3','','Administrador'),(14,'43111222','Manuel','Rodriguez','4','4','','Administrador'),(53,'06555444','Ruben Carlos','Ramirez','6','6','','Online'),(55,'ffff','123','123','123','123','','Administrador');
+INSERT INTO `personas` VALUES (124,'31789456','Hugo','Santarelli','hugosanta','pass1','','Administrador'),(125,'28555465','Emmanuel','Kippes','emmakip','pass2','','Encargado'),(126,'25009465','Luisa','Ramirez','luisaramirez','pass3','\0','Online');
 /*!40000 ALTER TABLE `personas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -141,7 +142,7 @@ CREATE TABLE `reserva` (
   CONSTRAINT `elemento` FOREIGN KEY (`elemento`) REFERENCES `elemento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `persona` FOREIGN KEY (`persona`) REFERENCES `personas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tipoDeRe` FOREIGN KEY (`tipo`) REFERENCES `tipoelemento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8 COMMENT='Tabla de Reservas';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Tabla de Reservas';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +151,7 @@ CREATE TABLE `reserva` (
 
 LOCK TABLES `reserva` WRITE;
 /*!40000 ALTER TABLE `reserva` DISABLE KEYS */;
-INSERT INTO `reserva` VALUES (28,9,'2017-01-01 00:00:00','2017-12-31 00:00:00',34,'',13,'Anulada'),(67,2,'2017-10-26 00:00:00','2017-10-26 01:00:00',27,'',11,'Activa'),(68,2,'2017-10-27 00:00:00','2017-10-27 01:00:00',27,'',11,'Anulada'),(69,2,'2017-01-01 00:00:00','2017-01-01 02:00:00',27,'',13,'Activa'),(70,2,'2017-01-01 00:00:00','2017-01-01 02:00:00',27,'',13,'Activa'),(71,2,'2017-01-01 00:00:00','2017-01-01 00:00:00',25,'',13,'Activa'),(72,3,'2017-01-01 00:00:00','2017-01-01 00:00:00',26,'',11,'Activa'),(73,2,'2017-01-01 01:00:00','2017-01-01 00:00:00',25,'',11,'Activa'),(74,2,'2017-05-05 00:00:00','2017-05-05 01:00:00',25,'',11,'Activa'),(75,3,'2017-06-06 00:00:00','2017-06-06 01:00:00',34,'',14,'Activa'),(76,3,'2017-09-09 00:00:00','2017-09-09 03:00:00',26,'',11,'Activa'),(78,2,'2017-10-28 00:00:00','2017-10-28 05:00:00',27,'',11,'Activa'),(79,2,'2017-10-26 00:00:00','2017-10-26 05:00:00',25,'',53,'Anulada'),(80,2,'2017-11-30 00:00:00','2017-11-30 01:00:00',27,'',11,'Activa'),(81,3,'2017-10-27 00:00:00','2017-10-27 05:00:00',26,'',53,'Anulada');
+INSERT INTO `reserva` VALUES (1,14,'2017-11-22 00:00:00','2017-11-22 03:00:00',53,'Incluye teclado y mouse',126,'Activa'),(2,14,'2017-11-22 00:00:00','2017-11-22 03:00:00',54,'Incluye teclado, mouse y parlantes.',126,'Anulada');
 /*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +170,7 @@ CREATE TABLE `tipoelemento` (
   `limiteMaxHorasReserva` int(11) DEFAULT NULL,
   `cantMaxDiasAnticipacion` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,7 +179,7 @@ CREATE TABLE `tipoelemento` (
 
 LOCK TABLES `tipoelemento` WRITE;
 /*!40000 ALTER TABLE `tipoelemento` DISABLE KEYS */;
-INSERT INTO `tipoelemento` VALUES (1,'PC de Sobremesa','12','',50,50),(2,'Monitor CRT','4','\0',50,50),(3,'Escritorio Melamina','2','\0',50,50),(9,'Monitor LCD','2','\0',50,50);
+INSERT INTO `tipoelemento` VALUES (14,'PC Escritorio','5','\0',30,10),(15,'Notebook','10','\0',30,15),(16,'Monitor LCD','3','\0',25,13),(17,'Router','12','',30,30);
 /*!40000 ALTER TABLE `tipoelemento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,4 +196,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-26 23:14:45
+-- Dump completed on 2017-11-12  0:34:37

@@ -86,9 +86,12 @@ public class ControladorDePersona implements Serializable{
 	{
 		Persona persona = new Persona();
 		try {
+			
 			persona = basePersona.buscarPersonaPorUsuyClave(pers);
+	
 			
 		} catch (Exception e) {
+			
 			throw e;
 		}
 		return persona;
@@ -98,7 +101,5 @@ public class ControladorDePersona implements Serializable{
 				
 		return basePersona.buscarUsuariosExternos();
 	}
-		
-	
 
 }

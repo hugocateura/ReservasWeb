@@ -229,15 +229,14 @@ public class DatosPersona implements Serializable
 					persona.setHabilitado(rs.getBoolean("habilitado"));
 					persona.setCategoria(rs.getString("categoria"));
 				
-				
+			}
+			else{
+				throw new Exception();
 			}
 			
 		} catch (SQLException e) {
 			throw e;
-		} catch (ExcepcionesEscritorio e) {
-			throw e;
 		}
-				
 		try {
 			if(pstm!=null)pstm.close();
 			if(rs!=null)rs.close();

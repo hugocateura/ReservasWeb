@@ -50,14 +50,21 @@ public class Start extends HttpServlet {
 			if(pers.isHabilitado()){
 				request.getSession().setAttribute("user", pers); //crea o recupera una sesion si ya esta creada			
 				request.getRequestDispatcher("WEB-INF/Principal.jsp").forward(request, response);							
-			}else {			
-				request.getRequestDispatcher("WEB-INF/LoginFail.jsp").forward(request, response);				
+			}
+			else {
+				if(pers.getUsuario().equals("null")){
+					request.getSession().setAttribute("mensaje", "Error, Usuario o contraseña incorrectos");
+					request.getRequestDispatcher("WEB-INF/LoginFail.jsp").forward(request, response);
+				}else{
+					request.getSession().setAttribute("mensaje", "El usuario ingresado se encuentra deshabilitado, por favor póngase en contacto con un administrador");
+					request.getRequestDispatcher("WEB-INF/LoginFail.jsp").forward(request, response);
+				}
 			}
 						
 		} catch (Exception e) {
-			request.getSession().setAttribute("mensaje", "Error Genérico");
-			request.getSession().setAttribute("error", e.getClass().getSimpleName());
-			request.getRequestDispatcher("WEB-INF/Error.jsp").forward(request, response);
+			
+			request.getSession().setAttribute("mensaje", "Usuario o contraseña incorrectos, intente nuevamente");
+			request.getRequestDispatcher("WEB-INF/LoginFail.jsp").forward(request, response);
 		}
 		return;
 	}

@@ -37,7 +37,7 @@
 	    	
 	    <div class="row">
 	    	<div class="col-2"></div>
-	    	<div class="col-7 alert alert-danger confirmacion">El usuario ingresado se encuentra deshabilitado, por favor póngase en contacto con un administrador</div>
+	    	<div class="col-7 alert alert-danger confirmacion"><%=(String) session.getAttribute("mensaje")%></div>
 	    	<div class="col-3"></div>
 	    </div>
 	    
