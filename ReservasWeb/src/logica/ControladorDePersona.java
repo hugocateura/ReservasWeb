@@ -18,7 +18,7 @@ public class ControladorDePersona implements Serializable{
 		if (pers.getDni().length() != 0){
 			if (pers.getNombre().length() != 0){
 				if (pers.getApellido().length() != 0){
-					basePersona.agregarPersona(pers);
+						basePersona.agregarPersona(pers);		
 				}
 				else{
 					throw new ExcepcionEspecial("apellido", Level.WARN);

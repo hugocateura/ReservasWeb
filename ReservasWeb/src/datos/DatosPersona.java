@@ -104,10 +104,11 @@ public class DatosPersona implements Serializable
 	}
 	
 	
-	public void agregarPersona (Persona pers) throws Exception
+	public void agregarPersona (Persona pers) throws Exception,ExcepcionEspecial
 	{
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
+		
 		
 		try {
 			pstm = FactoryConnection.getinstancia().getConn().prepareStatement(
@@ -125,8 +126,9 @@ public class DatosPersona implements Serializable
 			if(rs!=null && rs.next()){
 				pers.setId(rs.getInt(1));
 			}
-		} catch (Exception e) {
-			throw e;
+		}
+		catch (Exception e) {
+			throw new ExcepcionEspecial("No se puede dar de alta, ya existe el usuario", Level.ERROR);
 		}
 		
 		try {
