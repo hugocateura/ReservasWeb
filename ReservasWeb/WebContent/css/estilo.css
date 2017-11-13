@@ -133,7 +133,7 @@ ul.menu>li>ul>li:hover>a.link.res{
 .contenedor{
     width: 100%;
     display: inline-block;
-    padding-top:65px;
+    margin-top:140px;
 }
 
 .contenedor .menu{
@@ -490,6 +490,7 @@ ul.menu>li>ul>li:hover>a.link.res{
 }
 /*CABECERA FIJA*/
 .cabecera{
+	margin-top:75px;
 	width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
 	left: 0; /* Posicionamos la cabecera al lado izquierdo */
 	top: 0; /* Posicionamos la cabecera pegada arriba */
@@ -500,6 +501,7 @@ ul.menu>li>ul>li:hover>a.link.res{
 
 /*CONFIRMACION*/
 .confirmacion{
+	
 	margin:5px 0% 0% 5%;
 	
 }
