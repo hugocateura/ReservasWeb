@@ -252,7 +252,7 @@ public void cancelarReserva(Reserva res) throws Exception
 	}
 }
 
-public String getHoraActual() throws Exception
+public String getFechaHoraActual() throws Exception
 {
 	Statement stm=null;
 	ResultSet rs=null;
@@ -332,7 +332,6 @@ public int getActivasTipo(TipoElemento tipo) throws Exception{
 	int cantidad=0;
 	PreparedStatement pstm=null;
 	ResultSet rs=null;
-	Reserva reserva = null;
 	try {
 		pstm = FactoryConnection.getinstancia().getConn().prepareStatement("SELECT count(*) cant FROM reserva res INNER JOIN tipoelemento te ON res.tipo = te.id WHERE te.id = ? and fechaHoraDesde > CURRENT_TIMESTAMP() AND res.estado = 'Activa';");
 		pstm.setInt(1, tipo.getId());
