@@ -131,8 +131,7 @@ public class DatosReserva implements Serializable
 			}
 			
 		} catch (SQLException e) {
-			System.out.println(e);
-			//throw e;
+			throw e;
 		} catch (ExcepcionesEscritorio e) {
 			throw e;
 		}
@@ -329,6 +328,29 @@ public Reserva getReserva(Reserva res) throws Exception{
 	return reserva;	
 
 }
+public int getActivasTipo(TipoElemento tipo) throws Exception{
+	int cantidad=0;
+	PreparedStatement pstm=null;
+	ResultSet rs=null;
+	Reserva reserva = null;
+	try {
+		pstm = FactoryConnection.getinstancia().getConn().prepareStatement("SELECT count(*) cant FROM reserva res INNER JOIN tipoelemento te ON res.tipo = te.id WHERE te.id = ? and fechaHoraDesde > CURRENT_TIMESTAMP() AND res.estado = 'Activa';");
+		pstm.setInt(1, tipo.getId());
+		rs = pstm.executeQuery();
+		if(rs!=null){
+			while(rs.next()){
+				cantidad = rs.getInt("cant");
+			}	
+		}
+
+	} catch (SQLException e) {
+		throw e;
+	} catch (ExcepcionesEscritorio e) {
+		throw e;
+	}
 	
+	return cantidad;
+}
+
 }
 

@@ -6,6 +6,8 @@ import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+import org.apache.logging.log4j.Level;
+
 public class Emailer {
 	
 	public static Emailer instance;
@@ -41,7 +43,7 @@ public class Emailer {
 		
 	}
 	
-	public void send(String to, String subject, String body){
+	public void send(String to, String subject, String body)throws ExcepcionEspecial{
 
 		Session session = Session.getInstance(props,
 		  new javax.mail.Authenticator() {
@@ -63,7 +65,7 @@ public class Emailer {
 			Transport.send(message);
 
 		} catch (MessagingException e) {
-			throw new RuntimeException(e);
+			throw new ExcepcionEspecial("No se ha podido enviar el correo electrónico", Level.WARN);
 		}
 	}
 
