@@ -31,7 +31,7 @@ CREATE TABLE `elemento` (
   PRIMARY KEY (`id`),
   KEY `tipo_idx` (`tipo`),
   CONSTRAINT `tipo` FOREIGN KEY (`tipo`) REFERENCES `tipoelemento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=big5 COLLATE=big5_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=big5 COLLATE=big5_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `elemento` (
 
 LOCK TABLES `elemento` WRITE;
 /*!40000 ALTER TABLE `elemento` DISABLE KEYS */;
-INSERT INTO `elemento` VALUES (1,'HP DC5750',1),(2,'HP DC220',1),(3,'Lenovo E73z',1),(4,'HP 6715b',2),(5,'HP 5572a',1),(6,'SAMSUNG SyncMaster 17',3),(7,'SAMSUNG SyncMaster 19',3),(8,'SAMSUNG SyncMaster 21',3),(9,'ViewSonic EDM 19',3),(10,'Cisco 6687xdr',4),(11,'Cisco 6870xdt',4),(12,'Lenovo 320-15IKB',2),(13,'HP DC 2450',1),(14,'HP 1153',1),(15,'DELL BX231',2),(16,'Lenovo 15-ISK',2);
+INSERT INTO `elemento` VALUES (1,'HP DC5750',1),(2,'HP DC220',1),(3,'Lenovo E73z',1),(4,'HP 6715b',2),(5,'HP 5572a',1),(6,'SAMSUNG SyncMaster 17',3),(7,'SAMSUNG SyncMaster 19',3),(8,'SAMSUNG SyncMaster 21',3),(9,'ViewSonic EDM 19',3),(10,'Cisco 6687xdr',4),(11,'Cisco 6870xdt',4),(12,'Lenovo 320-15IKB',2),(13,'HP DC 2450',1),(14,'HP 1153',1),(15,'DELL BX231',2),(16,'Lenovo 15-ISK',2),(17,'CX All-One',1);
 /*!40000 ALTER TABLE `elemento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +142,7 @@ CREATE TABLE `reserva` (
   CONSTRAINT `elemento` FOREIGN KEY (`elemento`) REFERENCES `elemento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `persona` FOREIGN KEY (`persona`) REFERENCES `personas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tipoDeRe` FOREIGN KEY (`tipo`) REFERENCES `tipoelemento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='Tabla de Reservas';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='Tabla de Reservas';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +151,7 @@ CREATE TABLE `reserva` (
 
 LOCK TABLES `reserva` WRITE;
 /*!40000 ALTER TABLE `reserva` DISABLE KEYS */;
-INSERT INTO `reserva` VALUES (1,1,'2017-11-22 00:00:00','2017-11-22 03:00:00',1,'Incluye teclado y mouse',1,'Activa'),(2,1,'2017-11-22 00:00:00','2017-11-22 03:00:00',1,'Incluye teclado, mouse y parlantes.',1,'Anulada'),(3,2,'2017-11-16 00:00:00','2017-11-16 01:00:00',12,'',3,'Activa'),(4,1,'2017-11-11 00:00:00','2017-11-11 00:00:00',12,'Nada que agregar',1,'Confirmada'),(5,1,'2017-11-18 00:00:00','2017-11-18 00:00:00',1,' ',3,'Activa'),(6,2,'2017-10-02 00:00:00','2017-10-02 02:00:00',12,'',3,'Confirmada'),(7,2,'2017-11-25 00:00:00','2017-11-25 00:00:00',12,'',3,'Anulada'),(8,2,'2017-11-26 00:00:00','2017-11-26 00:00:00',12,'',3,'Activa'),(9,2,'2017-11-30 00:00:00','2017-11-30 00:00:00',12,'',3,'Anulada');
+INSERT INTO `reserva` VALUES (1,1,'2017-11-22 00:00:00','2017-11-22 03:00:00',1,'Incluye teclado y mouse',1,'Activa'),(2,1,'2017-11-22 00:00:00','2017-11-22 03:00:00',1,'Incluye teclado, mouse y parlantes.',1,'Anulada'),(3,2,'2017-11-16 00:00:00','2017-11-16 01:00:00',12,'',3,'Activa'),(4,1,'2017-11-11 00:00:00','2017-11-11 00:00:00',12,'Nada que agregar',1,'Confirmada'),(5,1,'2017-11-18 00:00:00','2017-11-18 00:00:00',1,' ',3,'Activa'),(6,2,'2017-10-02 00:00:00','2017-10-02 02:00:00',12,'',3,'Confirmada'),(7,2,'2017-11-25 00:00:00','2017-11-25 00:00:00',12,'',3,'Anulada'),(8,2,'2017-11-26 00:00:00','2017-11-26 00:00:00',12,'',3,'Anulada'),(9,2,'2017-11-30 00:00:00','2017-11-30 00:00:00',12,'',3,'Anulada'),(10,1,'2017-11-03 00:00:00','2017-11-03 00:00:00',2,'',3,'Activa'),(11,1,'2017-11-03 00:00:00','2017-11-03 00:00:00',3,'',3,'Activa'),(12,1,'2017-11-03 00:00:00','2017-11-03 00:00:00',5,'',3,'Activa'),(13,1,'2017-11-03 00:00:00','2017-11-03 00:00:00',1,'',3,'Activa'),(14,1,'2017-11-10 00:00:00','2017-11-10 00:00:00',2,'',4,'Activa'),(15,2,'2017-11-19 00:00:00','2017-11-19 01:00:00',15,'',4,'Anulada'),(16,2,'2017-11-25 00:00:00','2017-11-26 01:00:00',4,'',3,'Activa');
 /*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,4 +244,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-15 17:25:41
+-- Dump completed on 2017-11-15 20:47:52
