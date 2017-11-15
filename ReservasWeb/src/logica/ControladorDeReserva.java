@@ -34,6 +34,7 @@ private DatosElemento baseElemento = new DatosElemento();
 		DatosReserva baseReserva = new DatosReserva();
 		String strHoraBD = baseReserva.getHoraActual();				//OBTENGO LA HORA DE LA BD
 		
+		int contador=0;
 		long duracion=0;
 		long anticipacion=0;
 		try 
@@ -49,24 +50,31 @@ private DatosElemento baseElemento = new DatosElemento();
 			ex.printStackTrace();
 			}
 		
-		if (duracion <= res.getTipo().getLimiteMaxHorasReserva()){			//VALIDO QUE LA DURACION NO EXCEDA EL MAXIMO
-			if (anticipacion<res.getTipo().getCantMaxDiasAnticipacion()){
-				
-				try {
-					baseReserva.agregarReserva(res);
-				} catch (Exception e) {
-					throw new ExcepcionEspecial("Error al agregar la reserva en la BD", Level.ERROR);
+		if (res.getTipo().getCant_max_reservas()>baseReserva.getActivasTipo(res.getTipo())){  //VALIDA QUE NO SUPERE LA CANTIDAD DE RESERVAS ACTIVAS DEL TIPO	
+		
+			if (duracion <= res.getTipo().getLimiteMaxHorasReserva()){			//VALIDO QUE LA DURACION NO EXCEDA EL MAXIMO
+				if (anticipacion<res.getTipo().getCantMaxDiasAnticipacion()){		//VALIDO QUE LA ANTICIPACION NO EXCEDA EL MAXIMO
+					
+					try {
+						baseReserva.agregarReserva(res);
+					} catch (Exception e) {
+						throw new ExcepcionEspecial("Error al agregar la reserva en la BD", Level.ERROR);
+					}
 				}
+				else{
+					String mensaje = ("La anticipación máxima permitida es "+res.getTipo().getCantMaxDiasAnticipacion()+"días y ud ingreso "+anticipacion+" días.");
+					throw new ExcepcionEspecial(mensaje, Level.ERROR);
+					}
 			}
 			else{
-				String mensaje = ("La anticipación máxima permitida es "+res.getTipo().getCantMaxDiasAnticipacion()+"días y ud ingreso "+anticipacion+" días.");
+				String mensaje = ("La duración máxima es "+res.getTipo().getLimiteMaxHorasReserva()+" hs y ud. intentó reservar por "+duracion+" hs.");
 				throw new ExcepcionEspecial(mensaje, Level.ERROR);
-				}
+			}
 		}
-		else{
-			String mensaje = ("La duración máxima es "+res.getTipo().getLimiteMaxHorasReserva()+" hs y ud. intentó reservar por "+duracion+" hs.");
+		else {
+			String mensaje = ("Se excedió la cantidad máxima de reservas del Tipo de Elemento, no se puede reservar");
 			throw new ExcepcionEspecial(mensaje, Level.ERROR);
-		}
+			}
 		
 	};
 	
