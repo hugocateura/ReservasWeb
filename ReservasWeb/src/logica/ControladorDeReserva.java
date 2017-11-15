@@ -30,9 +30,10 @@ private DatosElemento baseElemento = new DatosElemento();
 		
 		Date fechaDesde=null;
 		Date fechaHasta=null;
+		Date fechaActual=null;
 		Date horaBD=null;
 		DatosReserva baseReserva = new DatosReserva();
-		String strHoraBD = baseReserva.getHoraActual();				//OBTENGO LA HORA DE LA BD
+		String strHoraBD = baseReserva.getFechaHoraActual();				//OBTENGO LA HORA DE LA BD
 		
 		int contador=0;
 		long duracion=0;
@@ -47,36 +48,53 @@ private DatosElemento baseElemento = new DatosElemento();
 			}
 		catch (ParseException ex) 
 			{
-			ex.printStackTrace();
+			throw ex;
 			}
 		
-		if (res.getTipo().getCant_max_reservas()>baseReserva.getActivasTipo(res.getTipo())){  //VALIDA QUE NO SUPERE LA CANTIDAD DE RESERVAS ACTIVAS DEL TIPO	
+		fechaActual = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(baseReserva.getFechaHoraActual());
 		
-			if (duracion <= res.getTipo().getLimiteMaxHorasReserva()){			//VALIDO QUE LA DURACION NO EXCEDA EL MAXIMO
-				if (anticipacion<res.getTipo().getCantMaxDiasAnticipacion()){		//VALIDO QUE LA ANTICIPACION NO EXCEDA EL MAXIMO
-					
-					try {
-						baseReserva.agregarReserva(res);
-					} catch (Exception e) {
-						throw new ExcepcionEspecial("Error al agregar la reserva en la BD", Level.ERROR);
+		if (fechaActual.before(fechaDesde) && fechaActual.before(fechaHasta)) {	//VALIDO QUE LA RESERVA SEA POSTERIOR A AHORA 
+			
+			if (fechaHasta.after(fechaDesde)){ 	//VALIDO QUE EL FIN SEA POSTERIOR AL INICIO
+				
+				if (res.getTipo().getCant_max_reservas()>baseReserva.getActivasTipo(res.getTipo())){  //VALIDA QUE NO SUPERE LA CANTIDAD DE RESERVAS ACTIVAS DEL TIPO	
+				
+					if (duracion <= res.getTipo().getLimiteMaxHorasReserva()){			//VALIDO QUE LA DURACION NO EXCEDA EL MAXIMO
+						
+						if (anticipacion<res.getTipo().getCantMaxDiasAnticipacion()){		//VALIDO QUE LA ANTICIPACION NO EXCEDA EL MAXIMO
+							
+							try {
+								baseReserva.agregarReserva(res);
+							} catch (Exception e) {
+								throw new ExcepcionEspecial("Error al agregar la reserva en la BD", Level.ERROR);
+							}
+						}
+						else{
+							String mensaje = ("La anticipación máxima permitida es "+res.getTipo().getCantMaxDiasAnticipacion()+"días y ud ingreso "+anticipacion+" días.");
+							throw new ExcepcionEspecial(mensaje, Level.ERROR);
+							}
+					}
+					else{
+						String mensaje = ("La duración máxima es "+res.getTipo().getLimiteMaxHorasReserva()+" hs y ud. intentó reservar por "+duracion+" hs.");
+						throw new ExcepcionEspecial(mensaje, Level.ERROR);
 					}
 				}
-				else{
-					String mensaje = ("La anticipación máxima permitida es "+res.getTipo().getCantMaxDiasAnticipacion()+"días y ud ingreso "+anticipacion+" días.");
+				else {
+					String mensaje = ("Se excedió la cantidad máxima de reservas del Tipo de Elemento, no se puede reservar");
 					throw new ExcepcionEspecial(mensaje, Level.ERROR);
 					}
 			}
 			else{
-				String mensaje = ("La duración máxima es "+res.getTipo().getLimiteMaxHorasReserva()+" hs y ud. intentó reservar por "+duracion+" hs.");
+				String mensaje = ("La fecha de inicio no puede ser anterior a la de fin");
 				throw new ExcepcionEspecial(mensaje, Level.ERROR);
 			}
 		}
-		else {
-			String mensaje = ("Se excedió la cantidad máxima de reservas del Tipo de Elemento, no se puede reservar");
+		else{
+			String mensaje = ("Las fechas seleccionadas no pueden ser anteriores a hoy");
 			throw new ExcepcionEspecial(mensaje, Level.ERROR);
-			}
-		
-	};
+			};
+	};	
+	
 	
 	public void borrarReserva(Reserva res) throws Exception{
 		baseReserva.eliminarReserva(res);
