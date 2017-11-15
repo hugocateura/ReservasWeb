@@ -178,7 +178,7 @@ public class DatosElemento implements Serializable
 		try 
 		{
 			pstm = FactoryConnection.getinstancia().getConn().prepareStatement(
-					"SELECT * FROM elemento WHERE id NOT IN (SELECT res.elemento FROM reserva res WHERE res.fechaHoraDesde BETWEEN ? AND ? OR res.fechaHoraDesde BETWEEN ? AND ? AND estado = ?) having tipo = ?");
+					"SELECT * FROM elemento WHERE id NOT IN (SELECT res.elemento FROM reserva res WHERE res.fechaHoraDesde BETWEEN ? AND ? OR res.fechaHoraHasta BETWEEN ? AND ? AND estado = ?) having tipo = ?");
 			pstm.setString(1, fechaDesde);
 			pstm.setString(2, fechaHasta);
 			pstm.setString(3, fechaDesde);
