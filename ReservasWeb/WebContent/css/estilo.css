@@ -1,4 +1,5 @@
 /* MENU */
+/*
 ul.menu>li>a{
 	display: block;
 	text-decoration: none;
@@ -30,8 +31,8 @@ ul.menu>li>ul>li:HOVER>ul{
 }
 
 ul.menu>li>ul>li:hover>a{
-/*     color: black;
-    font-weight: bolder; */
+     color: black;
+    font-weight: bolder; 
     text-decoration: none;
     background: #90CAF9;
     cursor:default;
