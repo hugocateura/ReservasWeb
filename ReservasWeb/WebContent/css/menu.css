@@ -1,166 +1,133 @@
-
-*/
-
-/* Shared for all accordion types */
-/*
-COLOR CELESTE #90CAF9
-COLOR CELESTE SUAVE #BBDEFB
-COLOR GRIS #868e96
-COLOR GRIS CLARO #E0E0E0
-COLOR AZUL FUERTE #2196F3
-*/
-
-
-.accordion {
-  /*MENU INTERMEDIO*/
-    margin:0 auto;
-    font-size:14px;
-    border-radius:none;
-    width:200px;
-    display:inline-block;
-    background:#BBDEFB;
-}
-.accordion ul {
-    list-style:none;
-    margin:0;
-    padding:0;    
-}
-.accordion li {
-    margin:0;
-    padding:0;
-}
-.accordion [type=radio], .accordion [type=checkbox] {
-    display:none;
-}
-.accordion label {
-    /*BOTON NO SELECCIONADO*/
-    display:block;
-    font-size:16px;
-    line-height:14px;
-    background:#BBDEFB;
-    color:#E0E0E0;
-    text-shadow:1px 1px 1px rgba(255,255,255,0.3);
-    font-weight:600;
-    cursor:pointer;
-    text-transform:uppercase;
-    -webkit-transition: all .2s ease-out;
-    -moz-transition: all .2s ease-out;
-}
-.accordion ul li label:hover, .accordion [type=radio]:checked ~ label, .accordion [type=checkbox]:checked ~ label {
-    /*BOTON PRINCIPAL SELECCIONADO*/
-    background:#2196F3;
-    color:gainsboro;
-    text-shadow:1px 1px 1px rgba(0,0,0,0.3)
-}
-.accordion .content {
-    overflow:hidden;
-    -webkit-transition: all .5s ease-out;
-    -moz-transition: all .5s ease-out;
-}
-.accordion .btnInterior{
-    /*BOTON INTERIOR*/
-    margin-top:-15px;
-    font-weight: bold;
-    font-size:14px;
-    height:35px;
-    display:block;
-    line-height:14px;
-    background:#90CAF9;
-    color:#E0E0E0;
-    cursor:pointer;
-    text-transform:uppercase;
-    -webkit-transition: all .2s ease-out;
-    -moz-transition: all .2s ease-out;
-}
-.accordion .btnInterior a{     
-    margin-left: 10px;
-    vertical-align: middle;
-    vertical-align: middle;
-    line-height: 35px;
-    color:#868e96;
-    text-decoration:none;
-}
-.accordion .btnInterior p:hover{
-    vertical-align: middle;
-    margin-left: 15px;
-    overflow:hidden;
-    background:#90CAF9;
-    height:30px;
-    -webkit-transition: all .5s ease-out;
-    -moz-transition: all .5s ease-out;
-}
-.accordion .btnInteriorSub{
-    /*BOTON INTERIOR anidado*/
-    margin-top:-15px;
-    background:#BBDEFB;
-    font-size:12px;
-    font-weight: bold;
-    height:35px;
-    display:block;
-    line-height:14px;
-    background:#BBDEFB;
-    color:#E0E0E0;
-    cursor:pointer;
-    text-transform:uppercase;
-    -webkit-transition: all .2s ease-out;
-    -moz-transition: all .2s ease-out;
-}
-.accordion .btnInteriorSub:hover{
-    background:#90CAF9;
-    display:block;
-}
-.accordion .btnInteriorSub a{     
-    margin-left: 20px;
-    vertical-align: middle;
-    vertical-align: middle;
-    line-height: 30px;
-    color:#868e96;
-    text-decoration:none;
-}
-.accordion .btnInteriorSub p:hover{
-    vertical-align: middle;
-    margin-left: 15px;
-    overflow:hidden;
-    background:#90CAF9;
-    -webkit-transition: all .5s ease-out;
-    -moz-transition: all .5s ease-out;
-}/*
-.accordion p {
-    color:#333;
-    margin:0 0 10px;
-}
-.accordion h3 {
-    color:#542437;
-    padding:0;
-    margin:10px 0;
-}
-*/
-
-/* Vertical */
-.vertical ul li {
-    overflow:hidden;
-    margin:0 0 1px;
-}
-.vertical ul li label {
-    /*BOTON NO SELECCIONADO*/
-    padding:10px;
-    background:#BBDEFB;
-    color:#868e96;
-}
-.vertical [type=radio]:checked ~ label, .vertical [type=checkbox]:checked ~ label {
-    border-bottom:0;
+.cd-accordion-menu {
+	margin-top:150px;
+	list-style-type: none;
+	padding-left:0;
+	
 }
 
-  .vertical ul li label:hover {
-    /*BOTON NO SELECCIONADO*/
-  background:#2196F3;
+.cd-accordion-menu input[type=checkbox] {
+	/* hide native checkbox */
+	position: absolute;
+	display: none;
+	opacity: 0;
+	
+	
+}
+.cd-accordion-menu label, .cd-accordion-menu a {
+	
+	position: relative;
+	display: block;
+	background: #2196F3;
+	color: #90CAF9;
+	font-size: 1rem;
+	height:40px;
+	line-height: 30px;
+	border-radius: 2px;
+	padding-left:10px;
+}
+.cd-accordion-menu ul {
+	/* by default hide all sub menus */
+	display: none;
+	
 }
  
-.vertical ul li .content {
-    height:0px;
-    border-top:0;
+.cd-accordion-menu input[type=checkbox]:checked + label + ul,
+.cd-accordion-menu input[type=checkbox]:checked + label:nth-of-type(n) + ul {
+	/* use label:nth-of-type(n) to fix a bug on safari (<= 8.0.8) with multiple adjacent-sibling selectors*/
+	/* show children when item is checked */
+	display: block;
+	list-style-type: none;
+	padding-left:0;
+	
 }
-.vertical [type=radio]:checked ~ label ~ .content, .vertical [type=checkbox]:checked ~ label ~ .content {
-    /*MARCA LA ALTURA DEL DESPLEGADO*/
-    height:250px;
+
+/*AGREGADOS POR MI*/
+
+
+ul .cd-accordion-menu li .has-children label ul li .has-children{ 
+	  		
+	background: #00ff00;
 }
+ul li label{
+	background: #90CAF9;
+}
+
+ul li label:hover{
+	cursor:pointer;
+	background: #BBDEFB;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.menujq{
+	padding: 0px;
+    margin: 0px;
+    margin-top:140px;
+    border-radius: 5px;
+    position:fixed;
+}
+.menujq ul {
+  list-style: none;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0;
+}
+.menujq a {
+  display: block;
+  padding: 10px;
+  border-bottom: 1px solid #fff;
+  background: #D25400;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+.menujq ul li a:before {
+content: "\25CF\00A0 ";
+width: 28px;
+display: inline-block;
+vertical-align: top;
+}
+.menujq ul li.desplegable > a:before,
+.menujq ul li ul li.desplegable > a:before {
+  content: "\25BA\00A0";
+}
+.menujq ul li.desplegable.active > a:before,
+.menujq ul li ul li.desplegable.active > a:before{
+  content: "\25BC\00A0 ";
+}
+.menujq ul ul, .menujq ul ul ul {
+  display: none;
+  width: 100%;
+}
+.menujq ul ul a {
+  padding-left: 20px;
+  background: #E77E23;
+  text-transform: capitalize;
+}
+.menujq ul ul ul a {
+  padding-left: 40px;
+  background: #ED9C54;
+  text-transform: capitalize;
+}*/
