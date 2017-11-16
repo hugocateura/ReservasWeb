@@ -7,12 +7,12 @@ ul.menu>li>a{
 
 ul.menu>li>ul{
 	overflow: hidden;
-	transition: .7s all ease-in;
+	transition: 1.0s all ease-in;
 	max-height: 0;
 } 
 
 ul.menu>li:HOVER>ul{
-	transition: .7s all ease-in;
+	transition: 1.0s all ease-in;
 	max-height: 300px;
 	text-decoration: none;
 }

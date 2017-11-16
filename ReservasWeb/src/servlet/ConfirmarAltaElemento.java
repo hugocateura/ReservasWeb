@@ -74,8 +74,7 @@ public class ConfirmarAltaElemento extends HttpServlet {
 			ctrlElemento.crearElemento(nuevoElemento);
 			Logger logger = LogManager.getLogger(getClass());							//Agrego la transaccion al log de TRACE
 			logger.log(Level.INFO,"Alta Exitosa. Nombre: "+nuevoElemento.getNombre()+" Tipo: "+nuevoElemento.getTipo().getNombre());
-			String contenidoMail = ("Alta exitosa de:\nNombre: "+nuevoElemento.getNombre()+"\nTipo de Elemento: "+nuevoElemento.getTipo().getNombre());
-			Emailer.getInstance().send("tpfinaljava2017@gmail.com","Alta de nuevo Elemento",contenidoMail);
+			
 		} 
 		catch (ExcepcionEspecial ex) {
 			request.getSession().setAttribute("mensaje", ex.getMessage());

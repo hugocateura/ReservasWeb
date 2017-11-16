@@ -55,7 +55,7 @@
 			           	<div class="form-group row">
 						    <label class="col-2 col-form-label">Nombre</label>
 						    <div class="col-10">
-						    	<input type="text" class="form-control" name="elementoNombre" aria-describedby="nombreHelp" placeholder="Ingrese Nombre" required>
+						    	<input type="text" class="form-control" name="elementoNombre" aria-describedby="nombreHelp" placeholder="Ingrese Nombre">
 						    	<small id="nombrelHelp" class="form-text text-muted">Ingrese el nombre del elemento.</small>
 							</div>
 						</div>

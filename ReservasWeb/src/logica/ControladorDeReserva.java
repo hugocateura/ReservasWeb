@@ -16,6 +16,7 @@ import entidades.Elemento;
 import entidades.Persona;
 import entidades.Reserva;
 import entidades.TipoElemento;
+import utilidades.Emailer;
 import utilidades.ExcepcionEspecial;
 
 public class ControladorDeReserva implements Serializable{
@@ -68,6 +69,13 @@ private DatosElemento baseElemento = new DatosElemento();
 							} catch (Exception e) {
 								throw new ExcepcionEspecial("Error al agregar la reserva en la BD", Level.ERROR);
 							}
+							
+							try {
+								String contenidoMail = ("Reserva exitosa de:\nNombre: "+res.getPersona().getNombre()+"\nApellido: "+res.getPersona().getApellido()+"\nUsuario: "+res.getPersona().getUsuario()+"\nElemento: "+res.getElemento().getNombre()+"\nFecha Desde: "+res.getFechaHoraDesde()+"\nFecha Hasta: "+res.getFechaHoraHasta());
+								Emailer.getInstance().send("tpfinaljava2017@gmail.com","Reserva de Elemento",contenidoMail);
+							} catch (Exception e) {
+								throw new ExcepcionEspecial("No es posible enviar el correo.", Level.ERROR);
+							}
 						}
 						else{
 							String mensaje = ("La anticipación máxima permitida es "+res.getTipo().getCantMaxDiasAnticipacion()+"días y ud ingreso "+anticipacion+" días.");
@@ -90,7 +98,7 @@ private DatosElemento baseElemento = new DatosElemento();
 			}
 		}
 		else{
-			String mensaje = ("Las fechas seleccionadas no pueden ser anteriores a hoy");
+			String mensaje = ("Las fechas seleccionadas no pueden ser anteriores a la fecha actual");
 			throw new ExcepcionEspecial(mensaje, Level.ERROR);
 			};
 	};	
@@ -98,6 +106,13 @@ private DatosElemento baseElemento = new DatosElemento();
 	
 	public void borrarReserva(Reserva res) throws Exception{
 		baseReserva.eliminarReserva(res);
+		try {
+			String contenidoMail = ("Reserva:\nNombre: "+res.getPersona().getNombre()+"\nApellido: "+res.getPersona().getApellido()+"\nUsuario: "+res.getPersona().getUsuario()+"\nElemento: "+res.getElemento().getNombre()+"\nFecha Desde: "+res.getFechaHoraDesde()+"\nFecha Hasta: "+res.getFechaHoraHasta());
+			Emailer.getInstance().send("tpfinaljava2017@gmail.com","Cancelacion de Reserva de Elemento",contenidoMail);
+		} catch (Exception e) {
+			throw new ExcepcionEspecial("No es posible enviar el correo.", Level.ERROR);
+		}
+		
 	};
 	
 	public void modificarReserva(Reserva res) throws Exception{
@@ -145,6 +160,13 @@ private DatosElemento baseElemento = new DatosElemento();
 	
 	public void cancelarReserva(Reserva res) throws Exception{
 		baseReserva.cancelarReserva(res);
+		try {
+			String contenidoMail = ("Reserva:\nNombre: "+res.getPersona().getNombre()+"\nApellido: "+res.getPersona().getApellido()+"\nUsuario: "+res.getPersona().getUsuario()+"\nElemento: "+res.getElemento().getNombre()+"\nFecha Desde: "+res.getFechaHoraDesde()+"\nFecha Hasta: "+res.getFechaHoraHasta());
+			Emailer.getInstance().send("tpfinaljava2017@gmail.com","Anulación de Reserva de Elemento",contenidoMail);
+		} catch (Exception e) {
+			throw new ExcepcionEspecial("No es posible enviar el correo.", Level.ERROR);
+		}
+		
 	}
 
 

@@ -73,8 +73,7 @@ public class ConfirmarAltaPersona extends HttpServlet {
 			ctrlPersona.crearPersona(nuevaPersona);
 			Logger logger = LogManager.getLogger(getClass());							//Agrego la transaccion al log de TRACE
 			logger.log(Level.INFO,"Alta Exitosa. User: "+nuevaPersona.getUsuario()+" Nombre: "+nuevaPersona.getNombre()+" Apellido: "+nuevaPersona.getApellido());
-			String contenidoMail = ("Alta exitosa de:\nNombre: "+nuevaPersona.getNombre()+"\nApellido: "+nuevaPersona.getApellido()+"\nDni: "+nuevaPersona.getDni()+"\nUsuario: "+nuevaPersona.getUsuario()+"\nCategoria: "+nuevaPersona.getCategoria());
-			Emailer.getInstance().send("tpfinaljava2017@gmail.com","Alta de nuevo usuario",contenidoMail);
+
 		} catch (ExcepcionEspecial e) {
 		
 			request.getSession().setAttribute("mensaje", e.getMessage());

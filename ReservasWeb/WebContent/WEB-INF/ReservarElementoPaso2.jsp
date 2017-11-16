@@ -61,9 +61,8 @@
 									     <% ControladorDeElemento ctrlElemento = new ControladorDeElemento();
 							      	     	ArrayList<Elemento> elementosDisponibles = ctrlElemento.getElementosDisponibles(((TipoElemento)session.getAttribute("tipoElemento")), ((String)session.getAttribute("fechaHoraDesde")), ((String)session.getAttribute("fechaHoraHasta")));
 							      		 	for(Elemento ele : elementosDisponibles){ %>							      	 
-							      	<option value="<%=(ele.getId())%>"><%=ele.getNombre()%></option>
-							      								    
-							      <%} %>
+							      	<option value="<%=(ele.getId())%>"><%=ele.getNombre()%></option><%} %>
+								<% if(elementosDisponibles.isEmpty()){%><option disabled = "disabled">No existen elementos para el rango de fechas ingresado.</option><%};%>
 							    </select>
 						    <small id="eleHelp" class="form-text text-muted">Seleccione el elemento a reservar.</small>
 						</div>
