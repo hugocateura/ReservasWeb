@@ -18,7 +18,7 @@
 			   			<li><a href="ListadoTipoElemento">Listado</a></li>
 					</ul>
 					<input type="checkbox" name ="sub-group-3" id="sub-group-3">
-					<label for="sub-group-3">Tipo De Elemento<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></label>
+					<label for="sub-group-3">Elemento<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></label>
 					<ul>
 						<li><a href="AgregarElemento">Agregar</a></li>
 			   			<li><a href="ListadoElemento">Listado</a></li>

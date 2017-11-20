@@ -93,7 +93,7 @@ private DatosElemento baseElemento = new DatosElemento();
 					}
 			}
 			else{
-				String mensaje = ("La fecha de inicio no puede ser anterior a la de fin");
+				String mensaje = ("La fecha de inicio no puede ser igual o anterior a la de fin");
 				throw new ExcepcionEspecial(mensaje, Level.ERROR);
 			}
 		}
