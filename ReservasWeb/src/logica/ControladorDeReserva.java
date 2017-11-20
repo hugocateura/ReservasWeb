@@ -37,14 +37,14 @@ private DatosElemento baseElemento = new DatosElemento();
 		String strHoraBD = baseReserva.getFechaHoraActual();				//OBTENGO LA HORA DE LA BD
 		
 		int contador=0;
-		long duracion=0;
+		double duracion=0;
 		long anticipacion=0;
 		try 
 			{
 				fechaDesde = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(strFechaDesde);		//PARSEO LAS HORAS
 				fechaHasta = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(strFechaHasta);
 				horaBD = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(strHoraBD);					
-				duracion = (fechaHasta.getTime() - fechaDesde.getTime())/(1000*60*60);			//CALCULO LA DURACION DE LA RESERVA
+				duracion = ((double)(fechaHasta.getTime() - fechaDesde.getTime()))/(1000*60*60);			//CALCULO LA DURACION DE LA RESERVA
 				anticipacion = (fechaDesde.getTime() - horaBD.getTime())/(1000*60*60*24);		//CALCULO LA ANTICIPACION CON RESPECTO A LA HORA ACTUAL DE LA BD
 			}
 		catch (ParseException ex) 

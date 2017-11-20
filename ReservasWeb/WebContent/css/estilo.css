@@ -3,6 +3,7 @@
 	list-style-type: none;
 	padding-left:0;
 	position:fixed;
+	width: 17%;
 }
 
 .cd-accordion-menu input[type=checkbox] {
