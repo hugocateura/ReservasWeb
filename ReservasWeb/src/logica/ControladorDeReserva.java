@@ -58,7 +58,7 @@ private DatosElemento baseElemento = new DatosElemento();
 			
 			if (fechaHasta.after(fechaDesde)){ 	//VALIDO QUE EL FIN SEA POSTERIOR AL INICIO
 				
-				if (res.getTipo().getCant_max_reservas()>baseReserva.getActivasTipo(res.getTipo())){  //VALIDA QUE NO SUPERE LA CANTIDAD DE RESERVAS ACTIVAS DEL TIPO	
+				if (res.getTipo().getCant_max_reservas()>baseReserva.getActivasTipo(res.getTipo(),res.getPersona())){  //VALIDA QUE NO SUPERE LA CANTIDAD DE RESERVAS ACTIVAS DEL TIPO	
 				
 					if (duracion <= res.getTipo().getLimiteMaxHorasReserva()){			//VALIDO QUE LA DURACION NO EXCEDA EL MAXIMO
 						
