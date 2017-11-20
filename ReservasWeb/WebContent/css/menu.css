@@ -1,8 +1,6 @@
 .cd-accordion-menu {
-	margin-top:150px;
 	list-style-type: none;
 	padding-left:0;
-	
 }
 
 .cd-accordion-menu input[type=checkbox] {
@@ -10,9 +8,9 @@
 	position: absolute;
 	display: none;
 	opacity: 0;
-	
-	
+
 }
+
 .cd-accordion-menu label, .cd-accordion-menu a {
 	
 	position: relative;
@@ -24,8 +22,38 @@
 	line-height: 30px;
 	border-radius: 2px;
 	padding-left:10px;
+	margin:0px;
 }
+
+.has-children a:hover{
+	cursor: pointer;
+	background: #BBDEFB;
+	font-weight: bolder;
+	color:#868e96;	
+} 
+
+.linkSolo a{
+	padding-left: 20px;
+	font-size: 13px;
+}
+
+.has-children>ul>li>a{
+	font-size: 13px;
+	padding-left: 50px;
+} 
+
+.has-children>ul>li>label{
+	font-size: 15px;
+	padding-left: 40px;
+} 
+
 .cd-accordion-menu ul {
+	/* by default hide all sub menus */
+	display: none;
+	
+}
+
+.cd-accordion-menu ul ul {
 	/* by default hide all sub menus */
 	display: none;
 	
@@ -42,8 +70,6 @@
 }
 
 /*AGREGADOS POR MI*/
-
-
 ul .cd-accordion-menu li .has-children label ul li .has-children{ 
 	  		
 	background: #00ff00;
@@ -55,29 +81,9 @@ ul li label{
 ul li label:hover{
 	cursor:pointer;
 	background: #BBDEFB;
+	font-weight: bolder;
+	color:#868e96;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*.menujq{
 	padding: 0px;

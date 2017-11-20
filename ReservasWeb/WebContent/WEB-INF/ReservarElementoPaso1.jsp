@@ -1,8 +1,8 @@
 <%@page import="entidades.Persona"%>
 <%@page import="entidades.TipoElemento"%>
 <%@page import="logica.ControladorTipoDeElemento"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.lang.Integer"%>
+<%@page import="java.util.*"%>
+<%@page import="java.lang.*"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
