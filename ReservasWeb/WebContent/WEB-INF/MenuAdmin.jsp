@@ -1,10 +1,10 @@
-<div class="col-2">
+<div class="col-2 contenedor">
 	<ul class="cd-accordion-menu">
 		<li class="has-children">
 			<input type="checkbox" name ="group-1" id="group-1" checked>
 			<label for="group-1">Administrador</label>
 	 
-	  		<ul>
+	  			<ul>
 	  			<li class="has-children">
 	  				<input type="checkbox" name ="sub-group-1" id="sub-group-1">
 					<label for="sub-group-1">Persona</label>
@@ -30,21 +30,22 @@
 						<li><a href="AnularReserva">Anular</a></li>
 					</ul>
 	  			</li>
-	  		</ul>
-	  		<input type="checkbox" name ="group-2" id="group-2" checked>
-			<label for="group-2">Realizar reserva</label>
-	 
-	  		<ul>
-	  			<li class="has-children">
-	  				<input type="checkbox" name ="sub-group-5" id="sub-group-5">
-					<label for="sub-group-5">Nueva Reserva</label>
-					<ul>
-						<li><a href="SeleccionarPersona">Reservar</a></li>
-			   			
-					</ul>
-	 			</li>
-	  		</ul>
-	  	</li>
-	  	
+	  			</ul>
+	  		</li>
+	  		<li class="has-children">
+		  		<input type="checkbox" name ="group-2" id="group-2" checked>
+				<label for="group-2">Realizar reserva</label>
+		 
+		  		<ul>
+		  			<li class="has-children">
+		  				<input type="checkbox" name ="sub-group-5" id="sub-group-5">
+						<label for="sub-group-5">Nueva Reserva</label>
+						<ul>
+							<li><a href="SeleccionarPersona">Reservar</a></li>
+				   			
+						</ul>
+		 			</li>
+		  		</ul>
+	  		</li>	  	
 	 </ul>
 </div>
