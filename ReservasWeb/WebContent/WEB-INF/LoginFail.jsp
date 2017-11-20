@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="es"><head>
+<html lang="es">
+   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
@@ -27,7 +28,7 @@
 		
 		    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
 			    <div class="input-group-addon iconoLogin"><i class="fa fa-unlock" aria-hidden="true"></i></div>
-			    <input name="pass" id="inputPass" class="form-control" placeholder="Contraseña" required="" type="Password">
+			    <input name="pass" id="inputPass" class="form-control" placeholder="ContraseÃ±a" required="" type="Password">
 			</div>
 		    <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
 	      </form>
@@ -37,12 +38,17 @@
 	    	
 	    <div class="row">
 	    	<div class="col-2"></div>
-	    	<div class="col-7 alert alert-danger confirmacion"><%=(String) session.getAttribute("mensaje")%></div>
+	    	<div class="col-7 alert alert-danger confirmacion"><%=(String)session.getAttribute("mensaje")%></div>
 	    	<div class="col-3"></div>
 	    </div>
 	    
     </div>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="style/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.js" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

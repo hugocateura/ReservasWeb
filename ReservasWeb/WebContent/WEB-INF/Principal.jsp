@@ -35,8 +35,7 @@
                   </form>
               </nav>
            </div>
-       </div>
- 
+        
  <% if (((Persona)session.getAttribute("user")).getCategoria().equals("Online")){%>
 	<jsp:include page="MenuUsuario.jsp" />
 	<%} else if(((Persona)session.getAttribute("user")).getCategoria().equals("Encargado")){%>
@@ -48,7 +47,8 @@
             <div class="col-10 contenedor">
                 <h1 class="textoBienvenida"><%=((Persona)session.getAttribute("user")).getCategoria()%></h1>
             </div>
-        </div>
+            </div>
+       </div>
        <div class="row footer">
            <div class="col-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -56,7 +56,6 @@
             </nav>
            </div>
         </div>
-     </div>
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="js/bootstrap.js" crossorigin="anonymous"></script>

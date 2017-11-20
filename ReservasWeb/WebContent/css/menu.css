@@ -1,8 +1,6 @@
 .cd-accordion-menu {
-	margin-top:150px;
 	list-style-type: none;
 	padding-left:0;
-	
 }
 
 .cd-accordion-menu input[type=checkbox] {
@@ -10,7 +8,6 @@
 	position: absolute;
 	display: none;
 	opacity: 0;
-		
 }
 
 .cd-accordion-menu label, .cd-accordion-menu a {
@@ -24,10 +21,39 @@
 	line-height: 30px;
 	border-radius: 2px;
 	padding-left:10px;
-	text-decoration: none;
+	margin:0px;
+
+}
+
+.has-children a:hover{
+	cursor: pointer;
+	background: #BBDEFB;
+	font-weight: bolder;
+	color:#868e96;	
+} 
+
+.linkSolo a{
+	padding-left: 20px;
+	font-size: 13px;
+}
+
+.has-children>ul>li>a{
+	font-size: 13px;
+	padding-left: 50px;
+} 
+
+.has-children>ul>li>label{
+	font-size: 15px;
+	padding-left: 40px;
+} 
+
+.cd-accordion-menu ul {
+	/* by default hide all sub menus */
+	display: none;
 	
 }
-.cd-accordion-menu ul {
+
+.cd-accordion-menu ul ul {
 	/* by default hide all sub menus */
 	display: none;
 	
@@ -44,8 +70,6 @@
 }
 
 /*AGREGADOS POR MI*/
-
-
 ul .cd-accordion-menu li .has-children label ul li .has-children{ 
 	  		
 	background: #00ff00;
@@ -57,101 +81,9 @@ ul li label{
 ul li label:hover{
 	cursor:pointer;
 	background: #BBDEFB;
+	font-weight: bolder;
+	color:#868e96;
 }
-
-.has-children label{
-	margin:0px;
-}
-
-/* ul.menu>li>a{
-	display: block;
-	text-decoration: none;
-	cursor:default;
-}
-
-ul.menu>li>ul{
-	overflow: hidden;
-	transition: 1.0s all ease-in;
-	max-height: 0;
-} 
-
-ul.menu>li:HOVER>ul{
-	transition: 1.0s all ease-in;
-	max-height: 300px;
-	text-decoration: none;
-}
-
-ul.menu>li>ul>li>ul{
-	overflow: hidden;
-	transition: .7s all ease-in;
-	max-height: 0;
-	text-decoration: none;
-} 
-
-ul.menu>li>ul>li:HOVER>ul{
-	transition: .7s all ease-in;
-	max-height: 300px;
-}
-
-ul.menu>li>ul>li:hover>a{
-     color: black;
-    font-weight: bolder; 
-    text-decoration: none;
-    background: #90CAF9;
-    cursor:default;
-}
-
-ul.menu>li>ul>li>ul>li:hover>a{
-    color: black;
-    font-weight: bolder;
-    text-decoration: none;
-    background: #BBDEFB;
-    cursor:pointer;
-}
-
-ul.menu>li>ul>li:hover>a.link.res{
-    color: black;
-    font-weight: bolder;
-    text-decoration: none;
-    background: #BBDEFB;
-    cursor:pointer;
-}
-
-.menu{
-    padding: 0px;
-    margin: 0px;
-    margin-top:5px;
-    border-radius: 5px;
-    position:fixed;
-}
-
-.menu a{
-    border-radius: 2px;
-    background: #2196F3;
-    padding-left: 10px;
-    padding-right: 5px;
-    color: gainsboro;
-    height: 35px;
-    line-height: 30px;
-}
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*.menujq{
 	padding: 0px;

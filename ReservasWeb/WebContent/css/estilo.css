@@ -133,12 +133,7 @@ ul.menu>li>ul>li:hover>a.link.res{
 
 .contenedor{
     width: 100%;
-    display: inline-block;
-    margin-top:140px;
-}
-
-.contenedor .menu{
-    width: 100%;
+    margin-top: 140px;
 }
 
 .contenedor ul{
@@ -157,12 +152,12 @@ ul.menu>li>ul>li:hover>a.link.res{
 }
 
 
-.contenedor .menu .icono{
+.cd-accordion-menu .icono{
     font-size: 12px;
     line-height: 1.5;
 }
 
-.contenedor .menu .icono.izquierda{
+i.icono.izquierda{
   float: left;
   margin-right: 10px;
   line-height: 30px;
@@ -174,12 +169,19 @@ ul.menu>li>ul>li:hover>a.link.res{
   line-height: 25px; 
 }
 
-.contenedor .menu .icono.derecha{
+.icono.derecha{
     float: right;
     margin-left: 10px;
     line-height: 30px;
-    
 }
+
+i.icono.derecha{
+    float: right;
+    margin-left: 10px;
+    line-height: 30px;
+    margin-right: 5px;
+}
+
 
 .iconoInicio{
 	float: center;
@@ -189,11 +191,6 @@ ul.menu>li>ul>li:hover>a.link.res{
 }
 
 
-.contenedor .menu ul{
-/*     display: none; */
-    
-}
-
 
 /* MIGAJA DE PAN */
 
@@ -202,23 +199,6 @@ ul.menu>li>ul>li:hover>a.link.res{
 	border-radius: 5px;
 	height: 40px;
 	padding: 5px;
-}
-
-
-
-/* SUBMENU */
-.contenedor .menu ul li a{
-    background: #E0E0E0;
-    color: #90A4AE;
-    padding-left: 15px;
-    font-size: 15px;
-} 
-
-/* SUBSUBMENU */
-.contenedor .menu ul li ul li a{
-    background: #E0E0E0;
-    font-size: 14px;
-    padding-left: 25px;
 }
 
 

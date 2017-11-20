@@ -2,7 +2,7 @@
 <%@page import="entidades.TipoElemento"%>
 <%@page import="entidades.Elemento"%>
 <%@page import="logica.ControladorDeElemento"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.*"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
