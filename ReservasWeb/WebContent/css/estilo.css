@@ -1,5 +1,76 @@
 /* MENU */
-/*
+.cd-accordion-menu {
+	list-style-type: none;
+	padding-left:0;
+}
+
+.cd-accordion-menu input[type=checkbox] {
+	/* hide native checkbox */
+	position: absolute;
+	display: none;
+	opacity: 0;
+}
+
+.cd-accordion-menu label, .cd-accordion-menu a {
+	
+	position: relative;
+	display: block;
+	background: #2196F3;
+	color: #90CAF9;
+	font-size: 1rem;
+	height:40px;
+	line-height: 30px;
+	border-radius: 2px;
+	padding-left:10px;
+	margin:0px;
+
+}
+
+.has-children a:hover{
+	cursor: pointer;
+	background: #BBDEFB;
+	font-weight: bolder;
+	color:#868e96;	
+} 
+
+.linkSolo a{
+	padding-left: 15px;
+	font-size: 13px;
+}
+
+.has-children>ul>li>a{
+	font-size: 13px;
+	padding-left: 50px;
+} 
+
+.has-children>ul>li>label{
+	font-size: 15px;
+	padding-left: 40px;
+} 
+
+.cd-accordion-menu ul {
+	/* by default hide all sub menus */
+	display: none;
+	
+}
+
+.cd-accordion-menu ul ul {
+	/* by default hide all sub menus */
+	display: none;
+	
+}
+ 
+.cd-accordion-menu input[type=checkbox]:checked + label + ul,
+.cd-accordion-menu input[type=checkbox]:checked + label:nth-of-type(n) + ul {
+	/* use label:nth-of-type(n) to fix a bug on safari (<= 8.0.8) with multiple adjacent-sibling selectors*/
+	/* show children when item is checked */
+	display: block;
+	list-style-type: none;
+	padding-left:0;
+	
+}
+
+/*MENU VIEJO*/
 ul.menu>li>a{
 	display: block;
 	text-decoration: none;
@@ -8,12 +79,12 @@ ul.menu>li>a{
 
 ul.menu>li>ul{
 	overflow: hidden;
-	transition: 1.0s all ease-in;
+	transition: .7s all ease-in;
 	max-height: 0;
 } 
 
 ul.menu>li:HOVER>ul{
-	transition: 1.0s all ease-in;
+	transition: .7s all ease-in;
 	max-height: 300px;
 	text-decoration: none;
 }
@@ -31,8 +102,8 @@ ul.menu>li>ul>li:HOVER>ul{
 }
 
 ul.menu>li>ul>li:hover>a{
-     color: black;
-    font-weight: bolder; 
+/*     color: black;
+    font-weight: bolder; */
     text-decoration: none;
     background: #90CAF9;
     cursor:default;
@@ -70,6 +141,22 @@ ul.menu>li>ul>li:hover>a.link.res{
     color: gainsboro;
     height: 35px;
     line-height: 30px;
+}
+
+/*AGREGADOS POR MI*/
+ul .cd-accordion-menu li .has-children label ul li .has-children{ 
+	  		
+	background: #00ff00;
+}
+ul li label{
+	background: #90CAF9;
+}
+
+ul li label:hover{
+	cursor:pointer;
+	background: #BBDEFB;
+	font-weight: bolder;
+	color:#868e96;
 }
 
 /* LOGIN */
@@ -133,7 +220,7 @@ ul.menu>li>ul>li:hover>a.link.res{
 
 .contenedor{
     width: 100%;
-    margin-top: 140px;
+    margin-top: 55px;
 }
 
 .contenedor ul{
@@ -383,7 +470,7 @@ i.icono.derecha{
 .mensaje_error{
 	display: inline-block;
 	margin: 0px 30%;
-	width:35%;
+	width:100%;
 	
 }
 
@@ -401,9 +488,7 @@ i.icono.derecha{
     color:white;
 }
 .mensaje_error .menu p{
-	
     list-style: none;
-    
     border-radius: 2px;
     background: #E0E0E0;
     padding-left: 10px;
@@ -426,7 +511,7 @@ i.icono.derecha{
     color: black;
     height: 35px;
     line-height: 30px;
-    width: 30%;
+    width: 500px;
     display: inline-block;
     padding-top:0px;
 }

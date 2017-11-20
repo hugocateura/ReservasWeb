@@ -32,7 +32,6 @@
                   </form>
               </nav>
            </div>
-       </div>
  
  <% if (((Persona)session.getAttribute("user")).getCategoria().equals("Online")){%>
 	<jsp:include page="MenuUsuario.jsp" />
@@ -45,19 +44,17 @@
             <div class="col-10 contenedor">
                 <h1 class="tituloError"><%=(String) session.getAttribute("mensaje")%></h1>
 			
-            <div class="contenedor mensaje_error">
-            	<ul class="menu">
-                  <li class="detalle_error">
-                    <a class="link" href="#"> Detalles del error<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
-                       <ul>
-                             
-                              <p><%=(String) session.getAttribute("error")%></p>
-                          
-                        </ul>
-                  </li>
-                </ul>
-            </div>
-            
+	            <div class="contenedor mensaje_error">
+	            	<ul class="menu">
+	                  <li class="detalle_error">
+	                    <a class="link" href="#"> Detalles del error<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
+	                    <ul><p><%=(String) session.getAttribute("error")%></p></ul>
+	                  </li>
+	                </ul>
+	            </div>
+          	</div> 
+         </div> 
+        </div>
        <div class="row footer">
            <div class="col-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -65,8 +62,7 @@
             </nav>
            </div>
         </div>
-     </div>
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>

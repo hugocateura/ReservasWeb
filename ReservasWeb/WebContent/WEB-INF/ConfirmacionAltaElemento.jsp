@@ -33,7 +33,7 @@
                       <a class="caja derecha salir" href="Login"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
                   </form>
               </nav>
-           </div>
+          
        </div>
  
  <% if (((Persona)session.getAttribute("user")).getCategoria().equals("Online")){%>
@@ -50,6 +50,7 @@
  						perteneciente al tipo <%=((Elemento)session.getAttribute("nuevoElemento")).getTipo().getNombre()%>           	
             	</div>
             </div>
+             </div>
         </div>
        <div class="row footer">
            <div class="col-12">

@@ -36,10 +36,9 @@
 	  		<ul>
 	  			<li class="has-children">
 	  				<input type="checkbox" name ="sub-group-5" id="sub-group-5">
-					<label class="linkSolo" for="sub-group-5"><span><a href="ReservarElemento1">Reservar</a></span></label>
+					<label class="linkSolo" for="sub-group-5"><span><a href="SeleccionarUsuarioReserva">Reservar</a></span></label>
 				</li>
 	  		</ul>
 	  	</li>
-	  	
 	 </ul>
 </div>

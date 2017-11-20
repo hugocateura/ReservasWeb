@@ -36,7 +36,7 @@
                   </form>
               </nav>
            </div>
-       </div>
+       
         <% if (((Persona)session.getAttribute("user")).getCategoria().equals("Online")){%>
 	<jsp:include page="MenuUsuario.jsp" />
 	<%} else if(((Persona)session.getAttribute("user")).getCategoria().equals("Encargado")){%>
@@ -108,6 +108,7 @@
 					<input type="submit" name="guardarPersona" value="Guardar" class="btn btn-primary">
 				</div>
             </form>            
+            </div>
             </div>
         </div>
        <div class="row footer">
