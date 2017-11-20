@@ -2,6 +2,7 @@
 .cd-accordion-menu {
 	list-style-type: none;
 	padding-left:0;
+	position:fixed;
 }
 
 .cd-accordion-menu input[type=checkbox] {
@@ -220,7 +221,7 @@ ul li label:hover{
 
 .contenedor{
     width: 100%;
-    margin-top: 55px;
+    margin-top: 55px; /*poner a 55 cuando lo subimos al servidor*/
 }
 
 .contenedor ul{

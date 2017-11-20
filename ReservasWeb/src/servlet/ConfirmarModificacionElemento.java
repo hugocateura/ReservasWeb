@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import entidades.Elemento;
 import entidades.TipoElemento;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import logica.ControladorDeElemento;
 import logica.ControladorDePersona;
 import logica.ControladorTipoDeElemento;
