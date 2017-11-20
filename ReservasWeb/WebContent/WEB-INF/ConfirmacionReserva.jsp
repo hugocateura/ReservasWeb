@@ -34,7 +34,7 @@
                   </form>
               </nav>
            </div>
-       </div>
+       
  
  <% if (((Persona)session.getAttribute("user")).getCategoria().equals("Online")){%>
 	<jsp:include page="MenuUsuario.jsp" />
@@ -50,6 +50,7 @@
  						desde <%=((Reserva)session.getAttribute("reserva")).getFechaHoraDesde()%> hasta <%=((Reserva)session.getAttribute("reserva")).getFechaHoraHasta()%>           	
             	</div>
             </div>
+        </div>
         </div>
        <div class="row footer">
            <div class="col-12">

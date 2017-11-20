@@ -33,7 +33,7 @@
                       <a class="caja derecha salir" href="Login"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
                   </form>
               </nav>
-           </div>
+           
        </div>
  
  <% if (((Persona)session.getAttribute("user")).getCategoria().equals("Online")){%>
@@ -49,6 +49,7 @@
             			Alta realizada exitosamente de <%=((Persona)session.getAttribute("nuevoUsuario")).getNombre()%> <%=((Persona)session.getAttribute("nuevoUsuario")).getApellido()%>
  						con usuario <%=((Persona)session.getAttribute("nuevoUsuario")).getUsuario()%>           	
             	</div>
+            </div>
             </div>
         </div>
        <div class="row footer">
