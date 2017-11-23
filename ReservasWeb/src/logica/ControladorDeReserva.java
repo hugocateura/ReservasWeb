@@ -35,7 +35,6 @@ private DatosElemento baseElemento = new DatosElemento();
 		DatosReserva baseReserva = new DatosReserva();
 		String strHoraBD = baseReserva.getFechaHoraActual();				//OBTENGO LA HORA DE LA BD
 		
-		int contador=0;
 		long duracion=0;
 		long anticipacion=0;
 		try 

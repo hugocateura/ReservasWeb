@@ -6,7 +6,7 @@ import utilidades.ExcepcionesEscritorio;
 
 public class FactoryConnection implements Serializable{
 	private String driver="com.mysql.jdbc.Driver";
-	private String host="node148140-sysres.jelasticlw.com.br";
+	private String host="localhost";
 	private String port="3306";
 	private String user="admin";
 	private String password="admin";
