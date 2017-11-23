@@ -36,7 +36,7 @@
                   </form>
               </nav>
            </div>
-       </div>
+       
         <% if (((Persona)session.getAttribute("user")).getCategoria().equals("Online")){%>
 	<jsp:include page="MenuUsuario.jsp" />
 	<%} else if(((Persona)session.getAttribute("user")).getCategoria().equals("Encargado")){%>
@@ -99,7 +99,7 @@
 				  <div class="form-group row">
 				    <label class="col-2 col-form-label">Habilitado</label>
 				    <div class="col-10">
-				      <input type="checkbox" class="form-check-input" value="1" name="personaHabilitado" aria-describedby="habilitadoHelp">
+				      <input type="checkbox" class="form-check-input" value="1" name="personaHabilitado" aria-describedby="habilitadoHelp" checked>
 				      <small id="habilitadoHelp" class="form-text text-muted">Tilde esta opción si la persona esta habilitada.</small>
 				    </div>
 				  </div>
@@ -108,6 +108,7 @@
 					<input type="submit" name="guardarPersona" value="Guardar" class="btn btn-primary">
 				</div>
             </form>            
+            </div>
             </div>
         </div>
        <div class="row footer">

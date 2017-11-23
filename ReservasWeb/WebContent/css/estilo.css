@@ -1,5 +1,84 @@
 /* MENU */
-/*
+.cd-accordion-menu {
+	list-style-type: none;
+	padding-left:0;
+	position:fixed;
+	width: 17%;
+}
+
+.cd-accordion-menu input[type=checkbox] {
+	/* hide native checkbox */
+	position: absolute;
+	display: none;
+	opacity: 0;
+}
+
+.has-children>label{
+	background: #1E88E5;
+}
+
+.cd-accordion-menu label, .cd-accordion-menu a {
+	position: relative;
+	display: block;
+	color: #90CAF9;
+	font-size: 1rem;
+	height:40px;
+	line-height: 30px;
+	border-radius: 2px;
+	padding-left:10px;
+	margin:0px;
+
+}
+
+.has-children a:hover{
+	cursor: pointer;
+	background: #90CAF9;
+	font-weight: bolder;
+	color:#868e96;	
+} 
+
+.linkSolo a{
+	padding-left: 15px;
+	font-size: 13px;
+	color:#BBDEFB;
+	background:#2196F3;
+}
+
+.has-children>ul>li>a{
+	font-size: 13px;
+	padding-left: 50px;
+	background:#42A5F5;
+} 
+
+.has-children>ul>li>label{
+	font-size: 15px;
+	padding-left: 40px;
+	background:#2196F3;
+} 
+
+.cd-accordion-menu ul {
+	/* by default hide all sub menus */
+	display: none;
+	
+}
+
+.cd-accordion-menu ul ul {
+	/* by default hide all sub menus */
+	display: none;
+	
+}
+ 
+.cd-accordion-menu input[type=checkbox]:checked + label + ul,
+.cd-accordion-menu input[type=checkbox]:checked + label:nth-of-type(n) + ul {
+	/* use label:nth-of-type(n) to fix a bug on safari (<= 8.0.8) with multiple adjacent-sibling selectors*/
+	/* show children when item is checked */
+	display: block;
+	list-style-type: none;
+	padding-left:0;
+	
+}
+
+/*MENU VIEJO*/
 ul.menu>li>a{
 	display: block;
 	text-decoration: none;
@@ -31,8 +110,8 @@ ul.menu>li>ul>li:HOVER>ul{
 }
 
 ul.menu>li>ul>li:hover>a{
-     color: black;
-    font-weight: bolder; 
+/*     color: black;
+    font-weight: bolder; */
     text-decoration: none;
     background: #90CAF9;
     cursor:default;
@@ -70,6 +149,22 @@ ul.menu>li>ul>li:hover>a.link.res{
     color: gainsboro;
     height: 35px;
     line-height: 30px;
+}
+
+/*AGREGADOS POR MI*/
+ul .cd-accordion-menu li .has-children label ul li .has-children{ 
+	  		
+	background: #00ff00;
+}
+ul li label{
+	background: #90CAF9;
+}
+
+ul li label:hover{
+	cursor:pointer;
+	background: #90CAF9;
+	font-weight: bolder;
+	color:#868e96;
 }
 
 /* LOGIN */
@@ -133,12 +228,7 @@ ul.menu>li>ul>li:hover>a.link.res{
 
 .contenedor{
     width: 100%;
-    display: inline-block;
-    margin-top:140px;
-}
-
-.contenedor .menu{
-    width: 100%;
+    margin-top: 55px; /*poner a 55 cuando lo subimos al servidor*/
 }
 
 .contenedor ul{
@@ -157,12 +247,12 @@ ul.menu>li>ul>li:hover>a.link.res{
 }
 
 
-.contenedor .menu .icono{
+.cd-accordion-menu .icono{
     font-size: 12px;
     line-height: 1.5;
 }
 
-.contenedor .menu .icono.izquierda{
+i.icono.izquierda{
   float: left;
   margin-right: 10px;
   line-height: 30px;
@@ -174,12 +264,19 @@ ul.menu>li>ul>li:hover>a.link.res{
   line-height: 25px; 
 }
 
-.contenedor .menu .icono.derecha{
+.icono.derecha{
     float: right;
     margin-left: 10px;
     line-height: 30px;
-    
 }
+
+i.icono.derecha{
+    float: right;
+    margin-left: 10px;
+    line-height: 30px;
+    margin-right: 5px;
+}
+
 
 .iconoInicio{
 	float: center;
@@ -189,11 +286,6 @@ ul.menu>li>ul>li:hover>a.link.res{
 }
 
 
-.contenedor .menu ul{
-/*     display: none; */
-    
-}
-
 
 /* MIGAJA DE PAN */
 
@@ -202,23 +294,6 @@ ul.menu>li>ul>li:hover>a.link.res{
 	border-radius: 5px;
 	height: 40px;
 	padding: 5px;
-}
-
-
-
-/* SUBMENU */
-.contenedor .menu ul li a{
-    background: #E0E0E0;
-    color: #90A4AE;
-    padding-left: 15px;
-    font-size: 15px;
-} 
-
-/* SUBSUBMENU */
-.contenedor .menu ul li ul li a{
-    background: #E0E0E0;
-    font-size: 14px;
-    padding-left: 25px;
 }
 
 
@@ -403,7 +478,7 @@ ul.menu>li>ul>li:hover>a.link.res{
 .mensaje_error{
 	display: inline-block;
 	margin: 0px 30%;
-	width:35%;
+	width:100%;
 	
 }
 
@@ -421,9 +496,7 @@ ul.menu>li>ul>li:hover>a.link.res{
     color:white;
 }
 .mensaje_error .menu p{
-	
     list-style: none;
-    
     border-radius: 2px;
     background: #E0E0E0;
     padding-left: 10px;
@@ -446,7 +519,7 @@ ul.menu>li>ul>li:hover>a.link.res{
     color: black;
     height: 35px;
     line-height: 30px;
-    width: 30%;
+    width: 500px;
     display: inline-block;
     padding-top:0px;
 }

@@ -1,7 +1,7 @@
 <%@page import="entidades.Persona"%>
 <%@page import="entidades.TipoElemento"%>
 <%@page import="logica.ControladorTipoDeElemento"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,7 +38,7 @@
                   </form>
               </nav>
            </div>
-       </div>
+       
         <% if (((Persona)session.getAttribute("user")).getCategoria().equals("Online")){%>
 	<jsp:include page="MenuUsuario.jsp" />
 	<%} else if(((Persona)session.getAttribute("user")).getCategoria().equals("Encargado")){%>
@@ -55,7 +55,7 @@
 			           	<div class="form-group row">
 						    <label class="col-2 col-form-label">Nombre</label>
 						    <div class="col-10">
-						    	<input type="text" class="form-control" name="elementoNombre" aria-describedby="nombreHelp" placeholder="Ingrese Nombre" required>
+						    	<input type="text" class="form-control" name="elementoNombre" aria-describedby="nombreHelp" placeholder="Ingrese Nombre">
 						    	<small id="nombrelHelp" class="form-text text-muted">Ingrese el nombre del elemento.</small>
 							</div>
 						</div>
@@ -79,6 +79,7 @@
 							<input type="submit" name="guardarElemento" value="Guardar" class="btn btn-primary">
 						</div>
 			           </form>
+            </div>
             </div>
         </div>
        <div class="row footer">

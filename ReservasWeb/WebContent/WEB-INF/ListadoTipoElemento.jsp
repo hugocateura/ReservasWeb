@@ -1,7 +1,7 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="entidades.Persona"%>
 <%@page import="entidades.TipoElemento"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -81,7 +81,7 @@
                       <a class="caja derecha salir" href="Login"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
                   </form>
               </nav>
-           </div>
+           
        </div>
               <% if (((Persona)session.getAttribute("user")).getCategoria().equals("Online")){%>
 	<jsp:include page="MenuUsuario.jsp" />
@@ -130,6 +130,7 @@
 							<input type="button" onclick = "completarInput(); this.form.action = 'ModificarTipoElemento';  this.form.submit();"  class="btn btn-primary" value="Modificar" />
 						 </div>
                     </form>
+            </div>
             </div>
         </div>
        <div class="row footer">

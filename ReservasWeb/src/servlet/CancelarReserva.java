@@ -53,9 +53,6 @@ public class CancelarReserva extends HttpServlet {
 			
 			reservaAEliminar = ctrlReserva.getReserva(reservaAEliminar);
 						
-			String contenidoMail = ("Reserva:\nNombre: "+reservaAEliminar.getPersona().getNombre()+"\nApellido: "+reservaAEliminar.getPersona().getApellido()+"\nUsuario: "+reservaAEliminar.getPersona().getUsuario()+"\nElemento: "+reservaAEliminar.getElemento().getNombre()+"\nFecha Desde: "+reservaAEliminar.getFechaHoraDesde()+"\nFecha Hasta: "+reservaAEliminar.getFechaHoraHasta());
-			Emailer.getInstance().send("tpfinaljava2017@gmail.com","Cancelacion de Reserva de Elemento",contenidoMail);
-			
 			ctrlReserva.borrarReserva(reservaAEliminar);
 			
 			Persona pers = (Persona)request.getSession().getAttribute("user");			//Actualizo el listado de las reservas		

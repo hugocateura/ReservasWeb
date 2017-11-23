@@ -70,8 +70,7 @@ public class ConfirmarReserva extends HttpServlet {
 				ctrlReserva.crearReserva(reservaActual);
 				request.getSession().setAttribute("reserva", reservaActual);
 				request.getRequestDispatcher("WEB-INF/ConfirmacionReserva.jsp").forward(request, response);
-				String contenidoMail = ("Reserva exitosa de:\nNombre: "+reservaActual.getPersona().getNombre()+"\nApellido: "+reservaActual.getPersona().getApellido()+"\nUsuario: "+reservaActual.getPersona().getUsuario()+"\nElemento: "+reservaActual.getElemento().getNombre()+"\nFecha Desde: "+reservaActual.getFechaHoraDesde()+"\nFecha Hasta: "+reservaActual.getFechaHoraHasta());
-				Emailer.getInstance().send("tpfinaljava2017@gmail.com","Reserva de Elemento",contenidoMail);
+
 				
 			} catch (ExcepcionEspecial ex) {	
 				

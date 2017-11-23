@@ -10,6 +10,7 @@ import datos.DatosTipoElemento;
 import entidades.Elemento;
 import entidades.Persona;
 import entidades.TipoElemento;
+import utilidades.Emailer;
 import utilidades.ExcepcionEspecial;
 
 public class ControladorDeElemento implements Serializable{
@@ -24,19 +25,22 @@ public class ControladorDeElemento implements Serializable{
 			
 			public void crearElemento(Elemento ele) throws Exception, ExcepcionEspecial{
 	
-				if (ele.getNombre().length() != 0){
 						try{
 							baseElemento.agregarElemento(ele);
 						}
 						catch (Exception a){
 							throw new ExcepcionEspecial("tipo de elemento", Level.ERROR);
 						}
-					}
-				else{
-					throw new ExcepcionEspecial("nombre", Level.ERROR);
-					}		
 						
-			};
+						try{
+							String contenidoMail = ("Alta exitosa de:\nNombre: "+ele.getNombre()+"\nTipo de Elemento: "+ele.getTipo().getNombre());
+							Emailer.getInstance().send("tpfinaljava2017@gmail.com","Alta de nuevo Elemento",contenidoMail);
+						}
+						catch(Exception e){
+							throw new ExcepcionEspecial("No fue posible enviar el correo", Level.ERROR);
+						}
+		
+			}
 			
 			public void borrarElemento (Elemento ele) throws Exception{
 				try {

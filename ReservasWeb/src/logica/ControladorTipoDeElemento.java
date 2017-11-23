@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Level;
 import datos.DatosTipoElemento;
 import entidades.Persona;
 import entidades.TipoElemento;
+import utilidades.Emailer;
 import utilidades.ExcepcionEspecial;
 
 public class ControladorTipoDeElemento implements Serializable{
@@ -17,6 +18,13 @@ private DatosTipoElemento baseTipoElemento = new DatosTipoElemento();
 		if (tipoele.getNombre().length() != 0){
 			if (tipoele.getCant_max_reservas() >= 0){			
 				baseTipoElemento.agregarTipoElemento(tipoele);
+				try {
+					String contenidoMail = ("Alta exitosa de:\nNombre: "+tipoele.getNombre()+"\nCant. Max. Reservas: "+tipoele.getCant_max_reservas()+"\nMax. Anticipacion: "+tipoele.getCantMaxDiasAnticipacion()+"\nMax. Duracion: "+tipoele.getLimiteMaxHorasReserva()+"\nReserva Encargado: "+tipoele.getReservaEncargado());
+					Emailer.getInstance().send("tpfinaljava2017@gmail.com","Alta de nuevo Tipo de Elemento",contenidoMail);
+				} catch (Exception e) {
+					throw new ExcepcionEspecial("No es posible enviar el correo.", Level.ERROR);
+				}
+				
 				}
 			else{
 				throw new ExcepcionEspecial("cantidad máxima de reservas", Level.WARN);

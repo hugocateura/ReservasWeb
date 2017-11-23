@@ -2,7 +2,7 @@
 <%@page import="entidades.TipoElemento"%>
 <%@page import="entidades.Elemento"%>
 <%@page import="logica.ControladorDeElemento"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.*"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -39,8 +39,7 @@
                       <a class="caja derecha salir" href="Login"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
                   </form>
               </nav>
-           </div>
-       </div>
+            </div>
          <% if (((Persona)session.getAttribute("user")).getCategoria().equals("Online")){%>
 	<jsp:include page="MenuUsuario.jsp" />
 	<%} else if(((Persona)session.getAttribute("user")).getCategoria().equals("Encargado")){%>
@@ -61,9 +60,8 @@
 									     <% ControladorDeElemento ctrlElemento = new ControladorDeElemento();
 							      	     	ArrayList<Elemento> elementosDisponibles = ctrlElemento.getElementosDisponibles(((TipoElemento)session.getAttribute("tipoElemento")), ((String)session.getAttribute("fechaHoraDesde")), ((String)session.getAttribute("fechaHoraHasta")));
 							      		 	for(Elemento ele : elementosDisponibles){ %>							      	 
-							      	<option value="<%=(ele.getId())%>"><%=ele.getNombre()%></option>
-							      								    
-							      <%} %>
+							      	<option value="<%=(ele.getId())%>"><%=ele.getNombre()%></option><%} %>
+								<% if(elementosDisponibles.isEmpty()){%><option disabled = "disabled">No existen elementos para el rango de fechas ingresado.</option><%};%>
 							    </select>
 						    <small id="eleHelp" class="form-text text-muted">Seleccione el elemento a reservar.</small>
 						</div>

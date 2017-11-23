@@ -48,12 +48,9 @@ public class ConfirmarAnulacionReserva extends HttpServlet {
 			reservaAnular.setId(Integer.parseInt(idReserva));
 			
 			ControladorDeReserva ctrlReserva = new ControladorDeReserva(); 					//Instancio controladorReserva
-			ctrlReserva.cancelarReserva(reservaAnular);
 			reservaAnular = ctrlReserva.getReserva(reservaAnular);
+			ctrlReserva.cancelarReserva(reservaAnular);
 			
-			String contenidoMail = ("Reserva:\nNombre: "+reservaAnular.getPersona().getNombre()+"\nApellido: "+reservaAnular.getPersona().getApellido()+"\nUsuario: "+reservaAnular.getPersona().getUsuario()+"\nElemento: "+reservaAnular.getElemento().getNombre()+"\nFecha Desde: "+reservaAnular.getFechaHoraDesde()+"\nFecha Hasta: "+reservaAnular.getFechaHoraHasta());
-			Emailer.getInstance().send("tpfinaljava2017@gmail.com","Anulación de Reserva de Elemento",contenidoMail);
-					
 			ArrayList<Reserva> listado = new ArrayList<Reserva>(); 
 			
 			try {

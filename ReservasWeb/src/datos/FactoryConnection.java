@@ -6,7 +6,11 @@ import utilidades.ExcepcionesEscritorio;
 
 public class FactoryConnection implements Serializable{
 	private String driver="com.mysql.jdbc.Driver";
+<<<<<<< HEAD
 	private String host="localhost";
+=======
+	private String host="node148140-sysres.jelasticlw.com.br"; //agregar node148140-sysres.jelasticlw.com.br cuando lo subimos al servidor //
+>>>>>>> branch 'master' of https://github.com/hugocateura/ReservasWeb.git
 	private String port="3306";
 	private String user="admin";
 	private String password="admin";

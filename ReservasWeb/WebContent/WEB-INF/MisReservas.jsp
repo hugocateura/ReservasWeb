@@ -3,7 +3,7 @@
 <%@page import="entidades.Elemento"%>
 <%@page import="entidades.TipoElemento"%>
 
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.*"%>
 <%@page import="logica.ControladorDeReserva"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -83,7 +83,7 @@
                       <a class="caja derecha salir" href="Login"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
                   </form>
               </nav>
-           </div>
+           
        </div>
           <% if (((Persona)session.getAttribute("user")).getCategoria().equals("Online")){%>
 	<jsp:include page="MenuUsuario.jsp" />
@@ -140,6 +140,7 @@
 							<input type="button" onclick = "completarInput(); this.form.action = 'CancelarReserva';  this.form.submit();" class="btn btn-primary btnEliminar" value="Anular" />
 						 </div>
                     </form>
+                </div>
                 </div>
         </div>
        <div class="row footer">

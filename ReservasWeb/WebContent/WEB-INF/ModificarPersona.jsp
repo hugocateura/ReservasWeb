@@ -61,7 +61,7 @@
                       <a class="caja derecha salir" href="Login"><i class="icono izquierda fa fa-times-circle" aria-hidden="true"></i>SALIR</a>
                   </form>
               </nav>
-           </div>
+           
        </div>
         <% if (((Persona)session.getAttribute("user")).getCategoria().equals("Online")){%>
 	<jsp:include page="MenuUsuario.jsp" />
@@ -134,6 +134,7 @@
 					<input type="submit" name="guardarPersona" value="Guardar" class="btn btn-primary">
 				</div>
             </form>            
+            </div>
             </div>
         </div>
        <div class="row footer">

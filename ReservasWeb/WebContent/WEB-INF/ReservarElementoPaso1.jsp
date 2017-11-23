@@ -1,8 +1,8 @@
 <%@page import="entidades.Persona"%>
 <%@page import="entidades.TipoElemento"%>
 <%@page import="logica.ControladorTipoDeElemento"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.lang.Integer"%>
+<%@page import="java.util.*"%>
+<%@page import="java.lang.*"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -41,7 +41,6 @@
                   </form>
               </nav>
            </div>
-       </div>
          <% if (((Persona)session.getAttribute("user")).getCategoria().equals("Online")){%>
 	<jsp:include page="MenuUsuario.jsp" />
 	<%} else if(((Persona)session.getAttribute("user")).getCategoria().equals("Encargado")){%>
@@ -95,6 +94,7 @@
 						<input type="submit" name="siguiente" value="Siguiente" class="btn btn-primary">
 					</div>
                 </form>
+            </div>
             </div>
         </div>
        <div class="row footer">
