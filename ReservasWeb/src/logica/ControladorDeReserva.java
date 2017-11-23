@@ -36,12 +36,9 @@ private DatosElemento baseElemento = new DatosElemento();
 		DatosReserva baseReserva = new DatosReserva();
 		String strHoraBD = baseReserva.getFechaHoraActual();				//OBTENGO LA HORA DE LA BD
 		
-<<<<<<< HEAD
-		long duracion=0;
-=======
 		int contador=0;
 		double duracion=0;
->>>>>>> branch 'master' of https://github.com/hugocateura/ReservasWeb.git
+
 		long anticipacion=0;
 		try 
 			{
