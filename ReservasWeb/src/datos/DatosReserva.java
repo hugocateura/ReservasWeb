@@ -328,14 +328,14 @@ public Reserva getReserva(Reserva res) throws Exception,SQLException
 
 }
 
-public int getActivasTipo(TipoElemento tipo) throws Exception,SQLException
-{
+public int getActivasTipo(TipoElemento tipo, Persona pers) throws Exception, SQLException{
 	int cantidad=0;
 	PreparedStatement pstm=null;
 	ResultSet rs=null;
 	try {
-		pstm = FactoryConnection.getinstancia().getConn().prepareStatement("SELECT count(*) cant FROM reserva res INNER JOIN tipoelemento te ON res.tipo = te.id WHERE te.id = ? and fechaHoraDesde > CURRENT_TIMESTAMP() AND res.estado = 'Activa';");
+		pstm = FactoryConnection.getinstancia().getConn().prepareStatement("SELECT count(*) cant FROM reserva res INNER JOIN tipoelemento te ON res.tipo = te.id WHERE te.id = ? and fechaHoraDesde > CURRENT_TIMESTAMP() AND res.estado = 'Activa' AND res.persona = ?;");
 		pstm.setInt(1, tipo.getId());
+		pstm.setInt(2, pers.getId());
 		rs = pstm.executeQuery();
 		if(rs!=null){
 			while(rs.next()){

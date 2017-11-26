@@ -3,6 +3,7 @@
 	list-style-type: none;
 	padding-left:0;
 	position:fixed;
+	width: 17%;
 }
 
 .cd-accordion-menu input[type=checkbox] {
@@ -12,11 +13,13 @@
 	opacity: 0;
 }
 
+.has-children>label{
+	background: #1E88E5;
+}
+
 .cd-accordion-menu label, .cd-accordion-menu a {
-	
 	position: relative;
 	display: block;
-	background: #2196F3;
 	color: #90CAF9;
 	font-size: 1rem;
 	height:40px;
@@ -29,7 +32,7 @@
 
 .has-children a:hover{
 	cursor: pointer;
-	background: #BBDEFB;
+	background: #90CAF9;
 	font-weight: bolder;
 	color:#868e96;	
 } 
@@ -37,16 +40,20 @@
 .linkSolo a{
 	padding-left: 15px;
 	font-size: 13px;
+	color:#BBDEFB;
+	background:#2196F3;
 }
 
 .has-children>ul>li>a{
 	font-size: 13px;
 	padding-left: 50px;
+	background:#42A5F5;
 } 
 
 .has-children>ul>li>label{
 	font-size: 15px;
 	padding-left: 40px;
+	background:#2196F3;
 } 
 
 .cd-accordion-menu ul {
@@ -155,7 +162,7 @@ ul li label{
 
 ul li label:hover{
 	cursor:pointer;
-	background: #BBDEFB;
+	background: #90CAF9;
 	font-weight: bolder;
 	color:#868e96;
 }
