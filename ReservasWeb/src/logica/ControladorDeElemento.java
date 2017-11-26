@@ -29,7 +29,7 @@ public class ControladorDeElemento implements Serializable{
 							baseElemento.agregarElemento(ele);
 						}
 						catch (Exception a){
-							throw new ExcepcionEspecial("tipo de elemento", Level.ERROR);
+							throw new ExcepcionEspecial(a,"tipo de elemento", Level.ERROR);
 						}
 						
 						try{
@@ -37,7 +37,7 @@ public class ControladorDeElemento implements Serializable{
 							Emailer.getInstance().send("tpfinaljava2017@gmail.com","Alta de nuevo Elemento",contenidoMail);
 						}
 						catch(Exception e){
-							throw new ExcepcionEspecial("No fue posible enviar el correo", Level.ERROR);
+							throw new ExcepcionEspecial(e,"No fue posible enviar el correo", Level.ERROR);
 						}
 		
 			}
@@ -61,7 +61,7 @@ public class ControladorDeElemento implements Serializable{
 								baseElemento.modificarElemento(ele);
 							}
 							catch (Exception a){
-								throw new ExcepcionEspecial("tipo de elemento", Level.ERROR);
+								throw new ExcepcionEspecial(a,"tipo de elemento", Level.ERROR);
 							}
 						}
 					else{

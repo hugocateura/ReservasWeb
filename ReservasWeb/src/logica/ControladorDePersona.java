@@ -24,7 +24,7 @@ public class ControladorDePersona implements Serializable{
 							String contenidoMail = ("Alta exitosa de:\nNombre: "+pers.getNombre()+"\nApellido: "+pers.getApellido()+"\nDni: "+pers.getDni()+"\nUsuario: "+pers.getUsuario()+"\nCategoria: "+pers.getCategoria());
 							Emailer.getInstance().send("tpfinaljava2017@gmail.com","Alta de nuevo usuario",contenidoMail);
 						} catch (Exception e) {
-							throw new ExcepcionEspecial("No es posible enviar el correo.", Level.ERROR);
+							throw new ExcepcionEspecial(e,"No es posible enviar el correo.", Level.ERROR);
 						}
 						
 				}
@@ -90,6 +90,7 @@ public class ControladorDePersona implements Serializable{
 		}
 		return persona;
 	}
+	
 	public Persona buscarPersonaPorUsuyClave(Persona pers) throws Exception
 	{
 		Persona persona = new Persona();

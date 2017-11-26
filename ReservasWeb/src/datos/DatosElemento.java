@@ -8,13 +8,13 @@ import org.apache.logging.log4j.Level;
 
 import entidades.*;
 import utilidades.ExcepcionEspecial;
-import utilidades.ExcepcionesEscritorio;
+
 
 
 public class DatosElemento implements Serializable
 {
 	
-	public ArrayList<Elemento> buscarTodo() throws Exception
+	public ArrayList<Elemento> buscarTodo() throws Exception,SQLException
 	{
 		Statement stm=null;
 		ResultSet rs=null;
@@ -35,6 +35,10 @@ public class DatosElemento implements Serializable
 				}
 			}
 		} 
+		catch (SQLException exc) 
+		{
+			throw new ExcepcionEspecial(exc,"No es posible buscar un elemento en la base de datos", Level.ERROR);
+		}
 		catch (Exception e) 
 		{
 			throw e;
@@ -53,7 +57,8 @@ public class DatosElemento implements Serializable
 		
 	}
 	
-	public Elemento buscarPorNombre(Elemento ele) throws Exception{ 
+	public Elemento buscarPorNombre(Elemento ele) throws Exception,SQLException
+	{ 
 		PreparedStatement stm= null;
 		ResultSet rs= null;
 		Elemento elemento = null;
@@ -73,7 +78,9 @@ public class DatosElemento implements Serializable
 				ele.getTipo().setNombre(rs.getString("nombre"));
 				ele.getTipo().setCant_max_reservas(rs.getInt("cant_max_reservas"));
 				}
-		} catch (Exception e) {
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible buscar un elemento en la base de datos", Level.ERROR);
+		}catch (Exception e) {
 			throw e;
 		}
 		
@@ -89,7 +96,7 @@ public class DatosElemento implements Serializable
 		return elemento;
 	}
 	
-	public void agregarElemento (Elemento ele) throws Exception
+	public void agregarElemento (Elemento ele) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -105,6 +112,8 @@ public class DatosElemento implements Serializable
 			if(rs!=null && rs.next()){
 				ele.setId(rs.getInt(1));
 			}
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible agregar un elemento en la base de datos", Level.ERROR);	
 		} catch (Exception e) {
 			throw e;
 		}
@@ -119,7 +128,7 @@ public class DatosElemento implements Serializable
 		
 	}
 	
-	public void eliminarElemento(Elemento ele) throws Exception
+	public void eliminarElemento(Elemento ele) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		
@@ -130,7 +139,7 @@ public class DatosElemento implements Serializable
 			pstm.setInt(1, ele.getId());
 			pstm.executeUpdate();
 		} catch (SQLException exc) {
-			throw new ExcepcionEspecial("Imposible eliminar, existen reservas del Elemento", Level.ERROR);
+			throw new ExcepcionEspecial(exc,"Imposible eliminar, existen reservas del Elemento", Level.ERROR);
 		} 
 		catch (Exception e) {
 			throw e;
@@ -139,12 +148,12 @@ public class DatosElemento implements Serializable
 		try {
 			if(pstm!=null)pstm.close();
 			FactoryConnection.getinstancia().releaseConn();
-		} catch (SQLException exc) {
-			throw new ExcepcionEspecial("Error de conexión", Level.ERROR);				
+		} catch (Exception exc) {
+			throw exc;				
 		}		
 	}
 	
-	public void modificarElemento(Elemento ele) throws Exception
+	public void modificarElemento(Elemento ele) throws Exception,ExcepcionEspecial
 	{
 		PreparedStatement pstm = null;
 		
@@ -156,6 +165,8 @@ public class DatosElemento implements Serializable
 			pstm.setInt(2, (ele.getTipo().getId()));
 			pstm.setInt(3, ele.getId());
 			pstm.executeUpdate();
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible modificar un elemento en la base de datos", Level.ERROR);
 		} catch (Exception e) {
 			throw e;
 		}
@@ -169,8 +180,8 @@ public class DatosElemento implements Serializable
 		
 	}
 
-	public ArrayList<Elemento> devolverDisponibles(TipoElemento tipoElemento,String fechaDesde, String fechaHasta) throws Exception {
-		
+	public ArrayList<Elemento> devolverDisponibles(TipoElemento tipoElemento,String fechaDesde, String fechaHasta) throws Exception,SQLException
+	{
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
 		ArrayList<Elemento> elemento= new ArrayList<Elemento>();
@@ -196,9 +207,9 @@ public class DatosElemento implements Serializable
 					elemento.add(ele);
 				}
 			}
-		} 
-		catch (Exception e) 
-		{
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible buscar un elementos disponibles en la base de datos", Level.ERROR);
+		}catch (Exception e){
 			throw e;
 		}
 		
@@ -213,7 +224,7 @@ public class DatosElemento implements Serializable
 		return elemento;
 	}
 	
-	public Elemento buscarElemento(Elemento elemento) throws Exception
+	public Elemento buscarElemento(Elemento elemento) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -231,8 +242,9 @@ public class DatosElemento implements Serializable
 					elemento.getTipo().setId(rs.getInt("tipo"));
 					}
 						}
-			} 
-			catch (Exception e) {
+			} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible buscar un elemento en la base de datos", Level.ERROR);
+			} catch (Exception e) {
 			throw e;
 		}
 		
@@ -245,7 +257,7 @@ public class DatosElemento implements Serializable
 		return elemento;
 	}
 	
-	public Elemento getElemento(Elemento ele) throws Exception
+	public Elemento getElemento(Elemento ele) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -264,10 +276,9 @@ public class DatosElemento implements Serializable
 					tipo.setId(rs.getInt("tipo"));
 					elemento.setTipo(tipo);				
 			}
-			
-		} catch (SQLException e) {
-			throw e;
-		} catch (ExcepcionesEscritorio e) {
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible buscar un elemento en la base de datos", Level.ERROR);	
+		} catch (Exception e) {
 			throw e;
 		}
 				

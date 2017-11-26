@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Level;
 import java.util.ArrayList;
 import entidades.*;
 import utilidades.ExcepcionEspecial;
-import utilidades.ExcepcionesEscritorio;
+
 
 import java.io.Serializable;
 import java.nio.channels.SelectableChannel;
@@ -18,7 +18,7 @@ public class DatosReserva implements Serializable
 {
 	ArrayList<Reserva>listadoRes = new ArrayList<Reserva>();
 	
-	public ArrayList<Reserva> buscarTodo() throws Exception
+	public ArrayList<Reserva> buscarTodo() throws Exception,SQLException
 	{
 		PreparedStatement pstm=null;
 		ResultSet rs=null;
@@ -44,18 +44,17 @@ public class DatosReserva implements Serializable
 				}
 			}
 			
-			
-		} catch (SQLException e) {
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible buscar una reserva en la base de datos", Level.ERROR);	
+		} catch (Exception e) {
 			throw e;
-		} catch (ExcepcionesEscritorio e) {
-			throw e;
-		}
+		} 
 		
 		try {
 			if(rs!=null)rs.close();
 			if(pstm!=null)pstm.close();
 			FactoryConnection.getinstancia().releaseConn();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			throw e;
 		}
 		
@@ -63,7 +62,7 @@ public class DatosReserva implements Serializable
 	}
 	
 		
-	public ArrayList<Reserva> reservasPendientesPersona(Persona pers) throws Exception
+	public ArrayList<Reserva> reservasPendientesPersona(Persona pers) throws Exception,SQLException
 	{
 		PreparedStatement pstm=null;
 		ResultSet rs=null;
@@ -90,10 +89,9 @@ public class DatosReserva implements Serializable
 					listadoRes.add(res);
 				}
 			}
-			
-		} catch (SQLException e) {
-			throw e;
-		} catch (ExcepcionesEscritorio e) {
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible buscar una reserva pendiente en la base de datos", Level.ERROR);		
+		} catch (Exception e) {
 			throw e;
 		}
 		
@@ -107,7 +105,7 @@ public class DatosReserva implements Serializable
 		
 		return listadoRes;
 	}
-	public void agregarReserva(Reserva res) throws Exception
+	public void agregarReserva(Reserva res) throws Exception,SQLException
 	{
 		ResultSet rs = null;
 		PreparedStatement pstm = null;
@@ -129,10 +127,10 @@ public class DatosReserva implements Serializable
 			{
 				res.setId(rs.getInt(1));
 			}
-			
-		} catch (SQLException e) {
-			throw e;
-		} catch (ExcepcionesEscritorio e) {
+		
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible agregar una reserva en la base de datos", Level.ERROR);	
+		} catch (Exception e) {
 			throw e;
 		}
 		
@@ -146,7 +144,7 @@ public class DatosReserva implements Serializable
 				
 	}
 
-	public void eliminarReserva(Reserva res) throws Exception
+	public void eliminarReserva(Reserva res) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		
@@ -156,9 +154,9 @@ public class DatosReserva implements Serializable
 			pstm.executeUpdate();
 		} 
 		catch (SQLException exc) {
-			throw new ExcepcionEspecial("Error de integridad, no se puede eliminar la Reserva", Level.ERROR);
+			throw new ExcepcionEspecial(exc,"Error de integridad, no se puede eliminar la Reserva", Level.ERROR);
 		} 
-		catch (ExcepcionesEscritorio e) {
+		catch (Exception e) {
 			throw e;
 		}
 		
@@ -171,7 +169,7 @@ public class DatosReserva implements Serializable
 		
 	}
 		
-	public void modificarReserva(Reserva res) throws Exception
+	public void modificarReserva(Reserva res) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		
@@ -185,9 +183,9 @@ public class DatosReserva implements Serializable
 			pstm.setString(6, res.getObservacion());
 			pstm.setInt(7, res.getId());
 			pstm.executeUpdate();
-		} catch (SQLException e) {
-			throw e;
-		} catch (ExcepcionesEscritorio e) {
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible modificar una reserva en la base de datos", Level.ERROR);	
+		} catch (Exception e) {
 			throw e;
 		}
 		
@@ -200,7 +198,7 @@ public class DatosReserva implements Serializable
 	}
 	
 
-public ArrayList<Elemento> obtenerElementos(int tipo, String fechaHoraDesde, String fechaHoraHasta) throws Exception
+public ArrayList<Elemento> obtenerElementos(int tipo, String fechaHoraDesde, String fechaHoraHasta) throws Exception,SQLException
 	{
 		ArrayList<Elemento> listadoElementos = new ArrayList<Elemento>();
 		PreparedStatement pstm = null;
@@ -220,16 +218,16 @@ public ArrayList<Elemento> obtenerElementos(int tipo, String fechaHoraDesde, Str
 					listadoElementos.add(elemento);
 				}
 			}
-		} catch (SQLException e) {
-			throw e;
-		} catch (ExcepcionesEscritorio e) {
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible obtener elementos disponibles en la base de datos", Level.ERROR);	
+		} catch (Exception e) {
 			throw e;
 		}
 		
 		return listadoElementos;
 	}
 
-public void cancelarReserva(Reserva res) throws Exception
+public void cancelarReserva(Reserva res) throws Exception,SQLException
 {
 	PreparedStatement pstm = null;
 	
@@ -238,9 +236,9 @@ public void cancelarReserva(Reserva res) throws Exception
 		pstm.setString(1, "Anulada");
 		pstm.setInt(2, res.getId());
 		pstm.executeUpdate();
-	} catch (SQLException e) {
-		throw e;
-	} catch (ExcepcionesEscritorio e) {
+	} catch (SQLException exc) {
+		throw new ExcepcionEspecial(exc,"No es posible cancelar una reserva en la base de datos", Level.ERROR);	
+	} catch (Exception e) {
 		throw e;
 	}
 	
@@ -252,7 +250,7 @@ public void cancelarReserva(Reserva res) throws Exception
 	}
 }
 
-public String getFechaHoraActual() throws Exception
+public String getFechaHoraActual() throws Exception,SQLException
 {
 	Statement stm=null;
 	ResultSet rs=null;
@@ -268,10 +266,9 @@ public String getFechaHoraActual() throws Exception
 			}
 		}
 		
-		
-	} catch (SQLException e) {
-		throw e;
-	} catch (ExcepcionesEscritorio e) {
+	} catch (SQLException exc) {
+		throw new ExcepcionEspecial(exc,"No es posible obtener fecha y hora actual en la base de datos", Level.ERROR);		
+	} catch (Exception e) {
 		throw e;
 	}
 	
@@ -279,13 +276,15 @@ public String getFechaHoraActual() throws Exception
 		if(rs!=null)rs.close();
 		if(stm!=null)stm.close();
 		FactoryConnection.getinstancia().releaseConn();
-	} catch (SQLException e) {
+	} catch (Exception e) {
 		throw e;
 	}
 	
 	return fechaActual;
 }
-public Reserva getReserva(Reserva res) throws Exception{
+
+public Reserva getReserva(Reserva res) throws Exception,SQLException
+{
 	
 	PreparedStatement pstm=null;
 	ResultSet rs=null;
@@ -312,9 +311,9 @@ public Reserva getReserva(Reserva res) throws Exception{
 			}	
 		}
 
-	} catch (SQLException e) {
-		throw e;
-	} catch (ExcepcionesEscritorio e) {
+	} catch (SQLException exc) {
+		throw new ExcepcionEspecial(exc,"No es posible obtener una reserva en la base de datos", Level.ERROR);	
+	} catch (Exception e) {
 		throw e;
 	}
 	
@@ -322,13 +321,15 @@ public Reserva getReserva(Reserva res) throws Exception{
 		if(rs!=null)rs.close();
 		if(pstm!=null)pstm.close();
 		FactoryConnection.getinstancia().releaseConn();
-	} catch (SQLException e) {
+	} catch (Exception e) {
 		throw e;
 	}
 	return reserva;	
 
 }
-public int getActivasTipo(TipoElemento tipo) throws Exception{
+
+public int getActivasTipo(TipoElemento tipo) throws Exception,SQLException
+{
 	int cantidad=0;
 	PreparedStatement pstm=null;
 	ResultSet rs=null;
@@ -342,9 +343,9 @@ public int getActivasTipo(TipoElemento tipo) throws Exception{
 			}	
 		}
 
-	} catch (SQLException e) {
-		throw e;
-	} catch (ExcepcionesEscritorio e) {
+	} catch (SQLException exc) {
+		throw new ExcepcionEspecial(exc,"No es posible obtener las reserva activas en la base de datos", Level.ERROR);	
+	} catch (Exception e) {
 		throw e;
 	}
 	

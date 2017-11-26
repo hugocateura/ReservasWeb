@@ -10,12 +10,12 @@ import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 
 import entidades.*;
 import utilidades.ExcepcionEspecial;
-import utilidades.ExcepcionesEscritorio;
+
 
 public class DatosPersona implements Serializable 
 {
 	
-	public ArrayList<Persona> buscarTodo() throws Exception
+	public ArrayList<Persona> buscarTodo() throws Exception,SQLException
 	{
 		Statement stm=null;
 		ResultSet rs=null;
@@ -39,14 +39,9 @@ public class DatosPersona implements Serializable
 					pers.add(persona);
 				}
 			}
-		} 
-		catch (SQLException e) 
-		{
-			throw e;
-		}
-		
-		catch (ExcepcionesEscritorio ex) 
-		{
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible buscar una persona en la base de datos", Level.ERROR);
+		}catch (Exception ex){
 			throw ex;
 		}
 		
@@ -54,7 +49,7 @@ public class DatosPersona implements Serializable
 			if(rs!=null) rs.close();
 			if(stm!=null) stm.close();
 			FactoryConnection.getinstancia().releaseConn();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			
 			throw e;
 		}
@@ -63,7 +58,7 @@ public class DatosPersona implements Serializable
 		
 	}
 	
-	public ArrayList<Persona> buscarUsuariosExternos() throws Exception
+	public ArrayList<Persona> buscarUsuariosExternos() throws Exception,SQLException
 	{
 		Statement stm=null;
 		ResultSet rs=null;
@@ -87,9 +82,9 @@ public class DatosPersona implements Serializable
 					personas.add(persona);
 				}
 			}
-		} 
-		catch (SQLException e) 
-		{
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible buscar una persona externa en la base de datos", Level.ERROR);
+		}catch (Exception e) {
 			throw e;
 		}
 	
@@ -97,14 +92,14 @@ public class DatosPersona implements Serializable
 			if(rs!=null) rs.close();
 			if(stm!=null) stm.close();
 			FactoryConnection.getinstancia().releaseConn();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			throw e;
 		}
 		return personas;
 	}
 	
 	
-	public void agregarPersona (Persona pers) throws Exception,ExcepcionEspecial
+	public void agregarPersona (Persona pers) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -128,7 +123,7 @@ public class DatosPersona implements Serializable
 			}
 		}
 		catch (Exception e) {
-			throw new ExcepcionEspecial("No se puede dar de alta, ya existe el usuario", Level.ERROR);
+			throw new ExcepcionEspecial(e,"No se puede dar de alta, ya existe el usuario", Level.ERROR);
 		}
 		
 		try {
@@ -141,7 +136,7 @@ public class DatosPersona implements Serializable
 		
 	}
 	
-	public void eliminarPersona(Persona perselimina) throws Exception
+	public void eliminarPersona(Persona perselimina) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		
@@ -152,10 +147,10 @@ public class DatosPersona implements Serializable
 			pstm.executeUpdate();
 		}
 		catch (MySQLIntegrityConstraintViolationException exc) {
-			throw new ExcepcionEspecial("Imposible eliminar,  la Persona posee reservas", Level.ERROR);
+			throw new ExcepcionEspecial(exc,"Imposible eliminar,  la Persona posee reservas", Level.ERROR);
 		}  
 		catch (SQLException exc) {
-			throw new ExcepcionEspecial("Imposible eliminar,  la Persona posee reservas", Level.ERROR);
+			throw new ExcepcionEspecial(exc,"Imposible eliminar,  la Persona posee reservas", Level.ERROR);
 		} 
 		catch(Exception e){
 			throw e;		
@@ -164,12 +159,12 @@ public class DatosPersona implements Serializable
 		try {
 			if(pstm!=null)pstm.close();
 			FactoryConnection.getinstancia().releaseConn();
-		} catch (SQLException exc) {
-			throw new ExcepcionEspecial("Error de conexión", Level.ERROR);			
+		} catch (Exception exc) {
+			throw exc;			
 		}		
 	}
 	
-	public void modificarPersona(Persona persmodifica) throws Exception
+	public void modificarPersona(Persona persmodifica) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		
@@ -186,9 +181,9 @@ public class DatosPersona implements Serializable
 			pstm.setBoolean(7, persmodifica.isHabilitado());
 			pstm.setInt(8, persmodifica.getId());
 			pstm.executeUpdate();
-		} 
-		catch (Exception e) 
-		{
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible modificar una persona en la base de datos", Level.ERROR);
+		}catch (Exception e){
 			throw e;
 		}
 		
@@ -206,7 +201,7 @@ public class DatosPersona implements Serializable
 
 
 
-	public Persona buscarPersonaPorUsuyClave(Persona pers) throws Exception
+	public Persona buscarPersonaPorUsuyClave(Persona pers) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -233,10 +228,12 @@ public class DatosPersona implements Serializable
 			else{
 				throw new Exception();
 			}
-			
-		} catch (SQLException e) {
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible buscar una persona en la base de datos", Level.ERROR);	
+		} catch (Exception e) {
 			throw e;
 		}
+		
 		try {
 			if(pstm!=null)pstm.close();
 			if(rs!=null)rs.close();
@@ -248,7 +245,7 @@ public class DatosPersona implements Serializable
 		return persona;
 	}
 	
-	public Persona getPersona(Persona pers) throws Exception
+	public Persona getPersona(Persona pers) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -270,10 +267,9 @@ public class DatosPersona implements Serializable
 					persona.setHabilitado(rs.getBoolean("habilitado"));
 					persona.setCategoria(rs.getString("categoria"));				
 			}
-			
-		} catch (SQLException e) {
-			throw e;
-		} catch (ExcepcionesEscritorio e) {
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible buscar una persona en la base de datos", Level.ERROR);	
+		} catch (Exception e) {
 			throw e;
 		}
 				

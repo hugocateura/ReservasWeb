@@ -22,7 +22,7 @@ private DatosTipoElemento baseTipoElemento = new DatosTipoElemento();
 					String contenidoMail = ("Alta exitosa de:\nNombre: "+tipoele.getNombre()+"\nCant. Max. Reservas: "+tipoele.getCant_max_reservas()+"\nMax. Anticipacion: "+tipoele.getCantMaxDiasAnticipacion()+"\nMax. Duracion: "+tipoele.getLimiteMaxHorasReserva()+"\nReserva Encargado: "+tipoele.getReservaEncargado());
 					Emailer.getInstance().send("tpfinaljava2017@gmail.com","Alta de nuevo Tipo de Elemento",contenidoMail);
 				} catch (Exception e) {
-					throw new ExcepcionEspecial("No es posible enviar el correo.", Level.ERROR);
+					throw new ExcepcionEspecial(e,"No es posible enviar el correo.", Level.ERROR);
 				}
 				
 				}

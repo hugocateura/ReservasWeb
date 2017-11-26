@@ -67,14 +67,14 @@ private DatosElemento baseElemento = new DatosElemento();
 							try {
 								baseReserva.agregarReserva(res);
 							} catch (Exception e) {
-								throw new ExcepcionEspecial("Error al agregar la reserva en la BD", Level.ERROR);
+								throw new ExcepcionEspecial(e,"Error al agregar la reserva en la BD", Level.ERROR);
 							}
 							
 							try {
 								String contenidoMail = ("Reserva exitosa de:\nNombre: "+res.getPersona().getNombre()+"\nApellido: "+res.getPersona().getApellido()+"\nUsuario: "+res.getPersona().getUsuario()+"\nElemento: "+res.getElemento().getNombre()+"\nFecha Desde: "+res.getFechaHoraDesde()+"\nFecha Hasta: "+res.getFechaHoraHasta());
 								Emailer.getInstance().send("tpfinaljava2017@gmail.com","Reserva de Elemento",contenidoMail);
 							} catch (Exception e) {
-								throw new ExcepcionEspecial("No es posible enviar el correo.", Level.ERROR);
+								throw new ExcepcionEspecial(e,"No es posible enviar el correo.", Level.ERROR);
 							}
 						}
 						else{
@@ -110,7 +110,7 @@ private DatosElemento baseElemento = new DatosElemento();
 			String contenidoMail = ("Reserva:\nNombre: "+res.getPersona().getNombre()+"\nApellido: "+res.getPersona().getApellido()+"\nUsuario: "+res.getPersona().getUsuario()+"\nElemento: "+res.getElemento().getNombre()+"\nFecha Desde: "+res.getFechaHoraDesde()+"\nFecha Hasta: "+res.getFechaHoraHasta());
 			Emailer.getInstance().send("tpfinaljava2017@gmail.com","Cancelacion de Reserva de Elemento",contenidoMail);
 		} catch (Exception e) {
-			throw new ExcepcionEspecial("No es posible enviar el correo.", Level.ERROR);
+			throw new ExcepcionEspecial(e,"No es posible enviar el correo.", Level.ERROR);
 		}
 		
 	};
@@ -164,7 +164,7 @@ private DatosElemento baseElemento = new DatosElemento();
 			String contenidoMail = ("Reserva:\nNombre: "+res.getPersona().getNombre()+"\nApellido: "+res.getPersona().getApellido()+"\nUsuario: "+res.getPersona().getUsuario()+"\nElemento: "+res.getElemento().getNombre()+"\nFecha Desde: "+res.getFechaHoraDesde()+"\nFecha Hasta: "+res.getFechaHoraHasta());
 			Emailer.getInstance().send("tpfinaljava2017@gmail.com","Anulación de Reserva de Elemento",contenidoMail);
 		} catch (Exception e) {
-			throw new ExcepcionEspecial("No es posible enviar el correo.", Level.ERROR);
+			throw new ExcepcionEspecial(e,"No es posible enviar el correo.", Level.ERROR);
 		}
 		
 	}

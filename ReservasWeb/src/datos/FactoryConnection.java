@@ -2,7 +2,10 @@ package datos;
 import java.io.Serializable;
 import java.sql.*;
 
-import utilidades.ExcepcionesEscritorio;
+import org.apache.logging.log4j.Level;
+
+import utilidades.ExcepcionEspecial;
+
 
 public class FactoryConnection implements Serializable{
 	private String driver="com.mysql.jdbc.Driver";
@@ -16,7 +19,7 @@ public class FactoryConnection implements Serializable{
 	
 	private static FactoryConnection instancia; 	//para tener solo y exclusivamente un único objeto de una clase.
 	
-	private FactoryConnection() 
+	private FactoryConnection() throws ClassNotFoundException, Exception
 	{
 		try 
 		{
@@ -25,19 +28,22 @@ public class FactoryConnection implements Serializable{
 			Class.forName(driver); 
 		} 
 		catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			throw e;
+		}
+		catch (Exception e) {
+			throw e;
 		}
 	}
 	
 	
-	public static FactoryConnection getinstancia() //devuelve la unica conexion
+	public static FactoryConnection getinstancia() throws ClassNotFoundException, Exception //devuelve la unica conexion
 	{
 		if (FactoryConnection.instancia == null){FactoryConnection.instancia=new FactoryConnection();}
 		return FactoryConnection.instancia;
 	} 
 	
 	
-	public Connection getConn() throws SQLException, ExcepcionesEscritorio
+	public Connection getConn() throws Exception, SQLException
 	{
 		
 		try 
@@ -47,13 +53,17 @@ public class FactoryConnection implements Serializable{
 		} 
 		catch (SQLException e) 
 		{
-			throw new ExcepcionesEscritorio(e,"Error al intentar conectarse a la Base de Datos");
+			throw new ExcepcionEspecial(e,"Error al intentar conectarse a la Base de Datos", Level.ERROR);
+		}
+		catch (Exception e) 
+		{
+			throw e;
 		}
 		cantConn++;
 		return conn;
     }	
 	
-	public void releaseConn() throws SQLException{
+	public void releaseConn() throws SQLException,Exception{
 		try {
 			cantConn--;
 			if(cantConn==0){
@@ -61,6 +71,10 @@ public class FactoryConnection implements Serializable{
 			}
 		} catch (SQLException e) {
 			throw e;
+		} catch (Exception e) {
+			throw e;
 		}
+		
+		
 	}
 }

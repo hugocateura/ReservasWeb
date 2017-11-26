@@ -14,7 +14,7 @@ import utilidades.ExcepcionEspecial;
 public class DatosTipoElemento implements Serializable
 {
 	
-	public ArrayList<TipoElemento> buscarTodo(Persona pers) throws Exception
+	public ArrayList<TipoElemento> buscarTodo(Persona pers) throws Exception,SQLException
 	{
 		Statement stm=null;
 		PreparedStatement pstm=null;
@@ -22,27 +22,27 @@ public class DatosTipoElemento implements Serializable
 		ArrayList<TipoElemento> listadotipoelemento= new ArrayList<TipoElemento>();
 		
 		if(!((pers.getCategoria()).equals("Online"))){
-		try 
-		{
-			stm = FactoryConnection.getinstancia().getConn().createStatement();
-			rs = stm.executeQuery("select * from tipoelemento");
-			if(rs!=null){
-				while(rs.next()){
-					TipoElemento tipoele=new TipoElemento();
-					tipoele.setId(rs.getInt("id"));
-					tipoele.setNombre(rs.getString("nombre"));
-					tipoele.setCant_max_reservas(rs.getInt("cant_max_reservas"));
-					tipoele.setReservaEncargado(rs.getBoolean("reservaEncargado"));
-					tipoele.setLimiteMaxHorasReserva(rs.getInt("limiteMaxHorasReserva"));
-					tipoele.setCantMaxDiasAnticipacion(rs.getInt("cantMaxDiasAnticipacion"));
-					listadotipoelemento.add(tipoele);
-					}
-			}
-		} 
-		catch (Exception e) 
-		{
-			throw e;
-		}
+			try 
+			{
+				stm = FactoryConnection.getinstancia().getConn().createStatement();
+				rs = stm.executeQuery("select * from tipoelemento");
+				if(rs!=null){
+					while(rs.next()){
+						TipoElemento tipoele=new TipoElemento();
+						tipoele.setId(rs.getInt("id"));
+						tipoele.setNombre(rs.getString("nombre"));
+						tipoele.setCant_max_reservas(rs.getInt("cant_max_reservas"));
+						tipoele.setReservaEncargado(rs.getBoolean("reservaEncargado"));
+						tipoele.setLimiteMaxHorasReserva(rs.getInt("limiteMaxHorasReserva"));
+						tipoele.setCantMaxDiasAnticipacion(rs.getInt("cantMaxDiasAnticipacion"));
+						listadotipoelemento.add(tipoele);
+						}
+				}
+			} catch (SQLException exc) {
+				throw new ExcepcionEspecial(exc,"No es posible buscar un tipo de elemento en la base de datos", Level.ERROR);
+			}catch (Exception e){
+				throw e;
+			} 
 		}
 		else{
 			try 
@@ -62,8 +62,9 @@ public class DatosTipoElemento implements Serializable
 						listadotipoelemento.add(tipoele);
 						}
 				}
-			} 
-			catch (Exception e) 
+			} catch (SQLException exc) {
+				throw new ExcepcionEspecial(exc,"No es posible buscar un tipo de elemento en la base de datos", Level.ERROR);
+			}catch (Exception e) 
 			{
 				throw e;
 			}
@@ -81,7 +82,7 @@ public class DatosTipoElemento implements Serializable
 		
 	}
 
-	public ArrayList<TipoElemento> devolverTodoTipoElemento() throws Exception
+	public ArrayList<TipoElemento> devolverTodoTipoElemento() throws Exception,SQLException
 	{
 		Statement stm=null;
 		ResultSet rs=null;
@@ -102,9 +103,9 @@ public class DatosTipoElemento implements Serializable
 					listadotipoelemento.add(tipoele);
 					}
 			}
-		} 
-		catch (Exception e) 
-		{
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible buscar un tipo de elemento en la base de datos", Level.ERROR);
+		}catch (Exception e){
 			throw e;
 		}
 		
@@ -122,7 +123,7 @@ public class DatosTipoElemento implements Serializable
 	}
 	
 	
-	public void agregarTipoElemento (TipoElemento tipoele) throws Exception
+	public void agregarTipoElemento (TipoElemento tipoele) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -141,6 +142,8 @@ public class DatosTipoElemento implements Serializable
 			if(rs!=null && rs.next()){
 				tipoele.setId(rs.getInt(1));
 			}
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible agregar un tipo de elemento en la base de datos", Level.ERROR);
 		} catch (Exception e) {
 			throw e;
 		}
@@ -155,7 +158,7 @@ public class DatosTipoElemento implements Serializable
 		
 	}
 	
-	public void eliminarTipoElemento(TipoElemento tipoele) throws Exception, ExcepcionEspecial
+	public void eliminarTipoElemento(TipoElemento tipoele) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		
@@ -166,10 +169,10 @@ public class DatosTipoElemento implements Serializable
 			pstm.setInt(1, tipoele.getId());
 			pstm.executeUpdate();
 		}catch (MySQLIntegrityConstraintViolationException exc) {
-			throw new ExcepcionEspecial("Imposible eliminar, Tipo de Elemento tiene Elementos dependientes", Level.ERROR);
+			throw new ExcepcionEspecial(exc,"Imposible eliminar, Tipo de Elemento tiene Elementos dependientes", Level.ERROR);
 		}  
 		catch (SQLException exc) {
-			throw new ExcepcionEspecial("Imposible eliminar, Tipo de Elemento tiene Elementos dependientes", Level.ERROR);
+			throw new ExcepcionEspecial(exc,"Imposible eliminar, Tipo de Elemento tiene Elementos dependientes", Level.ERROR);
 		} 
 			catch(Exception e){
 				throw e;		
@@ -179,11 +182,14 @@ public class DatosTipoElemento implements Serializable
 			if(pstm!=null)pstm.close();
 			FactoryConnection.getinstancia().releaseConn();
 		} catch (SQLException exc) {
-			throw new ExcepcionEspecial("Error de conexión", Level.ERROR);			
-		}		
+			throw new ExcepcionEspecial(exc,"Error de conexión", Level.ERROR);			
+		}
+		catch (Exception exc) {
+			throw exc;			
+		}
 	}
 	
-	public void modificarTipoElemento(TipoElemento tipoele) throws Exception
+	public void modificarTipoElemento(TipoElemento tipoele) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		
@@ -198,6 +204,8 @@ public class DatosTipoElemento implements Serializable
 			pstm.setInt(5, tipoele.getCantMaxDiasAnticipacion());
 			pstm.setInt(6, tipoele.getId());
 			pstm.executeUpdate();
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible modificar un tipo de elemento en la base de datos", Level.ERROR);	
 		} catch (Exception e) {
 			throw e;
 		}
@@ -211,7 +219,7 @@ public class DatosTipoElemento implements Serializable
 		
 	}
 	
-	public TipoElemento buscarTipoElemento(TipoElemento tipoele) throws Exception
+	public TipoElemento buscarTipoElemento(TipoElemento tipoele) throws Exception,SQLException
 	{
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -231,8 +239,9 @@ public class DatosTipoElemento implements Serializable
 					tipoele.setCantMaxDiasAnticipacion(rs.getInt("cantMaxDiasAnticipacion"));
 					}
 						}
-			} 
-			catch (Exception e) {
+		} catch (SQLException exc) {
+			throw new ExcepcionEspecial(exc,"No es posible buscar un tipo de elemento en la base de datos", Level.ERROR);	
+		}catch (Exception e) {
 			throw e;
 		}
 		
