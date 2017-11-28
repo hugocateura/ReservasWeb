@@ -228,7 +228,7 @@ ul li label:hover{
 
 .contenedor{
     width: 100%;
-    margin-top: 55px; /*poner a 55 cuando lo subimos al servidor*/
+    margin-top: 70px; /*poner a 55 cuando lo subimos al servidor*/
 }
 
 .contenedor ul{
@@ -564,7 +564,7 @@ i.icono.derecha{
 }
 /*CABECERA FIJA*/
 .cabecera{
-	margin-top:75px;
+	/* margin-top:75px; */
 	width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
 	left: 0; /* Posicionamos la cabecera al lado izquierdo */
 	top: 0; /* Posicionamos la cabecera pegada arriba */
