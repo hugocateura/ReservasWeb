@@ -60,14 +60,15 @@ public class DatosPersona implements Serializable
 	
 	public ArrayList<Persona> buscarUsuariosExternos() throws Exception,SQLException
 	{
-		Statement stm=null;
+		PreparedStatement pstm=null;
 		ResultSet rs=null;
 		ArrayList<Persona> personas= new ArrayList<Persona>();
 		
 		try 
 		{
-			stm = FactoryConnection.getinstancia().getConn().createStatement();
-			rs = stm.executeQuery("select id,dni,nombre,apellido,usuario,contrasena,habilitado,categoria from personas where categoria = 'Online'");
+			pstm = FactoryConnection.getinstancia().getConn().prepareStatement("select id,dni,nombre,apellido,usuario,contrasena,habilitado,categoria from personas where categoria = ?");
+			pstm.setString(1, "Online");
+			rs = pstm.executeQuery();
 			if(rs!=null){
 				while(rs.next()){
 					Persona persona=new Persona();
@@ -90,7 +91,7 @@ public class DatosPersona implements Serializable
 	
 		try {
 			if(rs!=null) rs.close();
-			if(stm!=null) stm.close();
+			if(pstm!=null) pstm.close();
 			FactoryConnection.getinstancia().releaseConn();
 		} catch (Exception e) {
 			throw e;
